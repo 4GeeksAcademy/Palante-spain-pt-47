@@ -209,6 +209,7 @@ class Events(db.Model):
     __tablename__ = 'events'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
     address = db.Column(db.String(120), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user_relationship = db.relationship(User)
@@ -220,6 +221,7 @@ class Events(db.Model):
         return {
             "id": self.id,
             "title": self.title,
+            "date": self.date,
             "address": self.address,
             "user_data": self.user_relationship.serialize()
         }
