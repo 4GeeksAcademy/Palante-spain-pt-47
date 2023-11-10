@@ -78,7 +78,7 @@ def serve_any_other_file(path):
                    ######### USUARIOS #########
 
 ##### ruta de registro de usuario #####
-@app.route("/user-register", methods=['POST'])
+@app.route("/userregister", methods=['POST'])
 def user_register():
     body = request.get_json(silent=True)
     if body is None:
@@ -98,7 +98,7 @@ def user_register():
     return jsonify('Successful registration'),200
 
 ##### ruta de inicio de sesion de usuario #####
-@app.route("/user-login", methods=["POST"])
+@app.route("/userlogin", methods=["POST"])
 def user_login():
     body = request.get_json(silent=True)
     if body is None:
@@ -116,7 +116,7 @@ def user_login():
     return jsonify(access_token=access_token)
 
 ##### ruta privada de usuario #####
-@app.route("/user-private", methods=['GET'])
+@app.route("/userprivate", methods=['GET'])
 @jwt_required()
 def user_private():
     email = get_jwt_identity()
@@ -125,7 +125,7 @@ def user_private():
                 #########FREELANCERS#########
 
 ##### ruta de registro de freelancer #####
-@app.route("/freelancer-register", methods=['POST'])
+@app.route("/freelancerregister", methods=['POST'])
 def freelancer_register():
     body = request.get_json(silent=True)
     if body is None:
@@ -162,7 +162,7 @@ def freelancer_register():
     return jsonify('Successful registration'), 200 
 
 ##### ruta de inicio de sesion de freelancer #####
-@app.route("/freelancer-login", methods=['POST'])
+@app.route("/freelancerlogin", methods=['POST'])
 def freelancer_token():
     body = request.get_json(silent=True)
     if body is None:
@@ -181,7 +181,7 @@ def freelancer_token():
     return jsonify(access_token=access_token)  
 
 ##### ruta privada de freelanecer #####
-@app.route("/freelancer-private", methods=['GET'])
+@app.route("/freelancerprivate", methods=['GET'])
 @jwt_required()
 def freelancer_private():
     email = get_jwt_identity()
