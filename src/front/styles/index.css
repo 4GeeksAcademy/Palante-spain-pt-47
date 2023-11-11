@@ -1,3 +1,69 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+@import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Roboto:ital@1&display=swap');
+
+.container{
+    background-image: url("/workspaces/spain_part_time47/src/front/img/imghomeazul__1_.png");
+    border: 1px solid red;
+    background-color: antiquewhite;
+}
+.container-form{
+    background: transparent;
+    border: 1px solid blue;
+    display: grid;
+    justify-content: center;
+}
+.container-logo{
+    background-color: white;
+    border-radius: 50%;
+    margin: 1.2em auto 3em;
+    width: 160px;
+    height: 110px;
+    display: grid;
+    align-items: center;
+}
+.logo{
+    color: #3E63BA;
+    font-weight: 800;
+    font-family: 'Roboto', sans-serif;
+    display: grid;
+    justify-content: center;  
+}
+.form{
+    width: 400px;
+}
+.form-control{
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-bottom: 1.5em;
+    padding: .7em;
+}
+.form-control::placeholder{
+color: #3E63BA;
+}
+.login{
+    background-color: #F4CB5F;
+    color: #3E63BA;
+    border: none;
+    border-radius: 15px;
+    display: grid;
+    justify-content: center;
+    width: 75%;
+    margin: .8em auto;
+}
+button{
+    padding: .5em;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);;
+}
+.opcion-contraseña{
+    color: #3E63BA;
+    display: grid;
+    justify-content: center;
+}
+.opcion-registro{
+    color: #3E63BA;
+    display: grid;
+    justify-content: center;
+    margin: 5em auto 2.5em;
+}
