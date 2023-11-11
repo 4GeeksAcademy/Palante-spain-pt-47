@@ -2,6 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			message: null,
+			readings:[],
 			demo: [
 				{
 					title: "FIRST",
@@ -17,6 +18,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
+			show_readings: () => {
+				fetch(process.env.BACKEND_URL + "/readings", {method: "GET"})
+				.then (response => response.json())
+				.then (response => {
+					console.log("readings", response)
+					setStore({readings:response})
+				})
+			},
+
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},

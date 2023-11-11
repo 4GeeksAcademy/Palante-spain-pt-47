@@ -5,3 +5,43 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+.imgHome{
+    width: 100%;
+}
+.texto-encima{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.conocenos {
+    margin-top: 5rem;
+    margin-left: -1rem; 
+    margin-left: 3rem;
+    font-size: 16px;
+    font-family: roboto;
+    color: #102d7b;
+}
+.linea_conocenos {
+    margin-top: 5rem;
+    margin-left: -1rem; 
+    margin-left: 3rem;
+    font-size: 16px;
+    font-family: roboto;
+    color: #102d7b;
+}
+.img_conocenos {
+    margin-top: 2rem;
+    margin-left: 3rem;
+    
+}
+.h1_contenido_conocenos_title {
+    color: #102d7b;
+    margin-left: 8rem;
+    margin-top: 2rem;
+}
+.p_contenido_conocenos {
+    font-size: 22px;
+    color: #413f6a;
+    margin-top: 2rem;
+    margin-left: 8rem;
+}
