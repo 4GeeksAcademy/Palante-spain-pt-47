@@ -67,7 +67,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           return data;
         } catch (error) {
           console.error("Error al iniciar sesión:");
-          throw error;
         }
       },
 
