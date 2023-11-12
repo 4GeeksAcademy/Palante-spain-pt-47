@@ -38,7 +38,7 @@ export const Login = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="container-form">
         <div className="container-logo">
           <h1 className="logo">Pa'lante</h1>
