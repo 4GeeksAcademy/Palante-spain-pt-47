@@ -1,0 +1,46 @@
+ .btn_comunidad, .btn_recursos {
+    background: none;
+    border: none;
+    color: #413F6A;
+    margin-right: 1rem;
+    padding: 1rem;
+    font-family: roboto;
+    font-size: 22px;
+}
+.nav_palante {
+    font-size: 28px;
+    color: #102d7b;
+    font-family: roboto;
+}
+.navbar-expand-lg {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    background: #FFFFFF;
+    box-shadow: 10px 1px 5px #9e9e9e61;
+   
+}
+
+.appointment_btn {
+    background: transparent;
+    border: none;
+    color: #413F6A;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    font-size: 22px;
+    font-family: roboto;
+}
+.appointment_btn:hover {
+    background-color: #2C3D91;
+    color: white;
+}
+.nav_btn {
+    background: transparent;
+    border: none;
+    color: #413F6A;
+    padding: 1rem;
+    font-size: 22px;
+    font-family: roboto;
+}
+.nav_btn:hover .fa-user {
+    text-shadow: 0 0 5px #2C3D91;
+}
