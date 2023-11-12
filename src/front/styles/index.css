@@ -2,15 +2,25 @@
     General Styles used on every website (Don't Repeat Yourself)
 */
 @import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Roboto:ital@1&display=swap');
-
-.container{
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    border: 3px solid palevioletred;
+}
+.container-fluid{
     background-image: url("/workspaces/spain_part_time47/src/front/img/imghomeazul__1_.png");
     border: 1px solid red;
     background-color: antiquewhite;
+    height: 100%;
 }
 .container-form{
-    background: transparent;
+    background-color: aquamarine;
     border: 1px solid blue;
+    width: 40%;
+    height: auto;
     display: grid;
     justify-content: center;
 }
@@ -36,8 +46,9 @@
 .form-control{
     border: 1px solid black;
     border-radius: 10px;
-    margin-bottom: 1.5em;
+    margin-bottom: 3em;
     padding: .7em;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 .form-control::placeholder{
 color: #3E63BA;
@@ -50,11 +61,11 @@ color: #3E63BA;
     display: grid;
     justify-content: center;
     width: 75%;
-    margin: .8em auto;
+    margin: 1em auto;
 }
 button{
     padding: .5em;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);;
+    box-shadow: inset 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 .opcion-contraseña{
     color: #3E63BA;
