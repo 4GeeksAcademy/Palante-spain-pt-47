@@ -5,26 +5,28 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
-.imgHome{
+.imgHome {
     width: 100%;
+    margin-top: 4.5rem;
 }
 .texto-encima{
     position: absolute;
     top: 10px;
     left: 10px;
+    font-family: roboto;
 }
 .conocenos {
     margin-top: 5rem;
-    margin-left: -1rem; 
-    margin-left: 3rem;
+    
+    margin-left: 2rem;
     font-size: 16px;
     font-family: roboto;
     color: #102d7b;
 }
 .linea_conocenos {
-    margin-top: 5rem;
-    margin-left: -1rem; 
-    margin-left: 3rem;
+    margin-top: 4.5rem;
+    margin-left: -1rem;
+    margin-left: 1rem;
     font-size: 16px;
     font-family: roboto;
     color: #102d7b;
@@ -36,12 +38,231 @@
 }
 .h1_contenido_conocenos_title {
     color: #102d7b;
-    margin-left: 8rem;
+    margin-left: 5rem;
     margin-top: 2rem;
+    font-size: 32px;
+    font-family: roboto;
+}
+.h1_contenido_equipo_title {
+    color: #397FDB;
+    margin-left: 5rem;
+    margin-top: 2rem;
+    font-size: 32px;
+    font-family: roboto;
+    width: 51%;
 }
 .p_contenido_conocenos {
-    font-size: 22px;
+    font-size: 20px;
     color: #413f6a;
     margin-top: 2rem;
-    margin-left: 8rem;
+    margin-left: 5rem;
+    font-family: roboto;
+}
+.container_hacemos, .container_equipo {
+    background: #fcedc6;
+    margin-top: 4rem;
+}
+.fa-house:before {
+    content: "\f015";
+    color: #397FDB;
+    font-size: 20px;
+    margin-left: 10rem;
+    
+    margin-right: 1rem;
+   
+}
+.h1_contenido_hacemos_title {
+    color: #397FDB;
+    margin-left: 5rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    font-size: 32px;
+    font-family: roboto;
+    
+}
+.explicacion_li_hacemos {
+    margin-left: 12.5rem;
+    color: #413f6a;
+    font-size: 16px;
+    font-family: roboto;
+    width: 63%;
+}
+.soporte {
+    font-size: 1.75rem;
+    color:  #102d7b;
+    font-size: 24px;
+    font-family: roboto;
+}
+.img_hacemos {
+    width: 400px;
+    height: 500px;
+    margin-right: 4rem;
+    margin-bottom: 3rem;
+    border-radius: 3rem;
+    margin-top: 4rem;
+
+}
+.img_equipo {
+    width: 400px;
+    height: 680px;
+    margin-right: 8rem;
+    border-radius: 3rem;
+}
+.conocenos_profesionales {
+    margin-right: 4rem;
+    border-radius: 3rem;
+    width: 90%;
+}
+
+.juntos {
+    position: absolute;
+    top: 40%;
+    left: 31%;
+    transform: translate(-50%, -50%);
+    font-size: 70px;
+    font-family: roboto;
+    color: white;
+    background: #ffffff2b;
+}
+.juntos1 {
+    position: absolute;
+    top: 68%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    font-size: 41px;
+    width: 30%;
+    font-family: roboto;
+    color: #102d7b;
+}
+.col_todo_list{
+    background: white;
+}
+.img_agradecer {
+    width: 350px;
+    height: 450px;
+    border-radius: 3rem;
+    margin-left: 4rem;
+    margin-right: 2rem;
+    
+}
+.img_ejercitarse {
+    width: 350px;
+    height: 450px;
+    border-radius: 3rem;
+    margin-right: 2rem;
+}
+.img_sonreir {
+    width: 350px;
+    height: 450px;
+    border-radius: 3rem;
+    margin-right: 2rem;
+}
+.h1_contenido_todolist_title {
+    color: #102d7b;
+    margin-left: 5rem;
+    margin-top: 2rem;
+    font-size: 32px;
+    width: 45%;
+    font-family: roboto;
+    margin-bottom: 4rem;
+}
+.agradecer {
+    position: absolute;
+    top: 395%;
+    left: 19%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    font-family: roboto;
+    color: #102d7b;
+    background: #ffffffb8;
+    padding: 1rem 8rem;
+}
+.ejercitarse {
+    position: absolute;
+    top: 415%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    font-family: roboto;
+    color: #102d7b;
+    background: #ffffffb8;
+    padding: 1rem 9rem;
+}
+.sonreir {
+    position: absolute;
+    top: 438%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    font-family: roboto;
+    color: #102d7b;
+    background: #ffffffb8;
+    padding: 1rem 8rem;
+}
+.contenido_equipo {
+    font-size: 20px;
+    margin-top: 2rem;
+    margin-left: 5rem;
+    font-family: roboto;
+    color: #413F6A;
+    width: 70%;
+}
+.colaborar {
+    margin-top: 2rem;
+    font-size: 32px;
+    font-family: roboto;
+    color: #397fdb;
+    margin-left: 10rem;
+   
+}
+.btn_colaborar {
+    margin-left: 12.5rem;
+    padding: 1rem;
+    background: #e9959b;
+    border-radius: 1rem;
+    border: 0;
+    font-size: 19px;
+    margin-top: 1rem;
+}
+.h1_title_eventos {
+    font-size: 32px;
+    margin-top: 5rem;
+    margin-left: 5rem;
+    margin-bottom: 3rem;
+    color: #102D7B;
+}
+.evento_1 {
+    background: #397fdb;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-left: 5rem;
+}
+.dia {
+    font-size: 40px;
+    color: white;
+    margin: 1rem 1rem 0rem 1rem;
+}
+.mes {
+    COLOR: white;
+    margin: 0rem 1.5rem 0rem 1.5rem;
+}
+.prox_evento {
+    color: white;
+    font-size: 16px;
+    margin-top: 2rem;
+ 
+}
+.linea_evento {
+    color: white;
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+}
+.title_prox_evento {
+    color: white;
+    font-size: 24px;
+}
+.ir_evento {
+    font-size: 39px;
+    margin: 1rem 1rem;
+    color: white;
 }
