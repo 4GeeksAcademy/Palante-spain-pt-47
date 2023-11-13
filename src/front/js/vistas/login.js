@@ -52,10 +52,10 @@ export const Login = () => {
           </div>
           <button className="boton-login">Inicia sesion</button>
           <Link to=""> 
-            <p className="opcion-contraseña">¿Haz olvidado tu contraseña?</p>
+            <p className="opcion-contraseña">¿Has olvidado tu contraseña?</p>
           </Link>
         </form>
-        <Link to="" className="ruta-register">
+        <Link to="/signup-user" className="ruta-register">
           <p className="opcion-registro">¿Aún no tienes cuenta? Registrate</p>
         </Link>
       </div>
