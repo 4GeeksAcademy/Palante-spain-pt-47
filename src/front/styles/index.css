@@ -43,34 +43,26 @@
     display: grid;
     justify-content: center;  
 }
-.form-inputs{
-    width: 40vh;
-}
 .form-control{
     border: 1px solid black;
     border-radius: 10px;
     padding: .7em;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-    
+    width: 40vh;
+}
+.select{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: .7em;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    width: 40vh;
 }
 .detalle-input{
     margin-bottom: 2em;
 }
-/*
-#exampleInputName1{
-    margin-bottom: 2em;
+option{
+    color: #3E63BA;
 }
-#exampleInputEmail1{
-    margin-bottom: 2em;
-}
-#exampleInputPassword1{
-    margin-bottom: 2em;
-}
-#exampleInputPassword2{
-    margin-bottom: 2em;
-}
-*/
-
 .form-control::placeholder{
 color: #3E63BA;
 }
@@ -85,6 +77,20 @@ color: #3E63BA;
     justify-content: center;
     width: 75%;
     margin: auto;
+    font-weight: 700;
+    font-size: large;
+}
+.boton-registro{
+    padding: .5em;
+    box-shadow: inset 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    background-color: #F4CB5F;
+    color: #3E63BA;
+    border: none;
+    border-radius: 15px;
+    display: grid;
+    justify-content: center;
+    width: 75%;
+    margin: 0 auto 2rem;
     font-weight: 700;
     font-size: large;
 }
