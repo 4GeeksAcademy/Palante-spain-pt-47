@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import fondo from "/workspaces/spain_part_time47/src/front/img/imghomeazul__1_.png"
 import { Link } from "react-router-dom";
-import { Formik, Field, Form } from "formik";
+import { Formik } from "formik";
 
 export const Signup_user = () => {
   const { actions } = useContext(Context);
@@ -26,20 +26,7 @@ export const Signup_user = () => {
 
     setRegister('')
   }
-  // Si submit es true, muestra un mensaje de confirmación y redirige a login
-  /*if (submit) {
-    setTimeout(() => {
-      navigate("/login"); // Navigate ejecuta la redireccion a login
-    }, 800);
-
-    return (
-      <div className="container">
-        <p className="alert alert-success-emphasis">Usuario creado con exito.</p>
-      </div>
-    );
-    
-  };*/
-
+  
   return (
     <div className="container-fluid">
       <img className="imagen-fondo" src={fondo} />
@@ -148,7 +135,7 @@ export const Signup_user = () => {
                 </div>
                 
               </div>
-              <button className="boton-login">Registrate</button>
+              <button className="boton-registro">Registrate</button>
               {submit && <p className="exito">Te haz registrado con exito</p>}
             </form>
           )}
