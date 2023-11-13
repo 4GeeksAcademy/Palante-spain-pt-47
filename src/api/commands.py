@@ -143,7 +143,15 @@ def setup_commands(app):
             podcast.URLListen = datos["URLListen"]
             podcast.title = datos["title"]
             podcast.URLPhoto = datos["URLPhoto"]
-            db.session.add(reading)
+            db.session.add(podcast)
+            db.session.commit()
+        print("Podcast inserted into the database.")
+
+        for datos in meditations:
+            meditations = Meditations()
+            meditations.URLVideo = datos["URLVideo"]
+            meditations.title = datos["title"]
+            db.session.add(meditations)
             db.session.commit()
         print("Podcast inserted into the database.")
 

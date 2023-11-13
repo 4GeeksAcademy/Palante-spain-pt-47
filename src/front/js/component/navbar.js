@@ -60,10 +60,10 @@ export const Navbar = () => {
                 Herramientas
               </button>
               <ul className="dropdown-menu">
-                <Link to='/lecturas'>
+                <Link to='/readings'>
                   <li><a className="dropdown-item" href="#">Lecturas</a></li>
                 </Link>
-                <Link to='/meditaciones'>
+                <Link to='/meditations'>
                   <li><a className="dropdown-item" href="#">Meditaciones guiadas</a></li>
                 </Link>
                 <Link to='/podcast'>

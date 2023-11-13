@@ -1,0 +1,26 @@
+.descarga_tittle {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-size: 27px;
+    font-family: roboto;
+    color: #102D7B;
+    width: 100%;
+    margin-top: -10rem;
+    margin-left: 35rem;
+}
+.readings_inicio {
+    width: 100%;
+    object-fit: cover;
+    height: 200px;
+    object-position: left;
+    margin-bottom: 2rem;
+}
+.img_readings {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+footer.container_footer {
+    background: #102D7B;
+    color:white;
+}

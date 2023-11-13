@@ -1,0 +1,13 @@
+
+.footer_palante {
+    background: #21447b;
+    color: white;
+    margin-top: 1rem;
+}
+
+p.palante {
+    text-align: center;
+    padding: 1rem;
+    font-size: 24px;
+    font-family: roboto;
+}

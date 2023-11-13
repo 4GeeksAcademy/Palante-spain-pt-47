@@ -16,7 +16,7 @@ export const Home = () => {
 					<div className="juntos"><strong>Juntos de la mano...</strong></div>
 					<div className="juntos1"><strong>Pa’lante</strong> está soñada para acompañarte.</div>
 				</div>
-				<div className="container_conocenos d-flex">
+				<div className="container container_conocenos d-flex">
 					<div className="col_conocenos_right">
 						<div className="title_conocenos d-flex">
 							<p className="linea_conocenos">_____</p>

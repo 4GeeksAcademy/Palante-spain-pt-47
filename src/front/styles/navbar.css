@@ -44,6 +44,8 @@
 .nav_btn:hover .fa-user {
     text-shadow: 0 0 5px #2C3D91;
 }
+
+
 /* Asegúrate de que estos estilos estén en tu archivo navbar.css */
 
 /* Estilos para pantallas grandes */
@@ -55,7 +57,7 @@
   
   /* Estilos para pantallas pequeñas (menos de 600px de ancho) */
   @media (max-width: 600px) {
-    
+
     .container_navbar_right {
       flex-direction: column; /* Coloca los elementos uno debajo del otro */
     }
