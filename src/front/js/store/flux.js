@@ -60,10 +60,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
 
           const data = await resp.json();
-
-          sessionStorage.setItem("token", data.token); // Guarda el token en el almacenamiento 
-          console.log("token", data.token);
-
+          sessionStorage.setItem("token", data.access_token); // Guarda el token en el almacenamiento 
           return data;
         } catch (error) {
           console.error("Error al iniciar sesión:");
