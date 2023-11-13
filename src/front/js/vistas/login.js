@@ -47,17 +47,36 @@ export const Login = () => {
         </div>
         <form className="form-inputs" onSubmit={handleSubmit}>
           <div className="container-inputs">
-            <input type="email" className="form-control" name="email" id="exampleInputEmail1" placeholder="Correo Electrónico" aria-describedby="emailHelp" value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} />
-            <input type="Password" className="form-control" name="Password" id="exampleInputPassword1" placeholder="Contraseña" aria-describedby="emailHelp" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
+            <div className="detalle-input">
+              <input type="email" 
+                className="form-control" 
+                name="email" 
+                id="exampleInputEmail1" 
+                placeholder="Correo Electrónico" 
+                aria-describedby="emailHelp" 
+                value={user.email} 
+                onChange={(e) => setUser({ ...user, email: e.target.value })} 
+            />
+            </div>
+            <div className="detalle-input">
+              <input type="Password" 
+                className="form-control" 
+                name="Password" 
+                id="exampleInputPassword1" 
+                placeholder="Contraseña" 
+                aria-describedby="emailHelp" 
+                value={user.password} 
+                onChange={(e) => setUser({ ...user, password: e.target.value })} 
+              />
+            </div>
+            
           </div>
           <button className="boton-login">Inicia sesion</button>
           <Link to=""> 
             <p className="opcion-contraseña">¿Has olvidado tu contraseña?</p>
           </Link>
         </form>
-        <Link to="/signup-user" className="ruta-register">
-          <p className="opcion-registro">¿Aún no tienes cuenta? Registrate</p>
-        </Link>
+        <p className="ruta-register">¿Aún no tienes cuenta? <Link to="/signup-user" className="ruta-registers">Registrate</Link></p>
       </div>
     </div>
   )
