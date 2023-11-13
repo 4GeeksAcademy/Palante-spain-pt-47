@@ -43,7 +43,8 @@ Queremos hacer este camino Juntos porque hemos estado donde estás.</p>
 
                        <div className="col_contenido_hacemos">
                             <h1 className="h1_contenido_hacemos_title"><strong>Qué puedes encontrar con nosotros.</strong></h1>
-                            <div className="lista_hacemos d-flex">
+                            
+							<div className="lista_hacemos d-flex">
                                 <p><i class="fa-solid fa-house"></i></p>
                                 <h3 className="soporte">Soporte familiar</h3>
                             </div>

@@ -7,7 +7,7 @@
 */
 .imgHome {
     width: 100%;
-    margin-top: 4.5rem;
+   
 }
 .texto-encima{
     position: absolute;
@@ -34,8 +34,9 @@
 .img_conocenos {
     margin-top: 2rem;
     margin-left: 3rem;
-    
+  
 }
+
 .h1_contenido_conocenos_title {
     color: #102d7b;
     margin-left: 5rem;
@@ -265,4 +266,221 @@
     font-size: 39px;
     margin: 1rem 1rem;
     color: white;
+}
+
+@media only screen and (max-width: 600px) {
+    
+    .juntos {
+        position: absolute;
+        top: 18%;
+        left: 8rem;
+        transform: translate(-50%, -50%);
+        font-size: 20px;
+        font-family: roboto;
+        color: white;
+        background: #ffffff2b;
+        width: 50%;
+    }
+   
+    .juntos1 {
+        position: absolute;
+        top: 25%;
+        left: 24%;
+        transform: translate(-50%, -50%);
+        font-size: 12px;
+        width: 30%;
+        font-family: roboto;
+        color: #102d7b;
+    }
+    .linea_conocenos {
+        margin-top: 0.5rem;
+        margin-left: 1rem;
+        margin-left: 1rem;
+        font-size: 16px;
+        font-family: roboto;
+        color: #102d7b;
+    }
+    .conocenos {
+        margin-top: 1rem;
+        margin-left: 2rem;
+        font-size: 16px;
+        font-family: roboto;
+        color: #102d7b;
+    }
+    .h1_contenido_conocenos_title {
+        color: #102d7b;
+        margin-left: 3rem;
+        margin-top: 0rem;
+        font-size: 24px;
+        font-family: roboto;
+    }
+    .p_contenido_conocenos {
+        font-size: 16px;
+        color: #413f6a;
+        margin-top: 0rem;
+        margin-left: 3rem;
+        font-family: roboto;
+        width: 71%;
+    }
+    .container_hacemos, .container_equipo {
+        background: #fcedc6;
+        margin-top: 0rem;
+    }
+    .container_conocenos.d-flex {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .img_hacemos {
+        display: none;
+    }
+    .conocenos_profesionales {
+     
+        width: 100%;
+    }
+    .h1_contenido_hacemos_title {
+        color: #397FDB;
+        margin-left: 4rem;
+        margin-top: 0rem;
+        margin-bottom: 1rem;
+        font-size: 24px;
+        font-family: roboto;
+    }
+    .soporte {
+        
+        color: #102d7b;
+        font-size: 16px;
+        font-family: roboto;
+    }
+    .fa-house:before {
+        content: "\f015";
+        color: #397FDB;
+        font-size: 15px;
+        margin-left: 5rem;
+        margin-right: 1rem;
+    }
+    .explicacion_li_hacemos {
+        margin-left: 7rem;
+        color: #413f6a;
+        font-size: 14px;
+        font-family: roboto;
+        width: 61%;
+        margin-top: -0.5rem;
+    }
+    .h1_contenido_todolist_title {
+        color: #102d7b;
+        margin-left: 3rem;
+        margin-top: 0rem;
+        font-size: 24px;
+        width: 60%;
+        font-family: roboto;
+        margin-bottom: 4rem;
+    }
+    .container_img_todolist {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .lista_hacemos.d-flex {
+        align-items: center;
+    }
+    .img_agradecer {
+        width: 350px;
+        height: 450px;
+        border-radius: 3rem;
+        margin-left: 1rem;
+        /* margin-right: 2rem; */
+        margin-bottom: 1rem;
+        margin-top: -2rem;
+    }
+    .img_ejercitarse {
+        width: 350px;
+        height: 450px;
+        border-radius: 3rem;
+        margin-left: 1rem;
+        margin-bottom: 1rem;
+    }
+    .img_sonreir {
+        width: 350px;
+        height: 450px;
+        border-radius: 3rem;
+        margin-left: 1rem;
+        margin-bottom: 1rem;
+    }
+    .agradecer {
+        position: absolute;
+        top: 289%;
+        left: 47%;
+        transform: translate(-50%, -50%);
+        font-size: 30px;
+        font-family: roboto;
+        color: #102d7b;
+        background: #ffffffb8;
+        padding: 1rem 8rem;
+    }
+    .ejercitarse {
+        position: absolute;
+        top: 362%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 30px;
+        font-family: roboto;
+        color: #102d7b;
+        background: #ffffffb8;
+        padding: 1rem 9rem;
+    }
+    .sonreir {
+        position: absolute;
+        top: 437%;
+        left: 51%;
+        transform: translate(-50%, -50%);
+        font-size: 30px;
+        font-family: roboto;
+        color: #102d7b;
+        background: #ffffffb8;
+        padding: 1rem 8rem;
+    }
+    .img_equipo {
+        display: none;
+    }
+    .h1_contenido_equipo_title {
+        color: #397FDB;
+        margin-left: 5rem;
+        margin-top: 1rem;
+        font-size: 24px;
+        font-family: roboto;
+        width: 51%;
+    }
+    .colaborar {
+        margin-top: 2rem;
+        font-size: 24px;
+        font-family: roboto;
+        color: #397fdb;
+        margin-left: 4.5rem;
+    }
+    .btn_colaborar {
+        margin-left: 5rem;
+        padding: 1rem;
+        background: #e9959b;
+        border-radius: 1rem;
+        border: 0;
+        font-size: 19px;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+    .propuesta_eventos.d-flex {
+        flex-wrap: wrap;
+    }
+    .evento_1 {
+        background: #397fdb;
+        padding: 1rem;
+        border-radius: 1rem;
+        margin-left: 0rem;
+        margin-bottom: 1rem;
+    }
+    .h1_title_eventos {
+        font-size: 32px;
+        margin-top: 3rem;
+        margin-left: 3.5rem;
+        margin-bottom: 3rem;
+        color: #102D7B;
+    }
 }
