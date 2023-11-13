@@ -24,7 +24,7 @@
     justify-content: center;
     position: absolute;
     top: 9%;
-    height: 46.5rem;
+    height: auto;
     left: 12%;
 }
 .container-logo{
@@ -51,13 +51,26 @@
     border-radius: 10px;
     padding: .7em;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    
+}
+.detalle-input{
+    margin-bottom: 2em;
+}
+/*
+#exampleInputName1{
+    margin-bottom: 2em;
 }
 #exampleInputEmail1{
-    margin-bottom: 3em;
+    margin-bottom: 2em;
 }
 #exampleInputPassword1{
     margin-bottom: 2em;
 }
+#exampleInputPassword2{
+    margin-bottom: 2em;
+}
+*/
+
 .form-control::placeholder{
 color: #3E63BA;
 }
@@ -72,6 +85,8 @@ color: #3E63BA;
     justify-content: center;
     width: 75%;
     margin: auto;
+    font-weight: 700;
+    font-size: large;
 }
 .opcion-contraseña{
     color: #3E63BA;
@@ -79,9 +94,23 @@ color: #3E63BA;
     justify-content: center;
     margin: 1em auto 0;
 }
+.error{
+    color: red;
+}
+.exito{
+    color: green;
+}
 .ruta-register{
     color: #3E63BA;
-    display: grid;
+    margin-top: 2em;
+    text-decoration: none;
+    display: flex;
     justify-content: center;
-    align-items: center;
+}
+.ruta-freelance{
+    color: #3E63BA;
+    margin-top: 2em;
+    text-decoration: none;
+    display: grid;
+    justify-content: flex-end;
 }
