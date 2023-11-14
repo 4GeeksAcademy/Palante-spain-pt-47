@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/navbar.css";
+import logo_azul from "../../img/logo_azul.png";
+
 
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -22,7 +24,7 @@ export const Navbar = () => {
     <nav className="navbar navbar-expand-lg bg-body-tertiary" > 
       <div className="container">
         <Link to="/">
-          <p className="nav_palante"><strong>PA'LANTE</strong></p>
+          <img src={logo_azul}></img>
         </Link>
 
         <button
