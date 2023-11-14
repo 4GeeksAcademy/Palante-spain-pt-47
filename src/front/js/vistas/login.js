@@ -9,7 +9,7 @@ export const Login = () => {
   const { actions } = useContext(Context);
   const navigate = useNavigate();
   const [user, setUser] = useState({ email: "", password: "", });
-  const [submitted, setSubmitted] = useState(false);
+  const [submit, setSubmit] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault() //Evitar el comportamiento predeterminado que normalmente ocurre cuando se produce un evento. 
@@ -22,10 +22,17 @@ export const Login = () => {
 
     // Se ejecuta el fetch desde flux para verifica al usuario e iniciar sesion
     actions.loginUser(user);
-    setSubmitted(true);
+    setSubmit(true);
+    setTimeout(() => {
+      setSubmit(false);
+      navigate("/");
+    }, 1500);
+
+    setRegister('')
   }
+  
   // Si submit es true, muestra un mensaje de confirmación y redirige a home
-  if (submitted) {
+  /*if (submitted) {
     actions.loginPrivate(user)
     setTimeout(() => {
       navigate("/");
@@ -36,7 +43,7 @@ export const Login = () => {
         <p className="alert alert-warning">Haz iniciado sesion</p>
       </div>
     );
-  };
+  };*/
 
   return (
     <div className="container-fluid">
@@ -69,9 +76,9 @@ export const Login = () => {
                 onChange={(e) => setUser({ ...user, password: e.target.value })} 
               />
             </div>
-            
           </div>
           <button className="boton-login">Inicia sesion</button>
+          {submit && <p className="alert alert-success p-1 text-center mt-1" role="alert">Te haz registrado con exito</p>}
           <Link to=""> 
             <p className="opcion-contraseña">¿Has olvidado tu contraseña?</p>
           </Link>
