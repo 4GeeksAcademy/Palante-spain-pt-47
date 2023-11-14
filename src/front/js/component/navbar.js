@@ -83,7 +83,7 @@ export const Navbar = () => {
             </div>
 
             <div className="login">
-              <Link to='/login'>
+              <Link to='/login-user'>
                 <button type="button" className="nav_btn">
                   <i className="fa-regular fa-user"></i> Ingresar
                 </button>

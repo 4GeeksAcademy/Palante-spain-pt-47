@@ -13,9 +13,9 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 
-import { Readings } from "./pages/readings";
-import { Podcast } from "./pages/podcast";
-import { Meditations } from "./pages/meditations";
+import { Readings } from "./vistas/readings";
+import { Podcast } from "./vistas/podcast";
+import { Meditations } from "./vistas/meditations";
 
 //create your first component
 const Layout = () => {
