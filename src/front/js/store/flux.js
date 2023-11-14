@@ -16,9 +16,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       ]
     },
     actions: {
-      // Use getActions to call a function within a fuction
 
       //Envio usuario a la base de datos
+
       signupUser: (user) => {
 
         fetch(process.env.BACKEND_URL + "/userregister", {
@@ -41,6 +41,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       //Inicio de sesion del usuario
+
       loginUser: async (body) => {
         try {
           const resp = await fetch(process.env.BACKEND_URL + "/userlogin", {
@@ -68,6 +69,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       //Ejecuta para redirigir a una pagina privada (solo se accede si estas logeado)
+
       loginPrivate: async () => {
         const token = sessionStorage.getItem('token');
 
@@ -92,6 +94,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       //Envio freelancer a la base de datos
+
       signupFreelancer: (user) => {
 
         fetch(process.env.BACKEND_URL + "/freelancerregister", {
@@ -113,7 +116,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       },
 
+      //Inicio de sesion del freelance
+
+      loginFreelance: async (body) => {
+        try {
+          const resp = await fetch(process.env.BACKEND_URL + "/freelancerlogin", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body)
+          });
+
+          if (!resp.ok) {
+            throw Error("Hubo un problema en la solicitud de inicio de sesión.");
+          }
+
+          if (resp.status === 401) {
+            throw new Error("Credenciales no válidas");
+          } else if (resp.status === 400) {
+            throw new Error("Correo electrónico o contraseña no válido");
+          }
+
+          const data = await resp.json();
+          sessionStorage.setItem("token", data.access_token); // Guarda el token en el almacenamiento 
+          return data;
+        } catch (error) {
+          console.error("Error al iniciar sesión:");
+        }
+      },
+
       //Cierre de sesion
+
       borrarToken: () => {
         sessionStorage.removeItem('token');
         alert('Te has desconectado de la aplicacion')

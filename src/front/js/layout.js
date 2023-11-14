@@ -4,9 +4,10 @@ import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
 
 import { Home } from "./vistas/home";
-import { Login } from "./vistas/login";
+import { Login_user } from "./vistas/login-user";
 import { Signup_user } from "./vistas/signup-user";
 import { Signup_freelancer } from "./vistas/signup-freelance";
+import { Login_freelance } from "./vistas/login-freelance";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -28,7 +29,8 @@ const Layout = () => {
           <Navbar />
           <Routes>
             <Route element={<Home />} path="/" />
-            <Route element={<Login />} path="/login" />
+            <Route element={<Login_user />} path="/login-user" />
+            <Route element={<Login_freelance />} path="/login-freelance" />
             <Route element={<Signup_user />} path="/signup-user" />
             <Route element={<Signup_freelancer />} path="/signup-freelance" />
             <Route element={<h1>Not found!</h1>} />

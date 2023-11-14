@@ -4,7 +4,7 @@ import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import fondo from "/workspaces/spain_part_time47/src/front/img/imghomeazul__1_.png"
 
-export const Login = () => {
+export const Login_user = () => {
 
   const { actions } = useContext(Context);
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ export const Login = () => {
       navigate("/");
     }, 1500);
 
-    setRegister('')
+    setUser('')
   }
   
   // Si submit es true, muestra un mensaje de confirmación y redirige a home
@@ -78,7 +78,7 @@ export const Login = () => {
             </div>
           </div>
           <button className="boton-login">Inicia sesion</button>
-          {submit && <p className="alert alert-success p-1 text-center mt-1" role="alert">Te haz registrado con exito</p>}
+          {submit && <p className="alert alert-success p-1 text-center mt-1" role="alert">Sesión Iniciada</p>}
           <Link to=""> 
             <p className="opcion-contraseña">¿Has olvidado tu contraseña?</p>
           </Link>
