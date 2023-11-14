@@ -16,14 +16,14 @@
     padding: 20px;
     font-size: 62px;
     font-family: 'Poppins', sans-serif;
-    color: white;
+    color: #102d7b;
     background: #ffffff2b;
     font-weight: 700;
 }
 
 .subtituloblanco {
         padding: 20px;
-        color:#102d7b;
+        color:white;
         font-family: 'Poppins', sans-serif;
 }
 
@@ -37,8 +37,14 @@
 
 .p_contenido_conocenos {
     font-size: 16px;
-    color: #413f6a;
+    color: #3c3c3c;
     margin-top: 2rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.p_contenido_lista {
+    font-size: 16px;
+    color: #3c3c3c;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -50,22 +56,12 @@
     font-family: 'Poppins', sans-serif;
 }
 
-
-
-
-
-
 .separador {
     margin: 1.5rem 0;
     width: 10%;
     height: 5px !important;
 }
 
-.manos {
-    width: 100%;
-    height: 495px;
-    border-radius: 2rem;
-}
 
 .quehacemos {
     background: #fcedc6;
@@ -80,7 +76,7 @@
 }
 
 .todolist-uno {
-    border: 3px solid #fff;
+    border: 8px solid #fff;
     border-radius: 30px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -89,7 +85,7 @@
 }
 
 .todolist-dos {
-    border: 3px solid #fff;
+    border: 8px solid #fff;
     border-radius: 30px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -97,7 +93,7 @@
     background-image: url(https://img.freepik.com/fotos-premium/grupo-clase-aptitud-que-ejercita-parque_13339-10766.jpg?size=626&ext=jpg&ga=GA1.1.1016474677.1696809600&semt=ais);
 }
 .todolist-tres {
-    border: 3px solid #fff;
+    border: 8px solid #fff;
     border-radius: 30px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -126,10 +122,8 @@ span {
 }
 
 .btn_colaborar {
-
     float: left;
     color: white;
-
     padding: 1rem;
     background: #e9959b;
     border-radius: 4px;
@@ -138,7 +132,33 @@ span {
     margin-top: 1rem;
 }
 
+.manos {
+    background-position: top;
+    border-radius: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
 
+}
+
+.manosapoyo {
+    background-position: top;
+    border-radius: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.psicologos {
+    background-position: top;
+    border-radius: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.iniciativa {
+    padding-right: 40px;
+}
 
 .contenidohacemos, .contenidoconocenos {
     margin: 0 auto;
@@ -146,12 +166,16 @@ span {
 }
 
 .listado {
-
-        font-size: 22px;
+    font-weight: 700;
+    color: #397fdb;
+    font-size: 24px;
+}
+.fa-li {
+    top: 3px;
+    color: #397fdb;
 }
 
 .h1_contenido_conocenos_equipo {
- 
     margin-top: 2rem;
     font-size: 32px;
     font-family: 'Poppins', sans-serif;
@@ -159,7 +183,6 @@ span {
 }
 
 .equipo {
-
     font-size: 16px;
     color: #413f6a;
     margin-top: 2rem;
@@ -175,60 +198,50 @@ span {
 }
 
 .textoequipo {
-    padding: 0px 40px 0px 40px !important;
+    padding: 0px 40px 0px 0px;
 }
 
 
-
-.img_hacemos {
-    width: 400px;
-    height: 500px;
-    margin-right: 4rem;
-    margin-bottom: 3rem;
-    border-radius: 3rem;
-    margin-top: 4rem;
-
-}
-
-.psicologos {
-    width: 100%;
-    margin-top: 3rem;
-}
-
-.col-6 {
-    flex: 0 0 auto;
-    width: 50%;
-}
-
- 
 .contenido_equipo {
     font-size: 20px;
     margin-top: 2rem;
     margin-left: 5rem;
-    font-family: 'Poppins', sans-serif;
+    font-family: roboto;
     color: #413F6A;
     width: 70%;
+}
+
+.h1_eventos {
+    margin-bottom: 4rem;
+    color: #102d7b;
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .evento_1 {
     background: #397fdb;
     padding: 1rem;
     border-radius: 1rem;
+    font-family: 'Poppins', sans-serif;
 }
 .dia {
+    font-family: 'Poppins', sans-serif;
     font-size: 40px;
     color: white;
     margin: 1rem 1rem 0rem 1rem;
 }
 .mes {
-    COLOR: white;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    color: white;
     margin: 0rem 1.5rem 0rem 1.5rem;
 }
 .prox_evento {
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
     color: white;
     font-size: 16px;
     margin-top: 2rem;
- 
 }
 .linea_evento {
     color: white;
@@ -236,66 +249,68 @@ span {
     margin-left: 1rem;
 }
 .title_prox_evento {
+    font-weight: 100;
+    font-family: 'Poppins', sans-serif;
     color: white;
     font-size: 24px;
 }
 .ir_evento {
+    font-family: 'Poppins', sans-serif;
     font-size: 39px;
     margin: 1rem 1rem;
     color: white;
 }
-.profesionales {
-    margin-left: 4rem;
-    border-radius: 3rem;
-    width: 100%;
+
+.fondo-eventos {
+    border: 10px solid #fff;
+    padding: 20px 10px;
+    border-radius: 30px;
+    background: #397fdb;
 }
+
+.guion {
+    background: #397fdb;
+    padding: 0px 24px;
+}
+
+.fa-circle-right {
+    font-size: 39px;
+    margin: 1rem 1rem;
+    color: white;
+}
+
 @media only screen and (max-width: 600px) {
     
-    
-    .p_contenido_conocenos {
-        font-size: 16px;
-        color: #413f6a;
-        margin-top: 0rem;
-        margin-left: 3rem;
-        font-family: 'Poppins', sans-serif;
-        width: 71%;
+    .container-fluid.blanco {
+        padding: 60px 30px;
     }
-    
-       .img_hacemos {
-        display: none;
+
+    .quehacemos {
+        padding: 60px 30px;
     }
-   
-  
-    
-    
-    .btn_colaborar {
-        margin-left: 5rem;
-        padding: 1rem;
-        background: #e9959b;
-        border-radius: 1rem;
-        border: 0;
-        font-size: 19px;
-        margin-top: 1rem;
-        margin-bottom: 2rem;
-    }
-    
-    .evento_1 {
-        background: #397fdb;
-        padding: 1rem;
-        border-radius: 1rem;
-        margin-left: 0rem;
-        margin-bottom: 1rem;
-    }
-    
+
     .imagen.principal {
-        padding: 3px 26px;
-        background-size: contain;
+        padding: 20px;
+        background-size: cover;
         background-position: top;
         background-repeat: no-repeat;
-        width: 390px;
-        object-fit: cover;
-        height: 157px;
+        width: 100%;
+        height: 230px;
     }
+
+    .iniciativa {
+        padding-right: 0px;
+    }
+
+
+    .textoquehacemos {
+        padding: 0px;
+    }
+
+    .textoequipo {
+        padding: 0px;
+    }
+
     .titulo {
         padding: 18px;
         font-size: 28px;
@@ -305,6 +320,8 @@ span {
         font-weight: 700;
         margin-top: 2rem;
     }
+
+    
     .subtituloblanco {
         padding: 20px;
         color: white;
@@ -313,68 +330,25 @@ span {
         margin-left: -1rem;
         margin-top: -1rem;
     }
-    .blanco {
-        background: #ffffff;
-        font-family: 'Poppins', sans-serif;
-        color: #102d7b;
-    }
-    .container-fluid.blanco {
-        padding: 0px;
-    }
-    .profesionales {
-        display: none;
-    }
-    .col-7 {
-        flex: 0 0 auto;
-        width: 100.333333%;
-    }
-    .quehacemos {
-        background: #fcedc6;
-        font-size: 16px;
-        font-family: 'Poppins', sans-serif;
-        color: #102d7b;
-        padding: 18px 0px 0px 0px;
-        margin-top: 3rem;
-    }
-    .contenidohacemos {
-        margin: 0 auto;
-        max-width: 1140px;
-               
-    }
-    .manos {
-        height: 300px;
-        width: 300px;
-        margin-left: 2rem;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-    }
-    .h1_contenido_conocenos_title {
-        color: #102d7b;
-        margin-left: 1rem;
-        margin-top: 0rem;
-        font-size: 32px;
-        font-family: 'Poppins', sans-serif;
-    }
-    .subtitulo {
-        font-weight: 300;
-        font-size: 20px;
-        font-family: 'Poppins', sans-serif;
-        color: #102d7b;
-        margin-top: 4rem;
-    }
-    button.btn_colaborar {
-        margin-left: 1rem;
+
+    .fondo-eventos {
+        padding: 20px 20px;
+    
     }
     
-    .col-6 {
-        flex: 0 0 auto;
-        width: 100%;
+    .subtitulofoto { 
+        padding: 142px 0px;
+       
     }
-    .psicologos {
-        
-        width: 350px;
-        margin-top: 1rem;
-        margin-bottom: 3rem;
-        margin: 1rem 0.5rem 4rem;
+
+    .evento_1 {
+        background: #397fdb;
+        padding: 1rem;
+        border-radius: 1rem;
+        margin-left: 0rem;
+        margin-bottom: 1rem;
     }
+    
+
+
 }
