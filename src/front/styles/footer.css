@@ -2,7 +2,7 @@
     background:  #102d7b;
     color: white;
     margin-top: 1rem;
-    text-align: center;
+    text-align: -webkit-center;
     padding: 1rem;
 }
 
@@ -12,3 +12,5 @@ p.palante {
     font-size: 24px;
     font-family: 'Poppins', sans-serif;
 }
+
+
