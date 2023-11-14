@@ -101,7 +101,7 @@ export const Signup_freelancer = () => {
                     onChange={(e) => setRegister({ ...register, full_name: e.target.value })}
                     onBlur={handleBlur}
                   />
-                  {touched.full_name && errors.full_name && <div className="error">{errors.full_name}</div>}
+                  {touched.full_name && errors.full_name && <div className="alert alert-danger p-1 mt-1 border border-danger" role="alert">{errors.full_name}</div>}
                 </div>
                 <div className="detalle-input">
                   <input
@@ -115,7 +115,7 @@ export const Signup_freelancer = () => {
                     onChange={(e) => setRegister({ ...register, email: e.target.value })}
                     onBlur={handleBlur}
                   />
-                  {touched.email && errors.email && <div className="error">{errors.email}</div>}
+                  {touched.email && errors.email && <div className="alert alert-danger p-1 mt-1 border border-danger" role="alert">{errors.email}</div>}
                 </div>
                 <div className="detalle-input">
                   <input
@@ -129,7 +129,7 @@ export const Signup_freelancer = () => {
                     onChange={(e) => setRegister({ ...register, password: e.target.value })}
                     onBlur={handleBlur}
                   />
-                  {touched.password && errors.password && <div className="error">{errors.password}</div>}
+                  {touched.password && errors.password && <div className="alert alert-danger p-1 mt-1 border border-danger" role="alert">{errors.password}</div>}
                 </div>
                 <div className="detalle-input">
                   <input
@@ -143,7 +143,7 @@ export const Signup_freelancer = () => {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     onBlur={handleBlur}
                   />
-                  {touched.confirm_password && errors.confirm_password && <div className="error">{errors.confirm_password}</div>}
+                  {touched.confirm_password && errors.confirm_password && <div className="alert alert-danger p-1 mt-1 border border-danger" role="alert">{errors.confirm_password}</div>}
                 </div>
                 <div className="detalle-input">
                   <input
@@ -157,7 +157,7 @@ export const Signup_freelancer = () => {
                     onChange={(e) => setRegister({ ...register, age: e.target.value })}
                     onBlur={handleBlur}
                   />
-                  {touched.age && errors.age && <div className="error">{errors.age}</div>}
+                  {touched.age && errors.age && <div className="alert alert-danger p-1 mt-1 border border-danger" role="alert">{errors.age}</div>}
                 </div>
                 <div className="detalle-input">
                   <select
@@ -176,12 +176,12 @@ export const Signup_freelancer = () => {
                     <option value="5-10">5-10 años</option>
                     <option value="mas-de-10">Más de 10 años</option>
                   </select>
-                  {touched.years_of_experience && errors.years_of_experience && <div className="error">{errors.years_of_experience}</div>}
+                  {touched.years_of_experience && errors.years_of_experience && <div className="alert alert-danger p-1 mt-1 border border-danger" role="alert">{errors.years_of_experience}</div>}
                 </div>
 
               </div>
               <button className="boton-registro">Registrate</button>
-              {submit && <p className="exito">Te haz registrado con exito</p>}
+              {submit && <p className="alert alert-success p-1 text-center mt-1" role="alert">Te haz registrado con exito</p>}
             </form>
           )}
         </Formik>
