@@ -35,7 +35,7 @@ class Freelancer(db.Model):
     password = db.Column(db.String(80), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
     professional_registration_number = db.Column(db.Integer, unique=True)
-    years_of_experience = db.Column(db.Integer, unique=False)
+    years_of_experience = db.Column(db.String(20), unique=False)
     education = db.Column(db.String(120), unique=False)
     expertise = db.Column(db.String(200), unique=False)
     aboutme = db.Column(db.String(300), unique=False, nullable=True)

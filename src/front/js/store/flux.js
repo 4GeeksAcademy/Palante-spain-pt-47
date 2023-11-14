@@ -45,38 +45,173 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 			},
 
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
+			
+        //Envio usuario a la base de datos
 
-			getMessage: async () => {
-				try{
-					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
-					const data = await resp.json()
-					setStore({ message: data.message })
-					// don't forget to return something, that is how the async resolves
-					return data;
-				}catch(error){
-					console.log("Error loading message from backend", error)
-				}
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
+      signupUser: (user) => {
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
+        fetch(process.env.BACKEND_URL + "/userregister", {
+          method: "POST",
+          body: JSON.stringify(user),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then(response => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error('Se produjo un error en la red');
+            }
+          })
+          .then(data => console.log(data))
+          .catch(error => console.log('error', error));
 
-				//reset the global store
-				setStore({ demo: demo });
-			}
-		}
-	};
+      },
+
+      //Inicio de sesion del usuario
+
+      loginUser: async (body) => {
+        try {
+          const resp = await fetch(process.env.BACKEND_URL + "/userlogin", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body)
+          });
+
+          if (!resp.ok) {
+            throw Error("Hubo un problema en la solicitud de inicio de sesión.");
+          }
+
+          if (resp.status === 401) {
+            throw new Error("Credenciales no válidas");
+          } else if (resp.status === 400) {
+            throw new Error("Correo electrónico o contraseña no válido");
+          }
+
+          const data = await resp.json();
+          sessionStorage.setItem("token", data.access_token); // Guarda el token en el almacenamiento 
+          return data;
+        } catch (error) {
+          console.error("Error al iniciar sesión:");
+        }
+      },
+
+      //Ejecuta para redirigir a una pagina privada (solo se accede si estas logeado)
+
+      loginPrivate: async () => {
+        const token = sessionStorage.getItem('token');
+
+        const resp = await fetch(process.env.BACKEND_URL + "/private", {
+          method: 'GET',
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": 'Bearer ' + token // ⬅⬅⬅ authorization token
+          }
+        })
+        if (resp.status === 403) {
+          throw Error("Missing or invalid token");
+        } else if (resp.status !== 200) {
+          throw Error("Unknown error");
+        }
+
+
+        const data = await resp.json();
+        console.log("This is the data you requested", data);
+        return data
+
+      },
+
+      //Envio freelancer a la base de datos
+
+      signupFreelancer: (user) => {
+
+        fetch(process.env.BACKEND_URL + "/freelancerregister", {
+          method: "POST",
+          body: JSON.stringify(user),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then(response => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error('Se produjo un error en la red');
+            }
+          })
+          .then(data => console.log(data))
+          .catch(error => console.log('error', error));
+
+      },
+
+      //Inicio de sesion del freelance
+
+      loginFreelance: async (body) => {
+        try {
+          const resp = await fetch(process.env.BACKEND_URL + "/freelancerlogin", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body)
+          });
+
+          if (!resp.ok) {
+            throw Error("Hubo un problema en la solicitud de inicio de sesión.");
+          }
+
+          if (resp.status === 401) {
+            throw new Error("Credenciales no válidas");
+          } else if (resp.status === 400) {
+            throw new Error("Correo electrónico o contraseña no válido");
+          }
+
+          const data = await resp.json();
+          sessionStorage.setItem("token", data.access_token); // Guarda el token en el almacenamiento 
+          return data;
+        } catch (error) {
+          console.error("Error al iniciar sesión:");
+        }
+      },
+
+      //Cierre de sesion
+
+      borrarToken: () => {
+        sessionStorage.removeItem('token');
+        alert('Te has desconectado de la aplicacion')
+      },
+
+      exampleFunction: () => {
+        getActions().changeColor(0, "green");
+      },
+
+      getMessage: async () => {
+        try {
+          // fetching data from the backend
+          const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
+          const data = await resp.json()
+          setStore({ message: data.message })
+          // don't forget to return something, that is how the async resolves
+          return data;
+        } catch (error) {
+          console.log("Error loading message from backend", error)
+        }
+      },
+      changeColor: (index, color) => {
+        //get the store
+        const store = getStore();
+
+        //we have to loop the entire demo array to look for the respective index
+        //and change its color
+        const demo = store.demo.map((elm, i) => {
+          if (i === index) elm.background = color;
+          return elm;
+        });
+
+        //reset the global store
+        setStore({ demo: demo });
+      }
+    }
+  };
 };
 
 export default getState;
