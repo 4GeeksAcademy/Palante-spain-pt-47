@@ -134,29 +134,16 @@ def freelancer_register():
         return jsonify('full_name is required'), 400
     if 'age' not in body:
         return jsonify('age is required'), 400
-    if 'aboutme' not in body:
-        return jsonify('aboutme is required'), 400
     if 'email' not in body:
         return jsonify('email is required'), 400
     if 'password' not in body:
         return jsonify('password is required'), 400
-    if 'URLphoto' not in body:
-        return jsonify('URLphoto is required'), 400
-    if 'professional_registration_number' not in body:
-        return jsonify('professional_registration_number is required'), 400
     if 'years_of_experience' not in body:
         return jsonify('years_of_experience is required'), 400
-    if 'education' not in body:
-        return jsonify('education is required'), 400
-    if 'expertise' not in body:
-        return jsonify('expertise is required'), 400
-    if 'availability' not in body:
-        return jsonify('availability is required'), 400
        
     pw_hash = bcrypt.generate_password_hash(body['password']).decode('utf-8')
-    
-    new_freelancer = Freelancer(full_name=body['full_name'], age=body['age'], email=body['email'], password=pw_hash, 
-    aboutme=body['aboutme'], URLphoto=body['URLphoto'], professional_registration_number=body['professional_registration_number'], years_of_experience =body['years_of_experience'], education=body['education'], expertise=body['expertise'], availability=body['availability'], is_active=True)
+    new_freelancer = Freelancer(full_name=body['full_name'], age=body['age'], email=body['email'], password=pw_hash, years_of_experience =body['years_of_experience'], is_active=True)
+
     db.session.add(new_freelancer)
     db.session.commit()
     return jsonify('Successful registration'), 200 

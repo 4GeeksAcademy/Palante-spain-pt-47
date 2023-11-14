@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import fondo from "/workspaces/spain_part_time47/src/front/img/imghomeazul__1_.png"
-import { Link } from "react-router-dom";
 import { Formik } from "formik";
 
 export const Signup_freelancer = () => {
@@ -15,16 +14,17 @@ export const Signup_freelancer = () => {
   const handleSubmit = (e) => {
     e.preventDefault() //Evitar el comportamiento predeterminado que normalmente ocurre cuando se produce un evento. 
 
+      // Se ejecuta el fetch desde flux para almacenar los datos del usuario en la base de datos 
+      actions.signupFreelancer(register);
 
-    // Se ejecuta el fetch desde flux para almacenar los datos del usuario en la base de datos 
-    actions.signupFreelancer(register);
-    setSubmit(true)
-    setTimeout(() => {
-      setSubmit(false);
-      navigate("/login");
-    }, 1000);
+      setSubmit(true)
+      setTimeout(() => {
+        setSubmit(false);
+        navigate("/login");
+      }, 1000);
 
-    setRegister('')
+      setRegister('')
+    
   }
 
   return (
@@ -71,8 +71,8 @@ export const Signup_freelancer = () => {
               }
             }
 
-             //Validacion Edad
-             if (register.age == "") {
+            //Validacion Edad
+            if (register.age == "") {
               errores.age = "Por favor, ingrese su edad"
             } else if (!/^(1[89]|[2-9]\d|\d{3,})$/.test(register.age)) {
               errores.age = "Debe ser mayor de 18 para registrarse"
@@ -81,13 +81,13 @@ export const Signup_freelancer = () => {
             //Validacion de Experiencia
             if (register.years_of_experience == "") {
               errores.years_of_experience = "Por favor, seleccione una opcion"
-            } 
+            }
 
             return errores;
           }}
         >
           {({ handleBlur, errors, touched }) => (
-            <form className="form-inputs" onSubmit={handleSubmit}>
+            <form className="form-inputs" onSubmit={ handleSubmit }>
               <div className="container-inputs">
                 <div className="detalle-input">
                   <input
@@ -167,7 +167,7 @@ export const Signup_freelancer = () => {
                     placeholder="Años de Experiencia"
                     aria-describedby="emailHelp"
                     value={register.years_of_experience}
-                    onChange={(e) => setRegister({...register, years_of_experience: e.target.value})}
+                    onChange={(e) => setRegister({ ...register, years_of_experience: e.target.value })}
                     onBlur={handleBlur}
                   >
                     <option value="" disabled hidden>Selecciona una opcion</option>

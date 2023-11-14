@@ -92,11 +92,11 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       //Envio freelancer a la base de datos
-      signupFreelancer: (freelancer) => {
+      signupFreelancer: (user) => {
 
         fetch(process.env.BACKEND_URL + "/freelancerregister", {
           method: "POST",
-          body: JSON.stringify(freelancer),
+          body: JSON.stringify(user),
           headers: {
             "Content-Type": "application/json",
           },
