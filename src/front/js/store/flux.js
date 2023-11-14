@@ -3,6 +3,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			message: null,
 			readings:[],
+			podcast:[],
+			meditations:[],
 			demo: [
 				{
 					title: "FIRST",
@@ -24,6 +26,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.then (response => {
 					console.log("readings", response)
 					setStore({readings:response})
+				})
+			},
+			show_podcast: () => {
+				fetch(process.env.BACKEND_URL + "/podcast", {method: "GET"})
+				.then (response => response.json())
+				.then (response => {
+					console.log("podcast", response)
+					setStore({podcast:response})
+				})
+			},
+			show_meditations: () => {
+				fetch(process.env.BACKEND_URL + "/meditations", {method: "GET"})
+				.then (response => response.json())
+				.then (response => {
+					console.log("meditations", response)
+					setStore({meditations:response})
 				})
 			},
 

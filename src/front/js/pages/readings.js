@@ -13,8 +13,8 @@ export const Readings = () => {
 		<div className="container-fluid">
 			<div className="introduction_readings">
 				<img className="readings_inicio" src={readingsinicio}></img>
-				{/* <div className="descarga_tittle"><strong>Descarga gratis nuestros libros.</strong></div>
-				<div className="explicacion_readings"><strong>Nuestro equipo de colabores ha seleccionado estos libros para ti, con información que puede favorecer tu bienestar piscológico.</strong></div> */}
+				<div className="descarga_tittle"><strong>Descarga gratis nuestros libros</strong></div>
+				<div className="explicacion_readings"><strong>Nuestro equipo de colabores ha seleccionado estos libros para ti, con información que puede favorecer tu bienestar piscológico.</strong></div> 
 			</div>
 			<div className="container">
 			<div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -35,7 +35,7 @@ export const Readings = () => {
 								</p>
 							</div>
 							<div className="card-footer">
-								<a href={readings.download}>
+								<a className="descargar" href={readings.download}>
 									Descargar
 								</a>
 							</div>

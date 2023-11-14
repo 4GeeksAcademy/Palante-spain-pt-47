@@ -1,0 +1,60 @@
+.introduction_podcast {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img_podcast {
+    width: 94%;
+    height: 294px;
+    object-fit: cover;
+    border-radius: 2rem;
+    margin: 1rem;
+}
+.escuchar {
+    color: white;
+    text-decoration:none;
+    background: #F9A49F;
+    padding: 10px 40px 10px 40px;
+    
+    border-radius: 1rem;
+    margin-left: 4.3rem;
+    font-size: 18px;
+}
+.podcast_inicio {
+    width: 100%;
+    object-fit: cover;
+    height: 200px;
+    object-position: left;
+    margin-bottom: 2rem;
+}
+.podcast_tittle {
+    position: absolute;
+    margin-top: -7rem;
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
+    color: #102d7b;
+}
+.explicacion_podcast {
+    position: absolute;
+    width: 70%;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 2rem;
+    color: #413f6a;
+}
+@media only screen and (max-width: 600px) {
+    .explicacion_podcast {
+        display: none;
+    }
+    
+    .podcast_tittle {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        font-size: 46px;
+        font-family: 'Poppins', sans-serif;
+        color: #102D7B;
+        width: 70%;
+        margin-top: 2rem;
+        margin-left: 25rem;
+    }
+}
