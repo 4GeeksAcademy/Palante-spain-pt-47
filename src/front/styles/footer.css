@@ -1,13 +1,14 @@
-
 .footer_palante {
-    background: #21447b;
+    background:  #102d7b;
     color: white;
     margin-top: 1rem;
+    text-align: center;
+    padding: 1rem;
 }
 
 p.palante {
     text-align: center;
     padding: 1rem;
     font-size: 24px;
-    font-family: roboto;
+    font-family: 'Poppins', sans-serif;
 }

@@ -1,99 +1,185 @@
-/*
-    home.css: This website contains selectors only used in home.css
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
-.imgHome {
+.contenedor {
     width: 100%;
-   
 }
-.texto-encima{
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-family: roboto;
-}
-.conocenos {
-    margin-top: 5rem;
-    
-    margin-left: 2rem;
-    font-size: 16px;
-    font-family: roboto;
-    color: #102d7b;
-}
-.linea_conocenos {
-    margin-top: 4.5rem;
-    margin-left: -1rem;
-    margin-left: 1rem;
-    font-size: 16px;
-    font-family: roboto;
-    color: #102d7b;
-}
-.img_conocenos {
-    margin-top: 2rem;
-    margin-left: 3rem;
   
+.imagen.principal {
+    padding: 185px 46px;
+    background-size: auto;
+    background-position: top;
+    background-repeat: no-repeat;
+
+}
+
+.titulo {
+    padding: 20px;
+    font-size: 62px;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    background: #ffffff2b;
+    font-weight: 700;
+}
+
+.subtituloblanco {
+        padding: 20px;
+        color:#102d7b;
+        font-family: 'Poppins', sans-serif;
+}
+
+.subtitulo{
+    font-weight: 300;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    color: #102d7b;
+}
+
+
+.p_contenido_conocenos {
+    font-size: 16px;
+    color: #413f6a;
+    margin-top: 2rem;
+    font-family: 'Poppins', sans-serif;
 }
 
 .h1_contenido_conocenos_title {
-    color: #102d7b;
-    margin-left: 5rem;
-    margin-top: 2rem;
-    font-size: 32px;
-    font-family: roboto;
-}
-.h1_contenido_equipo_title {
-    color: #397FDB;
-    margin-left: 5rem;
-    margin-top: 2rem;
-    font-size: 32px;
-    font-family: roboto;
-    width: 51%;
-}
-.p_contenido_conocenos {
-    font-size: 20px;
-    color: #413f6a;
-    margin-top: 2rem;
-    margin-left: 5rem;
-    font-family: roboto;
-}
-.container_hacemos, .container_equipo {
-    background: #fcedc6;
-    margin-top: 4rem;
-}
-.fa-house:before {
-    content: "\f015";
-    color: #397FDB;
-    font-size: 20px;
-    margin-left: 10rem;
-    
-    margin-right: 1rem;
-   
-}
-.h1_contenido_hacemos_title {
-    color: #397FDB;
-    margin-left: 5rem;
-    margin-top: 1rem;
     margin-bottom: 2rem;
+    color: #102d7b;
+    margin-top: 2rem;
     font-size: 32px;
-    font-family: roboto;
-    
+    font-family: 'Poppins', sans-serif;
 }
-.explicacion_li_hacemos {
-    margin-left: 12.5rem;
-    color: #413f6a;
+
+
+
+
+
+
+.separador {
+    margin: 1.5rem 0;
+    width: 10%;
+    height: 5px !important;
+}
+
+.manos {
+    width: 100%;
+    height: 495px;
+    border-radius: 2rem;
+}
+
+.quehacemos {
+    background: #fcedc6;
+    padding: 100px 0px;
     font-size: 16px;
-    font-family: roboto;
-    width: 63%;
+    font-family: 'Poppins', sans-serif;
+    color: #102d7b;
 }
-.soporte {
-    font-size: 1.75rem;
-    color:  #102d7b;
-    font-size: 24px;
-    font-family: roboto;
+
+.textoquehacemos {
+    padding: 0px 0px 0px 40px;
 }
+
+.todolist-uno {
+    border: 3px solid #fff;
+    border-radius: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 350px;
+    background-image: url(https://st3.depositphotos.com/9795234/15176/i/450/depositphotos_151764934-stock-photo-young-woman-showing-her-heartfelt.jpg);
+}
+
+.todolist-dos {
+    border: 3px solid #fff;
+    border-radius: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 350px;
+    background-image: url(https://img.freepik.com/fotos-premium/grupo-clase-aptitud-que-ejercita-parque_13339-10766.jpg?size=626&ext=jpg&ga=GA1.1.1016474677.1696809600&semt=ais);
+}
+.todolist-tres {
+    border: 3px solid #fff;
+    border-radius: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 350px;
+    background-image: url(https://img.freepik.com/foto-gratis/nina-hermosa-sonriente-su-novio-guapo-ropa-casual-verano-familia-feliz-tomando-selfie-autorretrato-si-mismos-camara-telefono-inteligente-divirtiendose-calle-muestra-lengua_158538-5464.jpg?size=626&ext=jpg&ga=GA1.1.1826414947.1699833600&semt=ais);
+}
+
+.subtitulofoto {
+    text-align: center;
+    padding: 142px 20px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+span {
+    padding: 20px 60px;
+    background: #00000047;
+}
+
+.h1_contenido_todolist {
+    margin-bottom: 4rem;
+    color: #102d7b;
+    margin-top: 2rem;
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn_colaborar {
+
+    float: left;
+    color: white;
+
+    padding: 1rem;
+    background: #e9959b;
+    border-radius: 4px;
+    border: 0;
+    font-size: 15px;
+    margin-top: 1rem;
+}
+
+
+
+.contenidohacemos, .contenidoconocenos {
+    margin: 0 auto;
+    max-width: 1140px;
+}
+
+.listado {
+
+        font-size: 22px;
+}
+
+.h1_contenido_conocenos_equipo {
+ 
+    margin-top: 2rem;
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
+    color: #397FDB;
+}
+
+.equipo {
+
+    font-size: 16px;
+    color: #413f6a;
+    margin-top: 2rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.blanco {
+    background: #ffffff;
+    padding: 100px 0px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    color: #102d7b;
+}
+
+.textoequipo {
+    padding: 0px 40px 0px 40px !important;
+}
+
+
+
 .img_hacemos {
     width: 400px;
     height: 500px;
@@ -103,140 +189,31 @@
     margin-top: 4rem;
 
 }
-.img_equipo {
-    width: 400px;
-    height: 680px;
-    margin-right: 8rem;
-    border-radius: 3rem;
-}
-.conocenos_profesionales {
-    margin-right: 4rem;
-    border-radius: 3rem;
-    width: 90%;
+
+.psicologos {
+    width: 100%;
+    margin-top: 3rem;
 }
 
-.juntos {
-    position: absolute;
-    top: 40%;
-    left: 31%;
-    transform: translate(-50%, -50%);
-    font-size: 70px;
-    font-family: roboto;
-    color: white;
-    background: #ffffff2b;
+.col-6 {
+    flex: 0 0 auto;
+    width: 50%;
 }
-.juntos1 {
-    position: absolute;
-    top: 68%;
-    left: 30%;
-    transform: translate(-50%, -50%);
-    font-size: 41px;
-    width: 30%;
-    font-family: roboto;
-    color: #102d7b;
-}
-.col_todo_list{
-    background: white;
-}
-.img_agradecer {
-    width: 350px;
-    height: 450px;
-    border-radius: 3rem;
-    margin-left: 4rem;
-    margin-right: 2rem;
-    
-}
-.img_ejercitarse {
-    width: 350px;
-    height: 450px;
-    border-radius: 3rem;
-    margin-right: 2rem;
-}
-.img_sonreir {
-    width: 350px;
-    height: 450px;
-    border-radius: 3rem;
-    margin-right: 2rem;
-}
-.h1_contenido_todolist_title {
-    color: #102d7b;
-    margin-left: 5rem;
-    margin-top: 2rem;
-    font-size: 32px;
-    width: 45%;
-    font-family: roboto;
-    margin-bottom: 4rem;
-}
-.agradecer {
-    position: absolute;
-    top: 395%;
-    left: 19%;
-    transform: translate(-50%, -50%);
-    font-size: 30px;
-    font-family: roboto;
-    color: #102d7b;
-    background: #ffffffb8;
-    padding: 1rem 8rem;
-}
-.ejercitarse {
-    position: absolute;
-    top: 415%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 30px;
-    font-family: roboto;
-    color: #102d7b;
-    background: #ffffffb8;
-    padding: 1rem 9rem;
-}
-.sonreir {
-    position: absolute;
-    top: 438%;
-    left: 80%;
-    transform: translate(-50%, -50%);
-    font-size: 30px;
-    font-family: roboto;
-    color: #102d7b;
-    background: #ffffffb8;
-    padding: 1rem 8rem;
-}
+
+ 
 .contenido_equipo {
     font-size: 20px;
     margin-top: 2rem;
     margin-left: 5rem;
-    font-family: roboto;
+    font-family: 'Poppins', sans-serif;
     color: #413F6A;
     width: 70%;
 }
-.colaborar {
-    margin-top: 2rem;
-    font-size: 32px;
-    font-family: roboto;
-    color: #397fdb;
-    margin-left: 10rem;
-   
-}
-.btn_colaborar {
-    margin-left: 12.5rem;
-    padding: 1rem;
-    background: #e9959b;
-    border-radius: 1rem;
-    border: 0;
-    font-size: 19px;
-    margin-top: 1rem;
-}
-.h1_title_eventos {
-    font-size: 32px;
-    margin-top: 5rem;
-    margin-left: 5rem;
-    margin-bottom: 3rem;
-    color: #102D7B;
-}
+
 .evento_1 {
     background: #397fdb;
     padding: 1rem;
     border-radius: 1rem;
-    margin-left: 5rem;
 }
 .dia {
     font-size: 40px;
@@ -267,195 +244,30 @@
     margin: 1rem 1rem;
     color: white;
 }
-
+.profesionales {
+    margin-left: 4rem;
+    border-radius: 3rem;
+    width: 100%;
+}
 @media only screen and (max-width: 600px) {
     
-    .juntos {
-        position: absolute;
-        top: 18%;
-        left: 8rem;
-        transform: translate(-50%, -50%);
-        font-size: 20px;
-        font-family: roboto;
-        color: white;
-        background: #ffffff2b;
-        width: 50%;
-    }
-   
-    .juntos1 {
-        position: absolute;
-        top: 25%;
-        left: 24%;
-        transform: translate(-50%, -50%);
-        font-size: 12px;
-        width: 30%;
-        font-family: roboto;
-        color: #102d7b;
-    }
-    .linea_conocenos {
-        margin-top: 0.5rem;
-        margin-left: 1rem;
-        margin-left: 1rem;
-        font-size: 16px;
-        font-family: roboto;
-        color: #102d7b;
-    }
-    .conocenos {
-        margin-top: 1rem;
-        margin-left: 2rem;
-        font-size: 16px;
-        font-family: roboto;
-        color: #102d7b;
-    }
-    .h1_contenido_conocenos_title {
-        color: #102d7b;
-        margin-left: 3rem;
-        margin-top: 0rem;
-        font-size: 24px;
-        font-family: roboto;
-    }
+    
     .p_contenido_conocenos {
         font-size: 16px;
         color: #413f6a;
         margin-top: 0rem;
         margin-left: 3rem;
-        font-family: roboto;
+        font-family: 'Poppins', sans-serif;
         width: 71%;
     }
-    .container_hacemos, .container_equipo {
-        background: #fcedc6;
-        margin-top: 0rem;
-    }
-    .container_conocenos.d-flex {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .img_hacemos {
+    
+       .img_hacemos {
         display: none;
     }
-    .conocenos_profesionales {
-     
-        width: 100%;
-    }
-    .h1_contenido_hacemos_title {
-        color: #397FDB;
-        margin-left: 4rem;
-        margin-top: 0rem;
-        margin-bottom: 1rem;
-        font-size: 24px;
-        font-family: roboto;
-    }
-    .soporte {
-        
-        color: #102d7b;
-        font-size: 16px;
-        font-family: roboto;
-    }
-    .fa-house:before {
-        content: "\f015";
-        color: #397FDB;
-        font-size: 15px;
-        margin-left: 5rem;
-        margin-right: 1rem;
-    }
-    .explicacion_li_hacemos {
-        margin-left: 7rem;
-        color: #413f6a;
-        font-size: 14px;
-        font-family: roboto;
-        width: 61%;
-        margin-top: -0.5rem;
-    }
-    .h1_contenido_todolist_title {
-        color: #102d7b;
-        margin-left: 3rem;
-        margin-top: 0rem;
-        font-size: 24px;
-        width: 60%;
-        font-family: roboto;
-        margin-bottom: 4rem;
-    }
-    .container_img_todolist {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .lista_hacemos.d-flex {
-        align-items: center;
-    }
-    .img_agradecer {
-        width: 350px;
-        height: 450px;
-        border-radius: 3rem;
-        margin-left: 1rem;
-        /* margin-right: 2rem; */
-        margin-bottom: 1rem;
-        margin-top: -2rem;
-    }
-    .img_ejercitarse {
-        width: 350px;
-        height: 450px;
-        border-radius: 3rem;
-        margin-left: 1rem;
-        margin-bottom: 1rem;
-    }
-    .img_sonreir {
-        width: 350px;
-        height: 450px;
-        border-radius: 3rem;
-        margin-left: 1rem;
-        margin-bottom: 1rem;
-    }
-    .agradecer {
-        position: absolute;
-        top: 289%;
-        left: 47%;
-        transform: translate(-50%, -50%);
-        font-size: 30px;
-        font-family: roboto;
-        color: #102d7b;
-        background: #ffffffb8;
-        padding: 1rem 8rem;
-    }
-    .ejercitarse {
-        position: absolute;
-        top: 362%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 30px;
-        font-family: roboto;
-        color: #102d7b;
-        background: #ffffffb8;
-        padding: 1rem 9rem;
-    }
-    .sonreir {
-        position: absolute;
-        top: 437%;
-        left: 51%;
-        transform: translate(-50%, -50%);
-        font-size: 30px;
-        font-family: roboto;
-        color: #102d7b;
-        background: #ffffffb8;
-        padding: 1rem 8rem;
-    }
-    .img_equipo {
-        display: none;
-    }
-    .h1_contenido_equipo_title {
-        color: #397FDB;
-        margin-left: 5rem;
-        margin-top: 1rem;
-        font-size: 24px;
-        font-family: roboto;
-        width: 51%;
-    }
-    .colaborar {
-        margin-top: 2rem;
-        font-size: 24px;
-        font-family: roboto;
-        color: #397fdb;
-        margin-left: 4.5rem;
-    }
+   
+  
+    
+    
     .btn_colaborar {
         margin-left: 5rem;
         padding: 1rem;
@@ -466,9 +278,7 @@
         margin-top: 1rem;
         margin-bottom: 2rem;
     }
-    .propuesta_eventos.d-flex {
-        flex-wrap: wrap;
-    }
+    
     .evento_1 {
         background: #397fdb;
         padding: 1rem;
@@ -476,11 +286,95 @@
         margin-left: 0rem;
         margin-bottom: 1rem;
     }
-    .h1_title_eventos {
-        font-size: 32px;
+    
+    .imagen.principal {
+        padding: 3px 26px;
+        background-size: contain;
+        background-position: top;
+        background-repeat: no-repeat;
+        width: 390px;
+        object-fit: cover;
+        height: 157px;
+    }
+    .titulo {
+        padding: 18px;
+        font-size: 28px;
+        font-family: 'Poppins', sans-serif;
+        color: #102d7b;
+        background: #ffffff2b;
+        font-weight: 700;
+        margin-top: 2rem;
+    }
+    .subtituloblanco {
+        padding: 20px;
+        color: white;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        margin-left: -1rem;
+        margin-top: -1rem;
+    }
+    .blanco {
+        background: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        color: #102d7b;
+    }
+    .container-fluid.blanco {
+        padding: 0px;
+    }
+    .profesionales {
+        display: none;
+    }
+    .col-7 {
+        flex: 0 0 auto;
+        width: 100.333333%;
+    }
+    .quehacemos {
+        background: #fcedc6;
+        font-size: 16px;
+        font-family: 'Poppins', sans-serif;
+        color: #102d7b;
+        padding: 18px 0px 0px 0px;
         margin-top: 3rem;
-        margin-left: 3.5rem;
+    }
+    .contenidohacemos {
+        margin: 0 auto;
+        max-width: 1140px;
+               
+    }
+    .manos {
+        height: 300px;
+        width: 300px;
+        margin-left: 2rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .h1_contenido_conocenos_title {
+        color: #102d7b;
+        margin-left: 1rem;
+        margin-top: 0rem;
+        font-size: 32px;
+        font-family: 'Poppins', sans-serif;
+    }
+    .subtitulo {
+        font-weight: 300;
+        font-size: 20px;
+        font-family: 'Poppins', sans-serif;
+        color: #102d7b;
+        margin-top: 4rem;
+    }
+    button.btn_colaborar {
+        margin-left: 1rem;
+    }
+    
+    .col-6 {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+    .psicologos {
+        
+        width: 350px;
+        margin-top: 1rem;
         margin-bottom: 3rem;
-        color: #102D7B;
+        margin: 1rem 0.5rem 4rem;
     }
 }

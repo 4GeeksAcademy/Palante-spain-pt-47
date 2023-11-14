@@ -1,16 +1,21 @@
- .btn_comunidad, .btn_recursos {
-    background: none;
-    border: none;
-    color: #413F6A;
-    margin-right: 1rem;
-    padding: 1rem;
-    font-family: roboto;
-    font-size: 22px;
+.btn_comunidad, .btn_recursos {
+  background: none;
+  border: none;
+  color: #102D7B;
+  margin-right: 1rem;
+  padding: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+}
+.navbar-expand-lg .navbar-collapse {
+  display: flex!important;
+  flex-basis: auto;
+  justify-content: flex-end;
 }
 .nav_palante {
     font-size: 28px;
     color: #102d7b;
-    font-family: roboto;
+    font-family: 'Poppins', sans-serif;
 }
 .navbar-expand-lg {
     flex-wrap: nowrap;
@@ -21,25 +26,30 @@
 }
 
 .appointment_btn {
-    background: transparent;
-    border: none;
-    color: #413F6A;
-    padding: 1rem 2rem;
-    border-radius: 10px;
-    font-size: 22px;
-    font-family: roboto;
+  background: none;
+  border: none;
+  color: #102D7B;
+  margin-right: 1rem;
+  padding: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+    
 }
-.appointment_btn:hover {
-    background-color: #2C3D91;
-    color: white;
-}
+
 .nav_btn {
-    background: transparent;
-    border: none;
-    color: #413F6A;
-    padding: 1rem;
-    font-size: 22px;
-    font-family: roboto;
+  background-color:  #102d7b;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 19px;
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  border: none;
+}
+.nav_btn:hover {
+  background: transparent;
+  border: none;
+  color: #413F6A;
+  
 }
 .nav_btn:hover .fa-user {
     text-shadow: 0 0 5px #2C3D91;
