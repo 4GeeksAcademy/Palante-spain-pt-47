@@ -11,7 +11,9 @@ from api.models import db, User, Freelancer, Readings, Meditations, Podcast, Fav
 from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
+
 import random
+
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
@@ -101,28 +103,34 @@ def user_register():
 @app.route("/userlogin", methods=["POST"])
 def user_login():
     body = request.get_json(silent=True)
-    if body is None:
-        return jsonify('body must be sent'), 400
-    if 'email' not in body:
-        return jsonify('email is required'), 400
-    if 'password' not in body:
-        return jsonify('password is required'), 400
+
+    if not body or 'email' not in body or 'password' not in body:
+        return jsonify('Email and password are required'), 400
 
     user = User.query.filter_by(email=body['email']).first()
-    if user is None or user.email != body['email'] or not bcrypt.check_password_hash(user.password, body['password']):#user.password != body['password']: 
+    if user is None or user.email != body['email'] or not bcrypt.check_password_hash(user.password, body['password']): #user.password != body['password']: 
         return jsonify('incorrect email or password'),400
 
     access_token = create_access_token(identity=body['email'])
     return jsonify(access_token=access_token)
 
-##### ruta acceso a datos de usuario #####
+##### ruta acceso a datos de usuario por ID #####
 @app.route("/userdata/<int:user_id>", methods=['GET'])
+@jwt_required()
 def user_data(user_id):
     user = User.query.get(user_id)
     if user is None:
         return('Not found'), 400
     user_serialized = user.serialize()
     return jsonify(user_serialized), 200
+
+##### ruta acceso a datos de usuario #####
+@app.route("/userdata", methods=['GET'])
+def userdata():
+    all_user = User.query.all()
+    all_user = list(map(lambda x: x.serialize(), all_user))
+
+    return jsonify(all_user)
 
 ##### ruta de modificacion de datos #####
 @app.route("/userupdate/<int:user_id>", methods=['POST'])
