@@ -117,3 +117,31 @@ color: #3E63BA;
     display: grid;
     justify-content: flex-end;
 }
+.boton-actualizar{
+    background-color: green;
+    padding: 0.5em;
+    box-shadow: inset 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    display: inline-grid;
+    justify-content: center;
+    width: 40%;
+    margin: auto;
+    font-weight: 600;
+    font-size: large;
+}
+.form-data{
+    border: 2px solid red;
+}
+.portada{
+    background-image: url('../img/logo_Perfil.jpg');
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 45px;
+    font-weight: 500;
+    border: 2px solid green;
+}
+.row{
+    border: 2px solid blue;
+}
