@@ -21,7 +21,7 @@ export const Signup_user = () => {
     setSubmit(true)
     setTimeout(() => {
       setSubmit(false);
-      navigate("/login");
+      navigate("/login-user");
     }, 1000);
 
     setRegister('')

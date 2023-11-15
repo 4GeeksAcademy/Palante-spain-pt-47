@@ -20,7 +20,7 @@ export const Signup_freelancer = () => {
       setSubmit(true)
       setTimeout(() => {
         setSubmit(false);
-        navigate("/login");
+        navigate("/login-freelance");
       }, 1000);
 
       setRegister('')
