@@ -1,53 +1,56 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	return {
-		store: {
-			message: null,
-			readings:[],
-			podcast:[],
-			meditations:[],
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
-		},
-		actions: {
-			// Use getActions to call a function within a fuction
-			show_readings: () => {
-				fetch(process.env.BACKEND_URL + "/readings", {method: "GET"})
-				.then (response => response.json())
-				.then (response => {
-					console.log("readings", response)
-					setStore({readings:response})
-				})
-			},
-			show_podcast: () => {
-				fetch(process.env.BACKEND_URL + "/podcast", {method: "GET"})
-				.then (response => response.json())
-				.then (response => {
-					console.log("podcast", response)
-					setStore({podcast:response})
-				})
-			},
-			show_meditations: () => {
-				fetch(process.env.BACKEND_URL + "/meditations", {method: "GET"})
-				.then (response => response.json())
-				.then (response => {
-					console.log("meditations", response)
-					setStore({meditations:response})
-				})
-			},
+  return {
+    store: {
+      message: null,
+      datauser: [],
+      readings: [],
+      podcast: [],
+      meditations: [],
+      demo: [
+        {
+          title: "FIRST",
+          background: "white",
+          initial: "white"
+        },
+        {
+          title: "SECOND",
+          background: "white",
+          initial: "white"
+        }
+      ]
+    },
+    actions: {
+      // Use getActions to call a function within a fuction
+      show_readings: () => {
+        fetch(process.env.BACKEND_URL + "/readings", { method: "GET" })
+          .then(response => response.json())
+          .then(response => {
+            setStore({ readings: response })
+          })
+      },
+      show_podcast: () => {
+        fetch(process.env.BACKEND_URL + "/podcast", { method: "GET" })
+          .then(response => response.json())
+          .then(response => {
+            setStore({ podcast: response })
+          })
+      },
+      show_meditations: () => {
+        fetch(process.env.BACKEND_URL + "/meditations", { method: "GET" })
+          .then(response => response.json())
+          .then(response => {
+            setStore({ meditations: response })
+          })
+      },
 
-			
-        //Envio usuario a la base de datos
+      //Traer datos del usuario
+      dataUser: () => {
 
+
+
+      },
+
+      //Envio usuario a la base de datos
       signupUser: (user) => {
 
         fetch(process.env.BACKEND_URL + "/userregister", {
@@ -70,60 +73,33 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       //Inicio de sesion del usuario
-
-      loginUser: async (body) => {
+      loginUser: async () => {
         try {
           const resp = await fetch(process.env.BACKEND_URL + "/userlogin", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(body)
+            body: JSON.stringify({ email, password })
           });
 
-          if (!resp.ok) {
-            throw Error("Hubo un problema en la solicitud de inicio de sesión.");
-          }
-
-          if (resp.status === 401) {
-            throw new Error("Credenciales no válidas");
-          } else if (resp.status === 400) {
-            throw new Error("Correo electrónico o contraseña no válido");
-          }
-
-          const data = await resp.json();
-          sessionStorage.setItem("token", data.access_token); // Guarda el token en el almacenamiento 
-          return data;
-        } catch (error) {
-          console.error("Error al iniciar sesión:");
-        }
-      },
-
-      //Ejecuta para redirigir a una pagina privada (solo se accede si estas logeado)
-
-      loginPrivate: async () => {
-        const token = sessionStorage.getItem('token');
-
-        const resp = await fetch(process.env.BACKEND_URL + "/private", {
-          method: 'GET',
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": 'Bearer ' + token // ⬅⬅⬅ authorization token
-          }
-        })
-        if (resp.status === 403) {
-          throw Error("Missing or invalid token");
-        } else if (resp.status !== 200) {
-          throw Error("Unknown error");
+        if (!resp.ok) {
+          throw Error("Hubo un problema en la solicitud de inicio de sesión.");
         }
 
+        if (resp.status === 401) {
+          throw new Error("Credenciales no válidas");
+        } else if (resp.status === 400) {
+          throw new Error("Correo electrónico o contraseña no válido");
+        }
 
         const data = await resp.json();
-        console.log("This is the data you requested", data);
-        return data
-
+        sessionStorage.setItem("token", data.access_token); // Guarda el token  
+        return data;
+      } catch (error) {
+        console.error("Error al iniciar sesión:");
+      }
       },
 
       //Envio freelancer a la base de datos
-
       signupFreelancer: (user) => {
 
         fetch(process.env.BACKEND_URL + "/freelancerregister", {
@@ -146,7 +122,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       //Inicio de sesion del freelance
-
       loginFreelance: async (body) => {
         try {
           const resp = await fetch(process.env.BACKEND_URL + "/freelancerlogin", {
@@ -174,7 +149,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       //Cierre de sesion
-
       borrarToken: () => {
         sessionStorage.removeItem('token');
         alert('Te has desconectado de la aplicacion')
