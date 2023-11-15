@@ -115,6 +115,36 @@ def user_login():
     access_token = create_access_token(identity=body['email'])
     return jsonify(access_token=access_token)
 
+##### ruta acceso a datos de usuario #####
+@app.route("/userdata/<int:user_id>", methods=['GET'])
+def user_data(user_id):
+    user = User.query.get(user_id)
+    if user is None:
+        return('Not found'), 400
+    user_serialized = user.serialize()
+    return jsonify(user_serialized), 200
+
+##### ruta de modificacion de datos #####
+@app.route("/userupdate/<int:user_id>", methods=['POST'])
+def update_user(user_id):
+    user = User.query.get_or_404(user_id)
+    body = request.get_json(silent=True)
+    
+    if body is None:
+        return jsonify('body must be sent'), 400
+    if 'full_name' in body:
+        user.full_name = body['full_name']
+    if 'email' in body:
+        user.email = body['email']
+    if 'password' in body:
+        user.password = body['password']
+    if 'URLphoto' in body:
+        user.URLphoto = body['URLphoto']
+    
+    db.session.commit()
+    user_serialized = user.serialize()
+    return jsonify(user_serialized)
+
 ##### ruta privada de usuario #####
 @app.route("/userprivate", methods=['GET'])
 @jwt_required()
