@@ -1,0 +1,74 @@
+.perfil_inicio {
+    width: 100%;
+    object-fit: contain;
+    height: 200px;
+    object-position: top;
+    margin-bottom: 2rem;
+}
+.perfil_saludo{
+    position: absolute;
+    margin-top: -7rem;
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
+    color: #102d7b;
+}
+
+.introduction_perfil_user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card_dentro {
+    background: #fffbf2;
+    margin: 1rem;
+}
+i.fa-solid.fa-user.perfil_user, i.fa-solid.fa-calendar-check.perfil_citas, i.fa-solid.fa-heart.favoritos_perfil, i.fa-solid.fa-handshake.eventos_perfil, i.fa-solid.fa-clipboard-list {
+    font-size: 6rem;
+    color: #397fdb;
+    padding: 2rem 2rem 1rem 2rem;
+    
+}
+.card_dentro {
+    background: #fffbf2;
+    margin: 1rem;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+p.datos_title_perfil {
+    color: #102D7B;
+    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+    margin-left: -2rem;
+}
+.col-4.datos_personales_perfil {
+    flex: 0 0 auto;
+    width: 26.333333%;
+    margin-left: 5rem;
+}
+.citas_title_perfil{
+color: #102D7B;
+font-size: 24px;
+font-family: 'Poppins', sans-serif;
+margin-left: 1rem;
+}
+p.favoritos_title_perfil{
+    color: #102D7B;
+font-size: 24px;
+font-family: 'Poppins', sans-serif;
+}
+.todo_list_title_perfil{
+    color: #102D7B;
+font-size: 24px;
+font-family: 'Poppins', sans-serif;
+}
+.eventos_title_perfil{
+    color: #102D7B;
+font-size: 24px;
+font-family: 'Poppins', sans-serif;
+}
+.row.tarjetas_abajo {
+    justify-content: center;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
