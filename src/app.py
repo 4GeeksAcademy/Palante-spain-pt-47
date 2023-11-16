@@ -115,6 +115,7 @@ def user_login():
     access_token = create_access_token(identity=body['email'])
     return jsonify(access_token=access_token)
 
+
 ##### ruta privada de usuario #####
 @app.route("/userprivate", methods=['GET'])
 @jwt_required()
@@ -385,49 +386,128 @@ def delete_podcast(podcast_id):
                 #########TABLA FAVORITOS#########
 
 ##### endpoint para agregar favoritos de readings #####
-@app.route('/favorite_readings/<int:user_id>', methods=['POST'])
-def create_favorite_readings(user_id):
+@app.route('/favorites_readings', methods=['POST'])
+@jwt_required()
+def create_favorite_readings():
     body = request.get_json(silent=True)
     print(body)
     if body is None:
         return jsonify({'msg': 'Send information in the body'}), 400
+    if 'reading_id' not in body:
+        return jsonify({'msg': 'Send reading_id in the body'}), 400
     
+    user_email = get_jwt_identity()
+    print(user_email)
+    user = User.query.filter_by(email = user_email).first()
+    print(user)
+    user_id = user.id
+    
+    existing_relation = Favorite_Readings.query.filter_by(user_id=user_id, reading_id=body['reading_id']).first()
+    if existing_relation:
+        return jsonify({'msg': 'Relation already exists'}), 400
+
     new_favorite_readings = Favorite_Readings(user_id=user_id, reading_id=body['reading_id'])
     db.session.add(new_favorite_readings)
     db.session.commit()
     return jsonify({'msg': 'ok'}),200
 
 ##### endpoint para agregar favoritos de meditaciones #####
-@app.route('/favorite_meditations/<int:user_id>', methods=['POST'])
-def create_favorite_meditations(user_id):
+@app.route('/favorites_meditations', methods=['POST'])
+@jwt_required()
+def create_favorite_meditations():
     body = request.get_json(silent=True)
     print(body)
     if body is None:
         return jsonify({'msg': 'Send information in the body'}), 400
     
-    new_favorite_meditation = Favorite_Meditations(user_id=user_id, meditations_id=body['meditations_id'])
-    db.session.add(new_favorite_meditation)
-    db.session.commit()
+    
+    user_email = get_jwt_identity()
+    print(user_email)
+    user = User.query.filter_by(email = user_email).first()
+    print(user)
+    user_id = user.id
+    
+    existing_relation = Favorite_Meditations.query.filter_by(user_id=user_id, meditations_id=body['meditations_id']).first()
+    if existing_relation:
+        return jsonify({'msg': 'Relation already exists'}), 400
 
+    new_favorite_meditations = Favorite_Meditations(user_id=user_id, meditations_id=body['meditations_id'])
+    db.session.add(new_favorite_meditations)
+    db.session.commit()
     return jsonify({'msg': 'ok'}),200
 
+
 ##### endpoint para agregar favoritos de podcast #####
-@app.route('/favorite_podcast/<int:user_id>', methods=['POST'])
-def create_favorite_podcast(user_id):
+@app.route('/favorites_podcast', methods=['POST'])
+@jwt_required()
+def create_favorite_podcast():
     body = request.get_json(silent=True)
     print(body)
     if body is None:
         return jsonify({'msg': 'Send information in the body'}), 400
     
+    
+    user_email = get_jwt_identity()
+    print(user_email)
+    user = User.query.filter_by(email = user_email).first()
+    print(user)
+    user_id = user.id
+    
+    existing_relation = Favorite_Podcast.query.filter_by(user_id=user_id, podcast_id=body['podcast_id']).first()
+    if existing_relation:
+        return jsonify({'msg': 'Relation already exists'}), 400
+
     new_favorite_podcast = Favorite_Podcast(user_id=user_id, podcast_id=body['podcast_id'])
     db.session.add(new_favorite_podcast)
     db.session.commit()
-
     return jsonify({'msg': 'ok'}),200
+
+
+##### endpoint para ver los favoritos de un usuario de la tabla de readings
+@app.route('/favorites_readings', methods=['GET'])
+@jwt_required()
+def get_favorite_readings():
+    user_email = get_jwt_identity()
+    print(user_email)
+    user = User.query.filter_by(email = user_email).first()
+    print(user)
+    user_id = user.id
+    favorites_readings = Favorite_Readings.query.filter_by(user_id=user_id)
+    favorites_readings_list = list(map(lambda favorite: favorite.serialize(), favorites_readings))
+    return jsonify({'msg': 'ok', 'inf':favorites_readings_list}),200
+
+##### endpoint para ver los favoritos de un usuario de la tabla de meditations
+@app.route('/favorites_meditations', methods=['GET'])
+@jwt_required()
+def get_favorite_meditations():
+    user_email = get_jwt_identity()
+    print(user_email)
+    user = User.query.filter_by(email = user_email).first()
+    print(user)
+    user_id = user.id
+    favorites_meditations = Favorite_Meditations.query.filter_by(user_id=user_id)
+    favorites_meditations_list = list(map(lambda favorite: favorite.serialize(), favorites_meditations))
+    return jsonify({'msg': 'ok', 'inf':favorites_meditations_list}),200
+
+##### endpoint para ver los favoritos de un usuario de la tabla de podcast
+@app.route('/favorites_podcast', methods=['GET'])
+@jwt_required()
+def get_favorite_podcast():
+    user_email = get_jwt_identity()
+    print(user_email)
+    user = User.query.filter_by(email = user_email).first()
+    print(user)
+    user_id = user.id
+    favorites_podcast = Favorite_Podcast.query.filter_by(user_id=user_id)
+    favorites_podcast_list = list(map(lambda favorite: favorite.serialize(), favorites_podcast))
+    return jsonify({'msg': 'ok', 'inf':favorites_podcast_list}),200
+
+
+
 
 ##### endpoint para ver todos los favoritos de un usuario #####
 @app.route('/user/<int:id_user>/favorites', methods=['GET'])
-def get_favorites_de_user_planet(id_user):
+def get_favorites_user(id_user):
     favorite_readings = Favorite_Readings.query.filter_by(user_id = id_user)
     favorite_meditations = Favorite_Meditations.query.filter_by(user_id = id_user)
     favorite_podcast = Favorite_Podcast.query.filter_by(user_id = id_user)
@@ -445,6 +525,15 @@ def get_users():
     users = User.query.all()  
     user_list = list(map(lambda user: user.serialize(), users))
     return jsonify(user_list), 200
+
+##### endpoint para ver los datos de un usuario de la tabla #####
+@app.route('/user/<int:user_id>', methods=['GET'])
+def get_user_id(user_id):
+    user = User.query.get(user_id)
+    if user is None:
+        return jsonify({'msg':'User not found'}), 400
+    else:
+        return jsonify({'msg':'ok','inf':user.serialize()})
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':

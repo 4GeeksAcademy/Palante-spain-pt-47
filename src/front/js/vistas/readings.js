@@ -27,7 +27,7 @@ export const Readings = () => {
 									<h5 className="card-title">{readings.title}</h5>
 									<i
 										className="fa-solid fa-heart me-3"
-										//onClick={() => actions.handleAgregarFavoritos(readings.id)}
+										onClick={() => actions.handler_favorites_readings(readings.id)}
 									></i>
 								</div>
 								<p className="card-text">

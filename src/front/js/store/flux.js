@@ -5,6 +5,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			readings:[],
 			podcast:[],
 			meditations:[],
+      favorites_readings:[],
+      favorites_podcast:[],
+      favorites_meditations:[],
 			demo: [
 				{
 					title: "FIRST",
@@ -44,6 +47,180 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({meditations:response})
 				})
 			},
+      
+      //agregar un favorito a readings
+      handler_favorites_readings: async (reading_id) => {
+        const token = sessionStorage.getItem('token');
+       
+        const resp = await fetch(process.env.BACKEND_URL + '/favorites_readings', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer '+token // ⬅⬅⬅ authorization token
+                },
+                body: JSON.stringify({ 'reading_id': reading_id }), // Envía el ID del artículo que se agregará a favoritos
+            })
+                
+        },
+        //mostrar los favorites readings de un user
+        get_favorites_readings: async () => {
+          const token = sessionStorage.getItem('token');
+         
+          const resp = await fetch(process.env.BACKEND_URL + '/favorites_readings', {
+              method: "GET",
+              headers: {
+                  "Content-Type": "application/json",
+                  "Authorization": 'Bearer '+token
+              },
+          })
+          .then(response => response.json())
+          .then(async response => {
+              const favorites = response.inf;
+              const favoriteReadings = [];
+
+                 for (const favorite of favorites) {
+                  const readingResp = await fetch(process.env.BACKEND_URL + `/readings/${favorite.reading_id}`, {
+                      method: "GET",
+                      headers: {
+                          "Content-Type": "application/json",
+                          "Authorization": 'Bearer '+token
+                      },
+                  });
+                  const readingData = await readingResp.json();
+                  console.log('readingData',readingData)
+                  
+                  favoriteReadings.push({
+                      id: favorite.id,
+                      user_id: favorite.user_id,
+                      reading_id: favorite.reading_id,
+                      title: readingData.inf.title ,
+                      URLPhoto:readingData.inf.URLPhoto,
+                      download:readingData.inf.download
+                  });
+              }
+              setStore({ favorites_readings: favoriteReadings });
+          })
+          .catch(error => {
+              console.error("Error getting favorite readings:", error);
+          });
+      },
+
+        //agregar un favorito a meditations
+        handler_favorites_meditations: async (meditations_id) => {
+          const token = sessionStorage.getItem('token');
+         
+          const resp = await fetch(process.env.BACKEND_URL + '/favorites_meditations', {
+                  method: "POST",
+                  headers: {
+                      "Content-Type": "application/json",
+                      "Authorization": 'Bearer '+token // ⬅⬅⬅ authorization token
+                  },
+                  body: JSON.stringify({ 'meditations_id': meditations_id }), // Envía el ID del artículo que se agregará a favoritos
+              })
+                  
+          },
+
+      //mostrar los favorites meditations de un user
+      get_favorites_meditations: async () => {
+        const token = sessionStorage.getItem('token');
+       
+        const resp = await fetch(process.env.BACKEND_URL + '/favorites_meditations', {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": 'Bearer '+token
+            },
+        })
+        .then(response => response.json())
+        .then(async response => {
+            const favorites = response.inf;
+            const favoriteMeditations = [];
+
+               for (const favorite of favorites) {
+                const meditationsResp = await fetch(process.env.BACKEND_URL + `/meditations/${favorite.meditations_id}`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": 'Bearer '+token
+                    },
+                });
+                const meditationData = await meditationsResp.json();
+                console.log('meditationData',meditationData)
+                
+                favoriteMeditations.push({
+                    id: favorite.id,
+                    user_id: favorite.user_id,
+                    meditations_id: favorite.meditations_id,
+                    title: meditationData.inf.title ,
+                    URLVideo:meditationData.inf.URLVideo
+                    
+                });
+            }
+            setStore({ favorites_meditations: favoriteMeditations });
+        })
+        .catch(error => {
+            console.error("Error getting favorite meditations:", error);
+        });
+    },
+        //agregar un favorito a podcast
+        handler_favorites_podcast: async (podcast_id) => {
+          const token = sessionStorage.getItem('token');
+         
+          const resp = await fetch(process.env.BACKEND_URL + '/favorites_podcast', {
+                  method: "POST",
+                  headers: {
+                      "Content-Type": "application/json",
+                      "Authorization": 'Bearer '+token // ⬅⬅⬅ authorization token
+                  },
+                  body: JSON.stringify({ 'podcast_id': podcast_id }), // Envía el ID del artículo que se agregará a favoritos
+              })
+                  
+          },
+      //mostrar los favorites podcast de un user
+      get_favorites_podcast: async () => {
+        const token = sessionStorage.getItem('token');
+      
+        const resp = await fetch(process.env.BACKEND_URL + '/favorites_podcast', {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": 'Bearer '+token
+            },
+        })
+        .then(response => response.json())
+        .then(async response => {
+            const favorites = response.inf;
+            const favoritePodcast = [];
+
+              for (const favorite of favorites) {
+                const podcastResp = await fetch(process.env.BACKEND_URL + `/podcast/${favorite.podcast_id}`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": 'Bearer '+token
+                    },
+                });
+                const podcastData = await podcastResp.json();
+                console.log('podcastData',podcastData)
+                
+                favoritePodcast.push({
+                    id: favorite.id,
+                    user_id: favorite.user_id,
+                    podcast_id: favorite.podcast_id,
+                    title: podcastData.inf.title ,
+                    URLPhoto:podcastData.inf.URLPhoto,
+                    URLListen:podcastData.inf.URLListen
+                });
+            }
+            setStore({ favorites_podcast: favoritePodcast });
+        })
+        .catch(error => {
+            console.error("Error getting favorite podcast:", error);
+        });
+      },
+
+
+      
 
 			
         //Envio usuario a la base de datos
@@ -88,8 +265,13 @@ const getState = ({ getStore, getActions, setStore }) => {
           } else if (resp.status === 400) {
             throw new Error("Correo electrónico o contraseña no válido");
           }
-
+          if (!resp.ok) {
+            throw Error("Hubo un problema en la solicitud de inicio de sesión.");
+          }
+              
+          
           const data = await resp.json();
+          console.log('data', data)
           sessionStorage.setItem("token", data.access_token); // Guarda el token en el almacenamiento 
           return data;
         } catch (error) {

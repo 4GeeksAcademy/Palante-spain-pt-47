@@ -26,7 +26,7 @@ export const Podcast = () => {
 									<h5 className="card-title">{podcast.title}</h5>
 									<i
 										className="fa-solid fa-heart me-3"
-										//onClick={() => actions.handleAgregarFavoritos(readings.id)}
+										onClick={() => actions.handler_favorites_podcast(podcast.id)}
 									></i>
 								</div>
 							</div>

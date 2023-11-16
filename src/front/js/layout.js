@@ -16,6 +16,9 @@ import { Footer } from "./component/footer";
 import { Readings } from "./vistas/readings";
 import { Podcast } from "./vistas/podcast";
 import { Meditations } from "./vistas/meditations";
+import { Perfil_user } from "./vistas/perfil_user";
+import { Perfil_freelancer } from "./vistas/perfil_freelancer";
+import { Favorites } from "./vistas/favorites";
 
 //create your first component
 const Layout = () => {
@@ -37,6 +40,9 @@ const Layout = () => {
             <Route element={<Readings />} path="/readings" />
             <Route element={<Podcast />} path="/podcast" />
             <Route element={<Meditations />} path="/meditations" />
+            <Route element={<Perfil_user />} path="/perfil_user" />
+            <Route element={<Favorites />} path="/favorites" />
+            <Route element={<Perfil_freelancer />} path="/perfil_freelancer" />
             <Route element={<Signup_user />} path="/signup-user" />
             <Route element={<Signup_freelancer />} path="/signup-freelance" />
             <Route element={<h1>Not found!</h1>} />

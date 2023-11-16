@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import home from "/workspaces/spain_part_time47/src/front/img/home.jpg";
-import profesionales from "/workspaces/spain_part_time47/src/front/img/profesional.jpg";
-import hacemos from "/workspaces/spain_part_time47/src/front/img/manosapoyo.jpg";
-import equipo from "/workspaces/spain_part_time47/src/front/img/equipo.jpg"
+import home from "../../img/home.jpg";
+import profesionales from "../../img/profesional.jpg";
+import hacemos from "../../img/manosapoyo.jpg";
+import equipo from "../../img/equipo.jpg"
 import "../../styles/home.css";
 
 export const Home = () => {

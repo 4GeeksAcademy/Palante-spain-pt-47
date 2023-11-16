@@ -63,7 +63,7 @@ def setup_commands(app):
         "title": "Comunicación no violenta. "
     },
     {
-        "URLPhoto": "https://0.academia-photos.com/attachment_thumbnails/54636634/mini_magick20190116-14863-ea6wv.png?1547659179",
+        "URLPhoto": "https://libreriaelim.co/wp-content/uploads/2020/08/9780881135145.png",
         "download": "https://ia801004.us.archive.org/24/items/ArticulosMaxwell/John_C._Maxwell-Companeros_de_Oracion.pdf",
         "review": "Un libro que se centra en el poder de la oración y el benificio sobre las personas y las instituciones.",
         "title": "Compañeros de oración."
