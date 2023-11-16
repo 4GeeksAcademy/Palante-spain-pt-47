@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 import os
-from flask import Flask, request, jsonify, url_for, send_from_directory
+from flask import Flask, request, jsonify, url_for, send_from_directory, abort
 from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
@@ -112,25 +112,21 @@ def user_login():
         return jsonify('incorrect email or password'),400
 
     access_token = create_access_token(identity=body['email'])
-    return jsonify(access_token=access_token)
-
-##### ruta acceso a datos de usuario por ID #####
-@app.route("/userdata/<int:user_id>", methods=['GET'])
-@jwt_required()
-def user_data(user_id):
-    user = User.query.get(user_id)
-    if user is None:
-        return('Not found'), 400
-    user_serialized = user.serialize()
-    return jsonify(user_serialized), 200
+    return jsonify(access_token=access_token), 200
 
 ##### ruta acceso a datos de usuario #####
 @app.route("/userdata", methods=['GET'])
+@jwt_required()
 def userdata():
-    all_user = User.query.all()
-    all_user = list(map(lambda x: x.serialize(), all_user))
-
-    return jsonify(all_user)
+    current_email = get_jwt_identity()
+    if current_email is None:
+        return jsonify('invalid credentials'), 401
+    
+    user = User.query.filter_by(email=current_email).first()
+    if user is None:
+        abort(404, description='User not found')
+    
+    return(user.serialize()), 200
 
 ##### ruta de modificacion de datos #####
 @app.route("/userupdate/<int:user_id>", methods=['POST'])
@@ -152,13 +148,6 @@ def update_user(user_id):
     db.session.commit()
     user_serialized = user.serialize()
     return jsonify(user_serialized)
-
-##### ruta privada de usuario #####
-@app.route("/userprivate", methods=['GET'])
-@jwt_required()
-def user_private():
-    email = get_jwt_identity()
-    return jsonify(email = email)
 
                 #########FREELANCERS#########
 
