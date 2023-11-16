@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
+import { Context } from "../store/appContext";
 import fondoamarillo from "/workspaces/spain_part_time47/src/front/img/logo_Perfil.jpg"
+
+
 export const User_information = () => {
 
-  const [info, setInfo] = useState({})
+  const { store } = useContext(Context)
+  //const [info, setInfo] = useState({})
+  
 
-  useEffect(() => {
+  /*useEffect(() => {
     const token = sessionStorage.getItem('token')
 
     fetch(process.env.BACKEND_URL + `/userdata`, {
@@ -17,8 +22,7 @@ export const User_information = () => {
       .then(resp => resp.json())
       .then(data => setInfo(data))
       .catch(error => console.log(error))
-    console.log(setInfo)
-  }, [])
+  }, [])*/
 
 
   return (
@@ -27,13 +31,13 @@ export const User_information = () => {
         <h1 className="portada">datos personales</h1>
       </div>
       <div className="row">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-          <div class="container-fluid">
-            <h3 class="navbar-brand">información básica</h3>
+        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+          <div className="container-fluid">
+            <h3 className="navbar-brand">información básica</h3>
           </div>
         </nav>
         <div className="col-6" >
-          <form className="form-data">
+          <form className="form-data" >
             <div className="detalle-input">
               <input
                 type="name"
@@ -42,6 +46,7 @@ export const User_information = () => {
                 id="exampleInputName1"
                 placeholder="Nombre Completo"
                 aria-describedby="emailHelp"
+                value={store.datauser.full_name} //Pinto el valor "full_name" del usuario logeado que tengo almacenado en el store 
               />
             </div>
             <div className="detalle-input">
@@ -52,16 +57,7 @@ export const User_information = () => {
                 id="exampleInputEmail1"
                 placeholder="Correo Electrónico"
                 aria-describedby="emailHelp"
-              />
-            </div>
-            <div className="detalle-input">
-              <input
-                type="password"
-                className="form-control"
-                name="password"
-                id="exampleInputPassword1"
-                placeholder="Contraseña"
-                aria-describedby="emailHelp"
+                value={store.datauser.email} //Pinto el valor "email" del usuario logeado que tengo almacenado en el store
               />
             </div>
             <button className="boton-actualizar">Actualizar</button>
