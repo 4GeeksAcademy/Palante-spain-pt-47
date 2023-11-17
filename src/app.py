@@ -129,9 +129,14 @@ def userdata():
     return(user.serialize()), 200
 
 ##### ruta de modificacion de datos #####
-@app.route("/userupdate/<int:user_id>", methods=['POST'])
-def update_user(user_id):
-    user = User.query.get_or_404(user_id)
+@app.route("/userupdate", methods=['POST'])
+@jwt_required()
+def update_user():
+    current_email = get_jwt_identity()
+    if current_email is None:
+        return jsonify('invalid credentials'), 401
+    
+    user = User.query.filter_by(email=current_email).first()
     body = request.get_json(silent=True)
     
     if body is None:
@@ -140,8 +145,6 @@ def update_user(user_id):
         user.full_name = body['full_name']
     if 'email' in body:
         user.email = body['email']
-    if 'password' in body:
-        user.password = body['password']
     if 'URLphoto' in body:
         user.URLphoto = body['URLphoto']
     
