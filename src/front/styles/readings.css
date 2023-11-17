@@ -53,6 +53,9 @@ i.fa-solid.fa-heart.me-3 {
     font-size: 24px;
     color: #102D7B;
 }
+i.fa-solid.fa-heart.me-3:hover {
+    color: #f9a49f75;
+  }
 h5.card-title {
     color: #102d7b;
 }

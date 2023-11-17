@@ -7,7 +7,7 @@ import readingsinicio from "../../img/readingsinicio.jpg";
 export const Meditations = () => {
 	const { store, actions } = useContext(Context);
 
-    
+   
 	return (
 		<div className="container-fluid">
 			<div className="introduction_meditations">

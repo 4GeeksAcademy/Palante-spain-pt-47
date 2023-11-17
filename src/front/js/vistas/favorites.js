@@ -9,6 +9,10 @@ import { Link } from "react-router-dom";
 
 export const Favorites = () =>{
     const { store, actions } = useContext(Context);
+
+	useEffect(() => {
+		actions.get_favorites_readings();
+	  }, []);
    
     return (
         <div className="container-fluid">
@@ -24,7 +28,8 @@ export const Favorites = () =>{
 									<h5 className="title_favorites_readings">{favorites_readings.title}</h5>
                                 </div>
                                 <div>
-									<p><i class="fa-solid fa-trash"></i></p>
+									<p><i className="fa-solid fa-trash"
+									onClick={() => actions.del_favorites_readings(favorites_readings.id)}></i></p>
                                 </div>
 								
 							</div>

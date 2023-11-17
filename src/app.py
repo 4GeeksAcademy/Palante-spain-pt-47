@@ -519,6 +519,17 @@ def get_favorites_user(id_user):
     return jsonify({'msg': 'ok', 'inf': favorites_list})
 
 
+##### endpoint para eliminar un favorites_readings #####
+@app.route('/favorites_readings/<int:favorites_readings_id>', methods=['DELETE'])
+@jwt_required()
+def delete_favorites_readings(favorites_readings_id):
+    favorites_readings = Favorite_Readings.query.get(favorites_readings_id)
+    if favorites_readings is None:
+        raise APIException({'The id of meditation:{} does not exist'.format(favorites_readings_id)}, status_code=400)
+    db.session.delete(favorites_readings)
+    db.session.commit()
+    return jsonify({'msg':'ok'}), 200
+
 ##### endpoint para ver todos los usuarios de la tabla #####
 @app.route('/user', methods=['GET'])
 def get_users():

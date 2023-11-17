@@ -219,6 +219,27 @@ const getState = ({ getStore, getActions, setStore }) => {
         });
       },
 
+      //Borrar un favorito de readings
+      del_favorites_readings: async (favorites_readings_id) => {
+        const token = sessionStorage.getItem('token');
+       
+        const resp = await fetch(process.env.BACKEND_URL + `/favorites_readings/${favorites_readings_id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer '+token // ⬅⬅⬅ authorization token
+                },
+              })
+              await getActions().get_favorites_readings();
+               
+        
+              
+        },
+
+      
+      
+			
+
 
       
 

@@ -8,7 +8,7 @@ import readingsinicio from "../../img/readingsinicio.jpg";
 export const Readings = () => {
 	const { store, actions } = useContext(Context);
 
-    
+  
 	return (
 		<div className="container-fluid">
 			<div className="introduction_readings">

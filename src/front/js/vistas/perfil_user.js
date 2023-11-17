@@ -31,7 +31,7 @@ export const Perfil_user = () =>{
                     <div className="col-4 datos_personales_perfil">
                         <div className="card h-60">
                             <div className="card_dentro">
-                                <Link to='/favorites'>
+                            <Link to='/appointment'>
                                 <i className="fa-solid fa-calendar-check perfil_citas"></i>
                                 <p className="citas_title_perfil"><strong>Mis Citas</strong></p>
                                 </Link>
@@ -43,8 +43,10 @@ export const Perfil_user = () =>{
                     <div className="col-4 datos_personales_perfil">
                         <div className="card h-60">
                             <div className="card_dentro">
+                                <Link to='/favorites'>
                                 <i className="fa-solid fa-heart favoritos_perfil"></i>
                                 <p className="favoritos_title_perfil"><strong>Mis Favoritos</strong></p>
+                                </Link>
                             </div>
                             
                         </div>
@@ -55,8 +57,10 @@ export const Perfil_user = () =>{
                 <div className="col-4 datos_personales_perfil">
                         <div className="card h-60">
                             <div className="card_dentro">
+                            <Link to='event'>
                                 <i className="fa-solid fa-handshake eventos_perfil"></i>
                                 <p className="eventos_title_perfil"><strong>Mis Eventos</strong></p>
+                            </Link>
                             </div>
                             
                         </div>
