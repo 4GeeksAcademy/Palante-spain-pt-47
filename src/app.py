@@ -525,8 +525,30 @@ def get_favorites_user(id_user):
 def delete_favorites_readings(favorites_readings_id):
     favorites_readings = Favorite_Readings.query.get(favorites_readings_id)
     if favorites_readings is None:
-        raise APIException({'The id of meditation:{} does not exist'.format(favorites_readings_id)}, status_code=400)
+        raise APIException({'The id of readings:{} does not exist'.format(favorites_readings_id)}, status_code=400)
     db.session.delete(favorites_readings)
+    db.session.commit()
+    return jsonify({'msg':'ok'}), 200
+
+##### endpoint para eliminar un favorites_podcast #####
+@app.route('/favorites_podcast/<int:favorites_podcast_id>', methods=['DELETE'])
+@jwt_required()
+def delete_favorites_podcast(favorites_podcast_id):
+    favorites_podcast = Favorite_Podcast.query.get(favorites_podcast_id)
+    if favorites_podcast is None:
+        raise APIException({'The id of podcast:{} does not exist'.format(favorites_podcast_id)}, status_code=400)
+    db.session.delete(favorites_podcast)
+    db.session.commit()
+    return jsonify({'msg':'ok'}), 200
+
+##### endpoint para eliminar un favorites_meditations #####
+@app.route('/favorites_meditations/<int:favorites_meditations_id>', methods=['DELETE'])
+@jwt_required()
+def delete_favorites_meditations(favorites_meditations_id):
+    favorites_meditations = Favorite_Meditations.query.get(favorites_meditations_id)
+    if favorites_meditations is None:
+        raise APIException({'The id of meditations:{} does not exist'.format(favorites_meditations_id)}, status_code=400)
+    db.session.delete(favorites_meditations)
     db.session.commit()
     return jsonify({'msg':'ok'}), 200
 

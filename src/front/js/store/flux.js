@@ -231,11 +231,38 @@ const getState = ({ getStore, getActions, setStore }) => {
                 },
               })
               await getActions().get_favorites_readings();
-               
-        
-              
+                         
         },
 
+        //Borrar un favorito de podcast
+      del_favorites_podcast: async (favorites_podcast_id) => {
+        const token = sessionStorage.getItem('token');
+       
+        const resp = await fetch(process.env.BACKEND_URL + `/favorites_podcast/${favorites_podcast_id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer '+token // ⬅⬅⬅ authorization token
+                },
+              })
+              await getActions().get_favorites_podcast();
+                         
+        },
+           //Borrar un favorito de meditations
+      del_favorites_meditations: async (favorites_meditations_id) => {
+        const token = sessionStorage.getItem('token');
+       
+        const resp = await fetch(process.env.BACKEND_URL + `/favorites_meditations/${favorites_meditations_id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer '+token // ⬅⬅⬅ authorization token
+                },
+              })
+              await getActions().get_favorites_meditations();
+                         
+        },
+        
       
       
 			
