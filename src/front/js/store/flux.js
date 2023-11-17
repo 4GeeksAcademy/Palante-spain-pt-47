@@ -44,6 +44,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
 
+
       // Traer datos del usuario 
       dataUser: async () => {
         try {
@@ -114,6 +115,28 @@ const getState = ({ getStore, getActions, setStore }) => {
         } catch (error) {
           console.error("Error al iniciar sesión:");
         }
+      },
+
+      //Modificacion de datos
+      updateData: (user) => {
+
+        fetch(process.env.BACKEND_URL + "/userupdate", {
+          method: "POST",
+          body: JSON.stringify(user),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then(response => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error('Se produjo un error en la red');
+            }
+          })
+          .then(data => console.log(data))
+          .catch(error => console.log('error', error));
+
       },
 
       //Envio freelancer a la base de datos
