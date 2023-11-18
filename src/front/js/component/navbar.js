@@ -32,7 +32,7 @@ export const Navbar = () => {
           type="button"
           onClick={toggleMenu}
         >
-          <i class="fa-thin fa-bars"></i>
+          <i className="fa-thin fa-bars"></i>
         </button>
 
         <div className={`collapse navbar-collapse ${menuOpen ? "show" : ""}`}>
