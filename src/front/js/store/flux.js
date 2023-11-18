@@ -69,11 +69,11 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       //Envio usuario a la base de datos
-      signupUser: (user) => {
+      signupUser: (body) => {
 
         fetch(process.env.BACKEND_URL + "/userregister", {
           method: "POST",
-          body: JSON.stringify(user),
+          body: JSON.stringify(body),
           headers: {
             "Content-Type": "application/json",
           },
@@ -118,13 +118,15 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       //Modificacion de datos
-      updateData: (user) => {
-
+      updateData: (body) => {
+        const token = sessionStorage.getItem('token');
+        
         fetch(process.env.BACKEND_URL + "/userupdate", {
           method: "POST",
-          body: JSON.stringify(user),
+          body: JSON.stringify(body),
           headers: {
             "Content-Type": "application/json",
+            "Authorization": 'Bearer ' + token
           },
         })
           .then(response => {
