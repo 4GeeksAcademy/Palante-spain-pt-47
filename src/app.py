@@ -22,6 +22,9 @@ from flask_jwt_extended import JWTManager
 from flask_bcrypt import Bcrypt
 #from models import Person
 
+import cloudinary
+import cloudinary.uploader
+
 ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../public/')
 app = Flask(__name__)
@@ -32,6 +35,12 @@ app.config["JWT_SECRET_KEY"] = os.environ.get("SUPER_SECRET")  # Change this!
 jwt = JWTManager(app)
 
 bcrypt = Bcrypt(app)
+
+cloudinary.config(
+    cloud_name="dyiaf9ubw",  # Reemplaza con tu CLOUD_NAME
+    api_key="929269828548575",     # Reemplaza con tu API_KEY
+    api_secret="API_SECRET" # Reemplaza con tu API_SECRET
+)
 
 # database condiguration
 db_url = os.getenv("DATABASE_URL")
@@ -145,12 +154,45 @@ def update_user():
         user.full_name = body['full_name']
     if 'email' in body:
         user.email = body['email']
-    if 'URLphoto' in body:
-        user.URLphoto = body['URLphoto']
     
     db.session.commit()
     user_serialized = user.serialize()
     return jsonify(user_serialized)
+
+##### ruta modificacion de foto #####
+"""
+@app.route("/uploadphoto", methods=['POST'])
+@jwt_required()
+def upload_photo():
+    current_email = get_jwt_identity()
+    if current_email is None:
+        return jsonify('Invalid credentials'), 401
+
+    user = User.query.filter_by(email=current_email).first()
+    if not user:
+        return jsonify('User not found'), 404
+    if 'file' not in request.files:
+        return jsonify('No file part'), 400
+    
+    body = request.files['file']
+
+    if body.filename == "":
+        return jsonify('No selected file'), 400
+
+    try:
+        upload_result = cloudinary.uploader.upload(body)
+    
+        # Actualizar la URL de la foto del usuario en la base de datos
+        user.URLphoto = upload_result['secure_url']
+        db.session.commit()
+
+        # Devolver la URL de la foto actualizada
+        return jsonify({'photo_url': user.URLphoto}), 200
+    except cloudinary.api.Error as e:
+        return jsonify({'error': str(e)}), 500
+    except Exception as e:
+        return jsonify({'error': 'An unexpected error occurred'}), 500
+"""
 
 ##### ruta modificacion de contraseña #####
 @app.route("/updatepassword", methods=['POST'])
