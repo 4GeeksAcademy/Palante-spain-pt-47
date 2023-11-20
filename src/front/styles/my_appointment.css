@@ -1,0 +1,15 @@
+.mis_citas {
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
+    color: #102d7b;
+    padding: 1rem;
+    margin: 1rem 0rem 1rem 0rem;
+    background: #ffffff78;
+    border-radius: 1rem;
+}
+.datos_citas.d-flex {
+    padding: 1rem;
+    font-size: 22px;
+    justify-content: space-between;
+    color: #102d7b;
+}
