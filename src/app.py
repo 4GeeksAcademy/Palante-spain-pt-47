@@ -152,6 +152,33 @@ def update_user():
     user_serialized = user.serialize()
     return jsonify(user_serialized)
 
+##### ruta modificacion de contraseña #####
+@app.route("/updatepassword", methods=['POST'])
+@jwt_required()
+def update_password():
+    current_email = get_jwt_identity()
+    if current_email is None:
+        return jsonify('invalid credentials'), 401
+    
+    user = User.query.filter_by(email=current_email).first()
+    body = request.get_json(silent=True)
+
+    if body is None:
+        return jsonify('body must be sent'), 400
+    
+    # Cambiar contraseña
+    if 'password' in body and 'current_password' in body:
+        if bcrypt.check_password_hash(pw_hash, body['password']):
+            # Hash de la nueva contraseña y asignación al usuario   
+            pw_hash = bcrypt.generate_password_hash(body['password']).decode('utf-8')
+            user.password = pw_hash    
+        else:
+            return jsonify('Incorrect current password'), 400
+        
+    db.session.commit()
+    user_serialized = user.serialize()
+    return jsonify(user_serialized)
+
                 #########FREELANCERS#########
 
 ##### ruta de registro de freelancer #####
