@@ -120,7 +120,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       //Modificacion de datos
       updateData: (body) => {
         const token = sessionStorage.getItem('token');
-        
+
         fetch(process.env.BACKEND_URL + "/userupdate", {
           method: "POST",
           body: JSON.stringify(body),

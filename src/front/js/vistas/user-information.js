@@ -1,11 +1,11 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
-import fondoamarillo from "/workspaces/spain_part_time47/src/front/img/logo_Perfil.jpg"
-
+import { Photo } from "../component/photoProfile";
 export const User_information = () => {
 
   const { store, actions } = useContext(Context)
   const [info, setInfo] = useState({})
+  
 
   useEffect(() => {
     actions.dataUser();
@@ -19,7 +19,7 @@ export const User_information = () => {
   useEffect(() => {
     setInfo({
       full_name:store.datauser.full_name, 
-      email:store.datauser.email
+      email:store.datauser.email,
     });
   }, [store.datauser]) //Toma los datos nuevos que ingresa el usuario y se ejecuta cada vez que se modfica el store
   
@@ -66,7 +66,9 @@ export const User_information = () => {
             <button className="boton-actualizar">Actualizar</button>
           </form>
         </div>
-        <div className="col-6"></div>
+        <div className="col-6">
+          <Photo/>
+        </div>
       </div>
     </div>
   )
