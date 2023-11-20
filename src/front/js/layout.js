@@ -19,6 +19,8 @@ import { Meditations } from "./vistas/meditations";
 import { Perfil_user } from "./vistas/perfil_user";
 import { Perfil_freelancer } from "./vistas/perfil_freelancer";
 import { Favorites } from "./vistas/favorites";
+import { Appointment } from "./vistas/appointment";
+import { My_appointment } from "./vistas/my_appointment";
 
 //create your first component
 const Layout = () => {
@@ -42,6 +44,8 @@ const Layout = () => {
             <Route element={<Meditations />} path="/meditations" />
             <Route element={<Perfil_user />} path="/perfil_user" />
             <Route element={<Favorites />} path="/favorites" />
+            <Route element={<Appointment/>} path="/appointment" />
+            <Route element={<My_appointment/>} path="/my_appointment" />
             <Route element={<Perfil_freelancer />} path="/perfil_freelancer" />
             <Route element={<Signup_user />} path="/signup-user" />
             <Route element={<Signup_freelancer />} path="/signup-freelance" />

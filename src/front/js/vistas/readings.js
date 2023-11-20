@@ -7,8 +7,11 @@ import readingsinicio from "../../img/readingsinicio.jpg";
 
 export const Readings = () => {
 	const { store, actions } = useContext(Context);
+	const favorites_id = store.favorites_readings.map((value, index)=>{return value.reading_id})
+	console.log(favorites_id)
 
-  
+
+	
 	return (
 		<div className="container-fluid">
 			<div className="introduction_readings">
@@ -25,10 +28,14 @@ export const Readings = () => {
 							<div className="card-body">
 								<div className="d-flex justify-content-between">
 									<h5 className="card-title">{readings.title}</h5>
-									<i
-										className="fa-solid fa-heart me-3"
+									{favorites_id.includes(readings.id)?
+									<i className="fa-solid fa-heart me-3 favorito"></i>
+									:
+									<i className="fa-solid fa-heart me-3" //<i className={`fa-solid fa-heart me-3 ${isFavorite(readings.id) ? "favorite" : ""}`}
 										onClick={() => actions.handler_favorites_readings(readings.id)}
 									></i>
+									}
+									
 								</div>
 								<p className="card-text">
 									{readings.review}

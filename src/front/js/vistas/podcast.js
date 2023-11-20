@@ -7,6 +7,8 @@ import readingsinicio from "../../img/readingsinicio.jpg";
 export const Podcast = () => {
 	const { store, actions } = useContext(Context);
 
+	const favorites_id = store.favorites_podcast.map((value, index)=>{return value.podcast_id})
+	
     
 	return (
 		<div className="container-fluid">
@@ -24,10 +26,13 @@ export const Podcast = () => {
 							<div className="card-body">
 								<div className="d-flex justify-content-between">
 									<h5 className="card-title">{podcast.title}</h5>
-									<i
-										className="fa-solid fa-heart me-3"
+									{favorites_id.includes(podcast.id)?
+									<i className="fa-solid fa-heart me-3 favorito"></i>
+									:
+									<i className="fa-solid fa-heart me-3" 
 										onClick={() => actions.handler_favorites_podcast(podcast.id)}
 									></i>
+									}
 								</div>
 							</div>
 							<div className="card-footer">

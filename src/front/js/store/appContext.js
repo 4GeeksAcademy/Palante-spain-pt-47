@@ -26,8 +26,10 @@ const injectContext = PassedComponent => {
 			state.actions.show_podcast();
 			state.actions.show_meditations();
 			state.actions.get_favorites_readings();
-			state.actions.get_favorites_podcast();
 			state.actions.get_favorites_meditations();
+			state.actions.get_favorites_podcast();
+			state.actions.get_citas()
+			
 			/**
 			 * EDIT THIS!
 			 * This function is the equivalent to "window.onLoad", it only runs once on the entire application lifetime

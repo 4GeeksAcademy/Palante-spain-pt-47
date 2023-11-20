@@ -15,9 +15,10 @@ export const Favorites = () =>{
         <div className="container-fluid">
 			<div className="container-fluid favorites_readings">
                 <div className="favorites_readings_title"><strong>Mis lecturas favoritas</strong></div>
-                <div className="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-1">
+                <div className="row">
+		
                 {store.favorites_readings.map(favorites_readings => (
-					<div key={favorites_readings.id} className="col col_podcast">
+					<div key={favorites_readings.id} className="col-sm-12 col-md-2 col_podcast">
 						<div className="card h-60">
 							<img className="img_favorites_readings" src={favorites_readings.URLPhoto}></img>
 							<div className="card-body favorites_reading d-flex">
@@ -39,12 +40,13 @@ export const Favorites = () =>{
 					</div>
 				))}
 			</div>
+		
 		</div>
 		<div className="container-fluid favorites_podcast">
                 <div className="favorites_readings_title"><strong>Mis podcast favoritos</strong></div>
-                <div className="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-1">
+                <div className="row">
                 {store.favorites_podcast.map(favorites_podcast => (
-					<div key={favorites_podcast.id} className="col col_podcast">
+					<div key={favorites_podcast.id} className="col-sm-12 col-md-2 col_podcast">
 						<div className="card h-60">
 							<img className="img_favorites_readings" src={favorites_podcast.URLPhoto}></img>
 							<div className="card-body favorites_reading d-flex">
@@ -69,9 +71,9 @@ export const Favorites = () =>{
             </div>
 			<div className="container-fluid favorites_meditations">
                 <div className="favorites_readings_title"><strong>Mis meditaciones favoritas</strong></div>
-                <div className="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-1">
+                <div className="row">
                 {store.favorites_meditations.map(favorites_meditations => (
-					<div key={favorites_meditations.id} className="col col_podcast">
+					<div key={favorites_meditations.id} className="col-sm-12 col-md-2 col_podcast">
 						<div className="card h-60">
 							<iframe  src={favorites_meditations.URLVideo} allowfullScreen></iframe>
 							<div className="card-body favorites_reading d-flex">

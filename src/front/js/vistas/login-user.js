@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import fondo from "/workspaces/spain_part_time47/src/front/img/imghomeazul__1_.png"
+import saludo_hola from "../../img/saludo_hola.png";
+import home from "../../img/home.jpg";
+import Palante from "../../img/Palante.png"
 
 export const Login_user = () => {
 
@@ -46,13 +49,16 @@ export const Login_user = () => {
   };*/
 
   return (
-    <div className="container-fluid">
-      <img className="imagen-fondo" src={fondo} />
-      <div className="container-form">
-        <div className="container-logo">
-          <h1 className="logo">Pa'lante</h1>
-        </div>
-        <form className="form-inputs" onSubmit={handleSubmit}>
+
+    <>
+
+<div className="contenedor">
+<div className="imagen user-login" style={{ backgroundImage: `url(${home})` }}>
+
+<div className="row principal-formulario">
+    <div className="col-sm-12 col-md-4 formulario-user">
+    <h1 className="titulo-user"><strong>Pa'lante</strong></h1>
+    <form className="form-inputs" onSubmit={handleSubmit}>
           <div className="container-inputs">
             <div className="detalle-input">
               <input type="email" 
@@ -84,7 +90,71 @@ export const Login_user = () => {
           </Link>
         </form>
         <p className="ruta-register">¿Aún no tienes cuenta? <Link to="/signup-user" className="ruta-registers">Registrate</Link></p>
-      </div>
     </div>
+    <div class="col-sm-12 col-md-8">
+      
+    </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+    
+    </>
   )
 }
+
+
+
+
+
+
+
+// <div className="contenedor">
+//       	<div className="imagen user-login" style={{ backgroundImage: `url(${home})` }}>
+
+
+
+//       <div className="container-form">
+//         <div className="container-logo">
+//           <h1 className="logo"><strong>Pa'lante</strong></h1>
+//         </div>
+//         <form className="form-inputs" onSubmit={handleSubmit}>
+//           <div className="container-inputs">
+//             <div className="detalle-input">
+//               <input type="email" 
+//                 className="form-control" 
+//                 name="email" 
+//                 id="exampleInputEmail1" 
+//                 placeholder="Correo Electrónico" 
+//                 aria-describedby="emailHelp" 
+//                 value={user.email} 
+//                 onChange={(e) => setUser({ ...user, email: e.target.value })} 
+//             />
+//             </div>
+//             <div className="detalle-input">
+//               <input type="Password" 
+//                 className="form-control" 
+//                 name="Password" 
+//                 id="exampleInputPassword1" 
+//                 placeholder="Contraseña" 
+//                 aria-describedby="emailHelp" 
+//                 value={user.password} 
+//                 onChange={(e) => setUser({ ...user, password: e.target.value })} 
+//               />
+//             </div>
+//           </div>
+//           <button className="boton-login">Inicia sesion</button>
+//           {submit && <p className="alert alert-success p-1 text-center mt-1" role="alert">Sesión Iniciada</p>}
+//           <Link to=""> 
+//             <p className="opcion-contraseña">¿Has olvidado tu contraseña?</p>
+//           </Link>
+//         </form>
+//         <p className="ruta-register">¿Aún no tienes cuenta? <Link to="/signup-user" className="ruta-registers">Registrate</Link></p>
+//       </div>
+//     </div>
+//     </div>

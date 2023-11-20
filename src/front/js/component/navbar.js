@@ -1,38 +1,43 @@
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import "../../styles/navbar.css";
 import logo_azul from "../../img/logo_azul.png";
 
-
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [active, setActive] = useState(false);
+  const { store, actions } = useContext(Context);
+
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
-//   const navbarStyle = {
-//     position: "fixed",
-//     top: 0,
-//     left: 0,
-//     width: "100%",
-//     zIndex: 100,
-//   };
-// style={navbarStyle}
+  useEffect(() => {
+    console.log(store.user_login)
+
+  },[store.user_login])
+
+ 
+
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary" > 
       <div className="container">
-        <Link to="/">
-          <img src={logo_azul}></img>
+        <div>
+        <Link to="/"><img src={logo_azul}></img>
+          
         </Link>
-
+        </div>
+        <div className="botones_navbar">
         <button
           className="navbar-toggler"
           type="button"
           onClick={toggleMenu}
+          aria-expanded={menuOpen ? "true" : "false"}
         >
-          <i class="fa-thin fa-bars"></i>
+          <i class="fa-solid fa-bars"></i>
         </button>
 
         <div className={`collapse navbar-collapse ${menuOpen ? "show" : ""}`}>
@@ -75,7 +80,7 @@ export const Navbar = () => {
             </div>
 
             <div>
-              <Link to="/citas">
+              <Link to="/appointment">
                 <button className="appointment_btn">
                   Citas
                 </button>
@@ -83,11 +88,51 @@ export const Navbar = () => {
             </div>
 
             <div className="login">
-              <Link to='/login-user'>
-                <button type="button" className="nav_btn">
-                  <i className="fa-regular fa-user"></i> Ingresar
-                </button>
-              </Link>
+                {store.user_login != null ? (
+                  <>
+                    <div className="dropdown">
+                      <button
+                        className="btn_recursos dropdown-toggle"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                        //{store.user_login.charAt(0).toUpperCase()} {/* Mostrar la primera letra del correo pero aqui lo q esta es el token encriptado*/}
+                      >
+                        Nombre
+                      </button>
+                      <ul className="dropdown-menu">
+                        <Link to='/datos_personales'>
+                          <li><a className="dropdown-item" href="#">Mis Datos</a></li>
+                        </Link>
+                        <Link to='/favorites'>
+                          <li><a className="dropdown-item" href="#">Mis favoritos</a></li>
+                        </Link>
+                        <Link to='/my_appointment'>
+                          <li><a className="dropdown-item" href="#">Mis citas</a></li>
+                        </Link>
+                        <Link to='/my_event'>
+                          <li><a className="dropdown-item" href="#">Mis eventos</a></li>
+                        </Link>
+                        <Link to='/todo_list'>
+                          <li><a className="dropdown-item" href="#">Mi Todo-List</a></li>
+                        </Link>
+                        <Link to="/">
+                      <button className="nav_btn" onClick={()=> actions.borrarToken()}>
+                        Cerrar sesión
+                      </button>
+                    </Link>
+                      </ul> 
+                    </div>        
+                    
+                  </>
+                ) : (
+                  <Link to='/login-user'>
+                    <button className="nav_btn">
+                      <i className="fa-regular fa-user"></i> Ingresar
+                    </button>
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
         </div>

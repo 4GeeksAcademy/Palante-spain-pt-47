@@ -8,6 +8,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       favorites_readings:[],
       favorites_podcast:[],
       favorites_meditations:[],
+      user_login: sessionStorage.getItem('token'),
+      citas:[],
+      
 			demo: [
 				{
 					title: "FIRST",
@@ -263,9 +266,61 @@ const getState = ({ getStore, getActions, setStore }) => {
                          
         },
         
+      //agregar una cita
+      handler_appointments: async (freelancer_id, selectedDate, process_date) => {
+        const token = sessionStorage.getItem('token');
+        console.log('freelancer_id', freelancer_id)
+        console.log('selectedDate', selectedDate)
+        console.log('full_date', process_date)
+        const resp = await fetch(process.env.BACKEND_URL + `/appointment/${freelancer_id}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer '+token // ⬅⬅⬅ authorization token
+                },
+                body: JSON.stringify({ "date":selectedDate, "full_date":process_date }), // Envía el ID del artículo que se agregará a favoritos
+            })
+                
+        },
       
+      // ver todas las citas de un usuario
+			get_citas: async () => {
+        const token = sessionStorage.getItem('token');
       
-			
+        const resp = await fetch(process.env.BACKEND_URL + '/appointments', {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": 'Bearer '+token
+            },
+        })
+        .then(response => response.json())
+        .then(async response => {
+          console.log('response de citas', response)
+          const citas = response.inf
+          setStore({ citas: citas});
+            
+        })
+        .catch(error => {
+            console.error("Error getting favorite meditations:", error);
+        });
+    },
+
+    // modificar la cita de un usuario
+			update_citas: async (cita_id, date, full_date) => {
+        const token = sessionStorage.getItem('token');
+      
+        const resp = await fetch(process.env.BACKEND_URL + `/appointment/${cita_id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": 'Bearer '+token
+            },
+            body: JSON.stringify({ 'date': date, 'full_date':full_date })
+        })
+        
+    },
+
 
 
       
@@ -293,8 +348,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .catch(error => console.log('error', error));
 
       },
-
-      //Inicio de sesion del usuario
+     
 
       loginUser: async (body) => {
         try {
@@ -321,11 +375,22 @@ const getState = ({ getStore, getActions, setStore }) => {
           const data = await resp.json();
           console.log('data', data)
           sessionStorage.setItem("token", data.access_token); // Guarda el token en el almacenamiento 
+          setStore({user_login:sessionStorage.getItem('token')});
+          
+          
+          await getActions().get_favorites_readings();
+          await getActions().get_favorites_meditations();
+          await getActions().get_favorites_podcast();
           return data;
         } catch (error) {
           console.error("Error al iniciar sesión:");
         }
+
+        
+        
       },
+
+     
 
       //Ejecuta para redirigir a una pagina privada (solo se accede si estas logeado)
 
@@ -407,6 +472,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       borrarToken: () => {
         sessionStorage.removeItem('token');
+        setStore({user_login:null})
         alert('Te has desconectado de la aplicacion')
       },
 
