@@ -84,10 +84,11 @@ class Appointment(db.Model):
     user_data = db.relationship(User)
     freelancer_id = db.Column(db.Integer, db.ForeignKey('freelancer.id'))
     freelancer_data = db.relationship(Freelancer)
-    day = db.Column(db.String(10), nullable=False)
-    time = db.Column(db.Time, nullable=False)
-    full_date = db.Column(db.DateTime, nullable=True)
+    date = db.Column(db.String(50), nullable=False)
     
+    full_date = db.Column(db.String(50), nullable=True)
+    status = db.Column(db.String(15), nullable=True)
+
     def _repr_(self):
         return 'Appointment {}'.format(self.id)
     
@@ -95,10 +96,9 @@ class Appointment(db.Model):
         return {
             "id": self.id,
             "user_id": self.user_id,
-            "freelance_id": self.freelance_id,
-            "day": self.day,
-            "time": self.time.strftime('%H:%M'),
-            "full_date": self.full_date.strftime('%Y-%m-%d %H:%M:%S') if self.full_date else None
+            "freelancer_id": self.freelancer_id,
+            "date": self.date,
+            "full_date": self.full_date
         }
 
 class Meditations(db.Model):
