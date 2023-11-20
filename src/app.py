@@ -154,6 +154,8 @@ def update_user():
         user.full_name = body['full_name']
     if 'email' in body:
         user.email = body['email']
+    if 'URLphoto' in body:
+        user.URLphoto = body['URLphoto']
     
     db.session.commit()
     user_serialized = user.serialize()
