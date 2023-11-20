@@ -56,7 +56,10 @@ i.fa-solid.fa-heart.me-3 {
 i.fa-solid.fa-heart.me-3:hover {
     color: #f9a49f75;
   }
-  i.fa-solid.fa-heart.me-3:click {
+  i.fa-solid.fa-heart.me-3.favorito {
+    color: #f8a39e;
+}
+  .favorite{
     color: #f9a49f75;
   }
 h5.card-title {

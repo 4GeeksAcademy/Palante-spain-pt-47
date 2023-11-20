@@ -1,10 +1,4 @@
-.footer_palante {
-    background:  #102d7b;
-    color: white;
-    margin-top: 1rem;
-    text-align: -webkit-center;
-    padding: 1rem;
-}
+
 
 p.palante {
     text-align: center;
@@ -13,4 +7,11 @@ p.palante {
     font-family: 'Poppins', sans-serif;
 }
 
+.footer_palante {
+    background: #102d7b;
+    color: white;
+    /* margin-top: 1rem; */
+    text-align: -webkit-center;
+    padding: 1rem;
+}
 
