@@ -16,6 +16,7 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
+from flask_mail import Mail, Message
 
 from flask_bcrypt import Bcrypt
 from datetime import datetime
@@ -42,6 +43,18 @@ else:
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 MIGRATE = Migrate(app, db, compare_type = True)
 db.init_app(app)
+
+app.config.update(dict(
+    DEBUG = False,
+    MAIL_SERVER = 'smtp.gmail.com',
+    MAIL_PORT = 587,
+    MAIL_USE_TLS = True,
+    MAIL_USE_SSL = False,
+    MAIL_USERNAME = 'palante4geeksAcademic@gmail.com',
+    MAIL_PASSWORD = 'bretnsyilqxbeifr'
+))
+
+mail = Mail(app)
 
 # Allow CORS requests to this API
 CORS(app)
@@ -645,6 +658,13 @@ def update_appointment(appointment_id):
     
     db.session.commit()
     return jsonify({'msg':'ok'}), 200
+
+@app.route('/api/send_mail')
+def send_mail():
+    msg = Message(subject='Confirmacion de cita', sender = 'palante4geeksAcademic@gmail.com', recipients=['nelys.martin1988@gmail.com'])
+    msg.html = "<h1> Confirmamos que tiene una cita agendada para...</h1>"
+    mail.send(msg)
+    return jsonify({'msg':'mensaje enviado'}), 200
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
