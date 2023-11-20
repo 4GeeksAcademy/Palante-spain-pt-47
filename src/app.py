@@ -7,7 +7,7 @@ from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
 from api.utils import APIException, generate_sitemap
-from api.models import db, User, Freelancer, Readings, Meditations, Podcast, Favorite_Meditations, Favorite_Podcast, Favorite_Readings
+from api.models import db, User, Freelancer, Readings, Meditations, Podcast, Favorite_Meditations, Favorite_Podcast, Favorite_Readings,Appointment
 from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
@@ -18,6 +18,7 @@ from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
 
 from flask_bcrypt import Bcrypt
+from datetime import datetime
 #from models import Person
 
 ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
@@ -503,8 +504,6 @@ def get_favorite_podcast():
     return jsonify({'msg': 'ok', 'inf':favorites_podcast_list}),200
 
 
-
-
 ##### endpoint para ver todos los favoritos de un usuario #####
 @app.route('/user/<int:id_user>/favorites', methods=['GET'])
 def get_favorites_user(id_user):
@@ -559,6 +558,8 @@ def get_users():
     user_list = list(map(lambda user: user.serialize(), users))
     return jsonify(user_list), 200
 
+
+
 ##### endpoint para ver los datos de un usuario de la tabla #####
 @app.route('/user/<int:user_id>', methods=['GET'])
 def get_user_id(user_id):
@@ -567,6 +568,83 @@ def get_user_id(user_id):
         return jsonify({'msg':'User not found'}), 400
     else:
         return jsonify({'msg':'ok','inf':user.serialize()})
+
+##### endpoint para agregar un appointments
+@app.route('/appointment/<int:freelancer_id>', methods=['POST'])
+@jwt_required()
+def create_appointments(freelancer_id):
+    body = request.get_json(silent=True)
+    print(body)
+    if body is None:
+        return jsonify({'msg': 'Send information in the body'}), 400
+    if 'date' not in body:
+        return ({'msg':'Send date in body'})
+    if 'full_date' not in body:
+        return ({'msg':'Send full_date in body'})
+    
+    
+    user_email = get_jwt_identity()
+    print(user_email)
+    user = User.query.filter_by(email = user_email).first()
+    print(user)
+    user_id = user.id
+    
+    # full_date = body['full_date'].split('(')[0].strip()
+    # fecha_objeto = datetime.strptime(full_date, "%a %b %d %Y %H:%M:%S")
+    # full_date = fecha_objeto.strftime("%Y-%m-%d %H:%M:%S")
+   
+
+    #date = body['date'].split('(')[0].strip()
+    # fecha_objeto = datetime.strptime(date, "%a %b %d %Y %H:%M:%S GMT%z")
+    # date = fecha_objeto.strftime("%Y-%m-%d %H:%M:%S")
+
+    
+    # try:
+       
+    #     existing_appointments = Appointment.query.filter_by(freelancer_id=freelancer_id, date=body['date']).first()
+    #     if existing_appointments:
+    #         return jsonify({'msg': 'El freelancer esta ocupado'}), 400
+    # except Exception as e:
+    #     return jsonify({'msg': str(e)}), 500
+    existing_appointments = Appointment.query.filter_by(freelancer_id=freelancer_id, date=body['date']).first()
+    if existing_appointments:
+        return jsonify({'msg': 'El freelancer esta ocupado'}), 400
+        
+    new_appointments = Appointment(user_id=user_id, freelancer_id=freelancer_id, date=body['date'], full_date=body['full_date'])
+    db.session.add(new_appointments)
+    db.session.commit()
+    return jsonify({'msg': 'ok'}),200
+
+#### endpoint para ver las citas de un usuario 
+@app.route('/appointments', methods=['GET'])
+@jwt_required()
+def get_appointment():
+    user_email = get_jwt_identity()
+    print(user_email)
+    user = User.query.filter_by(email = user_email).first()
+    print(user)
+    user_id = user.id
+    appointments = Appointment.query.filter_by(user_id=user_id).all()
+    appointments_list = list(map(lambda appointment: appointment.serialize(), appointments))
+    return jsonify({'msg': 'ok', 'inf':appointments_list}),200
+
+##### endpoint para actualizar en la tabla de citas #####
+@app.route('/appointments/<int:appointment_id>', methods=['PUT'])
+@jwt_required()
+def update_appointment(appointment_id):
+    appointment = Appointment.query.get(appointment_id)
+    if appointment is None:
+        return jsonify({'msg': 'The id of appointment:{} does not exist'.format(appointment_id)})
+    body = request.get_json(silent=True)
+    if body is None:
+        return jsonify({'msg': 'Send information in the body'}), 400
+    if 'date' in body:
+        appointment.date = body['date']
+    if 'full_date' in body:
+        appointment.full_date= body['full_date']
+    
+    db.session.commit()
+    return jsonify({'msg':'ok'}), 200
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
