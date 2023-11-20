@@ -83,7 +83,7 @@ export const Login_user = () => {
               />
             </div>
           </div>
-          <button className="boton-login">Inicia sesion</button>
+          <button className="boton-login">Inicia sesión</button>
           {submit && <p className="alert alert-success p-1 text-center mt-1" role="alert">Sesión Iniciada</p>}
           <Link to=""> 
             <p className="opcion-contraseña">¿Has olvidado tu contraseña?</p>

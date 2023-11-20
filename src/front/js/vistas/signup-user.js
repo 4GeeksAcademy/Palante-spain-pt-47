@@ -1,11 +1,13 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
-import fondo from "/workspaces/spain_part_time47/src/front/img/imghomeazul__1_.png"
 import { Link } from "react-router-dom";
+
+import home from "../../img/home.jpg";
 import { Formik } from "formik";
 
 export const Signup_user = () => {
+
   const { actions } = useContext(Context);
   const navigate = useNavigate();
   const [register, setRegister] = useState({ full_name: '', email: [''], password: '', confirm_password: '' })
@@ -27,14 +29,18 @@ export const Signup_user = () => {
     setRegister('')
   }
   
+
   return (
-    <div className="container-fluid">
-      <img className="imagen-fondo" src={fondo} />
-      <div className="container-form">
-        <div className="container-logo">
-          <h1 className="logo">Pa'lante</h1>
-        </div>
-        <Formik
+
+  
+
+<div className="contenedor">
+<div className="imagen user-login" style={{ backgroundImage: `url(${home})` }}>
+
+<div className="row principal-formulario">
+    <div className="col-sm-12 col-md-4 formulario-user">
+    <h1 className="titulo-user"><strong>Pa'lante</strong></h1>
+    <Formik
         validate={()=>{
           let errores = {}
 
@@ -135,7 +141,7 @@ export const Signup_user = () => {
                 </div>
                 
               </div>
-              <button className="boton-registro">Registrate</button>
+              <button className="boton-registro">Regístrate</button>
               {submit && <p className="alert alert-success p-1 text-center mt-1" role="alert">Te haz registrado con exito</p>}
             </form>
           )}
@@ -144,6 +150,8 @@ export const Signup_user = () => {
           <p className="opcion-registro">¿Te gustaría colaborar?</p>
         </Link>
       </div>
+    </div>
+    </div>
     </div>
   );
 
