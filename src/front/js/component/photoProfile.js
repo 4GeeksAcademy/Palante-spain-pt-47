@@ -1,27 +1,21 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { Context } from "../store/appContext";
+import Avatar from "/workspaces/spain_part_time47/src/front/img/avatar-dafault.png"
 
 export const Photo = () => {
-  const [image, setImage] = useState(null)
-  const [urlphoto, setUrlphoto] = useState(null)
-  const { store, actions } = useContext(Context)
-  
-  console.log("STORE",store.datauser);
-
-  console.log("IMAGEN", image);
+  const { store, actions } = useContext(Context);
+  const inputRef = useRef(null)
 
   const CLOUD_NAME = "dyiaf9ubw"
   const UPLOAD_PRESET = "dprcfccr"
-
-  const handleUpload = async (e) => {
+  // Guardar en la base de datos la URL que manda Cloudinary
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const formData = new FormData();
-
-    formData.append("file", image);
-    formData.append("upload_preset", UPLOAD_PRESET);
-
     try {
+      const formData = new FormData();
+      formData.append("file", e.target.files[0]);
+      formData.append("upload_preset", UPLOAD_PRESET);
+
       const response = await fetch(
         `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/upload`,
         {
@@ -29,47 +23,51 @@ export const Photo = () => {
           body: formData,
         }
       );
-      const responseData = await response.json();
-      setImage(responseData.secure_url);
 
+      const responseData = await response.json(); //Aca esta la URL que se va a guardar
+      const newImage = { URLphoto: responseData.secure_url };
+
+      actions.updateData(newImage);  //Toma la URL traida de cloudinary la la almacena en la base de datos
     } catch (error) {
       console.error("Error al subir la imagen:", error);
     }
   };
-//Toma la imagen y la renderiza 
-  useEffect((image) => {
+  // Traer los datos del usuario
+  useEffect(() => {
+    actions.dataUser();
+  }, [store.datauser]);
 
-    const token = sessionStorage.getItem('token');
-
-    fetch(process.env.BACKEND_URL + "/userupdate", {
-      method: "POST",
-      body: JSON.stringify({'URLphoto': image}),
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": 'Bearer ' + token
-      },
-    })
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error('Se produjo un error en la red');
-        }
-      })
-      .then(data => {console.log("DATA",data); setUrlphoto(data.URLphoto)})
-      .catch(error => console.log('error', error));
-  }, [image])
-
+//Cambia imagen al hacer click en ella
+  const handleImage = () =>{
+    inputRef.current.click();
+  }
 
   return (
-    <div className="container">
-      <form className="form-image" >
-        <img src={urlphoto} alt="" style={{ width: 120, height: 120 }} />
-        <input className="select-image" type="file" name="files" onChange={(e) => setImage(e.target.files[0])} />
-        {/* image ? <img alt="Preview" height="60" src={URL.createObjectURL(image)} /> : null */}
-        <button type="button" onClick={handleUpload}>Subir imagen</button>
+    <div className="container" onClick={handleImage}>
+      <form className="form-image" onSubmit={handleSubmit}>
+        {store.datauser.URLphoto ? (
+          <img
+          src={store.datauser.URLphoto || "" }
+          alt=""
+          style={{ width: 120, height: 120 }}
+        /> 
+        ) : (
+          <img
+            src={Avatar}
+            alt=""
+            style={{ width: 120, height: 120 }}
+          />
+        )}
+        
+        <input
+          className="select-image"
+          type="file"
+          name="files"
+          onChange={handleSubmit}
+          ref={inputRef}
+          style={{display: "none"}}
+        />
       </form>
     </div>
-
-  )
-}
+  );
+};
