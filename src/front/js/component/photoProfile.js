@@ -1,10 +1,14 @@
-import React, { useState, useContext } from "react";
-import avatar from "/workspaces/spain_part_time47/src/front/img/avatar-dafault.png"
-import { Cloudinary } from "@cloudinary/url-gen";
+import React, { useState, useContext, useEffect } from "react";
+import { Context } from "../store/appContext";
 
 export const Photo = () => {
   const [image, setImage] = useState(null)
-  //const [urlphoto, setUrlphoto] = useState(null)
+  const [urlphoto, setUrlphoto] = useState(null)
+  const { store, actions } = useContext(Context)
+  
+  console.log("STORE",store.datauser);
+
+  console.log("IMAGEN", image);
 
   const CLOUD_NAME = "dyiaf9ubw"
   const UPLOAD_PRESET = "dprcfccr"
@@ -32,14 +36,16 @@ export const Photo = () => {
       console.error("Error al subir la imagen:", error);
     }
   };
+//Toma la imagen y la renderiza 
+  useEffect((image) => {
 
-  /*const updatephoto = () => {
     const token = sessionStorage.getItem('token');
 
-    fetch(process.env.BACKEND_URL + "/uploadphoto", {
+    fetch(process.env.BACKEND_URL + "/userupdate", {
       method: "POST",
-      body: JSON.stringify(),
+      body: JSON.stringify({'URLphoto': image}),
       headers: {
+        "Content-Type": "application/json",
         "Authorization": 'Bearer ' + token
       },
     })
@@ -50,21 +56,20 @@ export const Photo = () => {
           throw new Error('Se produjo un error en la red');
         }
       })
-      .then(data => setUrlphoto(data))
+      .then(data => {console.log("DATA",data); setUrlphoto(data.URLphoto)})
       .catch(error => console.log('error', error));
+  }, [image])
 
-  }*/
 
+  return (
+    <div className="container">
+      <form className="form-image" >
+        <img src={urlphoto} alt="" style={{ width: 120, height: 120 }} />
+        <input className="select-image" type="file" name="files" onChange={(e) => setImage(e.target.files[0])} />
+        {/* image ? <img alt="Preview" height="60" src={URL.createObjectURL(image)} /> : null */}
+        <button type="button" onClick={handleUpload}>Subir imagen</button>
+      </form>
+    </div>
 
-return (
-  <div className="container">
-    <form className="form-image" >
-      <img src={image} alt="" style={{ width: 120, height: 120 }} />
-      <input className="select-image" type="file" name="files" onChange={(e) => setImage(e.target.files[0])} />
-      {/* image ? <img alt="Preview" height="60" src={URL.createObjectURL(image)} /> : null */}
-      <button type="button" onClick={handleUpload}>Subir imagen</button>
-    </form>
-  </div>
-
-)
+  )
 }
