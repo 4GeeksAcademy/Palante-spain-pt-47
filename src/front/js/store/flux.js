@@ -43,8 +43,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
       },
 
-
-
       // Traer datos del usuario 
       dataUser: async () => {
         try {
