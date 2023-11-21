@@ -46,16 +46,14 @@ export const Photo = () => {
     <div className="container" onClick={handleImage}>
       <form className="form-image" onSubmit={handleSubmit}>
         {store.datauser.URLphoto ? (
-          <img
+          <img className="img-profile"
           src={store.datauser.URLphoto || "" }
           alt=""
-          style={{ width: 120, height: 120 }}
         /> 
         ) : (
-          <img
+          <img className="img-profile"
             src={Avatar}
             alt=""
-            style={{ width: 120, height: 120 }}
           />
         )}
         

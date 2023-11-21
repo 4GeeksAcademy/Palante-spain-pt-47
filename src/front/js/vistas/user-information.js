@@ -1,6 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Photo } from "../component/photoProfile";
+import fondo from "/workspaces/spain_part_time47/src/front/img/logo_Perfil.jpg";
+
 export const User_information = () => {
 
   const { store, actions } = useContext(Context)
@@ -28,10 +30,10 @@ export const User_information = () => {
   }; 
   return (
     <div className="container-fluid">
-      <div className="jumbotron">
+      <div className="jumbotron" style={{ backgroundImage: `url(${fondo})` }}>
         <h1 className="portada">datos personales</h1>
       </div>
-      <div className="row">
+      <div className="row linea-datos">
         <nav className="navbar expand-lg" id="informacion-personal">
           <h3 className="texo-informacion"><i className="fa fa-circle-info"></i>información básica</h3>
         </nav>
