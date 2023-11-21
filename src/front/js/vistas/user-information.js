@@ -5,7 +5,7 @@ export const User_information = () => {
 
   const { store, actions } = useContext(Context)
   const [info, setInfo] = useState({})
-  
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     actions.dataUser();
@@ -23,6 +23,9 @@ export const User_information = () => {
     });
   }, [store.datauser]) //Toma los datos nuevos que ingresa el usuario y se ejecuta cada vez que se modfica el store
   
+  const handleEditClick = () => {
+    setIsEditing(true);
+  }; 
   return (
     <div className="container-fluid">
       <div className="jumbotron">
@@ -44,9 +47,9 @@ export const User_information = () => {
                 aria-describedby="emailHelp"
                 value={info.full_name || ""}
                 onChange={(e) => setInfo({...info, full_name:e.target.value})}
-                disabled //Pinto el valor "full_name" del usuario logeado que tengo almacenado en el store 
+                disabled = {!isEditing} //Pinto el valor "full_name" del usuario logeado que tengo almacenado en el store 
               />
-              <button className="modificar-datos">
+              <button className="modificar-datos" onClick={handleEditClick}>
                 <i className="fa fa-pencil"></i>
               </button>
             </div>
