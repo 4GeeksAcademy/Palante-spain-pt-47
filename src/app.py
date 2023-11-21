@@ -177,7 +177,7 @@ def update_password():
     
     # Cambiar contraseña
     if 'password' in body and 'current_password' in body:
-        if bcrypt.check_password_hash(pw_hash, body['password']):
+        if bcrypt.check_password_hash(user.password, body['current_password']):
             # Hash de la nueva contraseña y asignación al usuario   
             pw_hash = bcrypt.generate_password_hash(body['password']).decode('utf-8')
             user.password = pw_hash    
