@@ -45,6 +45,15 @@
   font-family: 'Poppins', sans-serif;
   border: none;
 }
+button.btn_perfiles.dropdown-toggle {
+  background-color: #102d7b;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 19px;
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  border: none;
+}
 .nav_btn:hover {
   background: transparent;
   border: none;
@@ -54,8 +63,14 @@
 .nav_btn:hover .fa-user {
     text-shadow: 0 0 5px #2C3D91;
 }
-
-
+ul.dropdown-menu.show {
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+}
+.nav_perfil_user a{
+  text-decoration: none;
+}
 /* Asegúrate de que estos estilos estén en tu archivo navbar.css */
 
 /* Estilos para pantallas grandes */
@@ -67,7 +82,10 @@
   
   /* Estilos para pantallas pequeñas (menos de 600px de ancho) */
   @media (max-width: 600px) {
-
+    
+    .navbar>.container {
+          flex-direction:column}
+  
     .container_navbar_right {
       flex-direction: column; /* Coloca los elementos uno debajo del otro */
     }

@@ -84,8 +84,8 @@ class Appointment(db.Model):
     user_data = db.relationship(User)
     freelancer_id = db.Column(db.Integer, db.ForeignKey('freelancer.id'))
     freelancer_data = db.relationship(Freelancer)
-    date = db.Column(db.String(50), nullable=False)
-    
+    day = db.Column(db.String(20), nullable=False)
+    time = db.Column(db.String(20), nullable=False)    
     full_date = db.Column(db.String(50), nullable=True)
     status = db.Column(db.String(15), nullable=True)
 
@@ -97,7 +97,8 @@ class Appointment(db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "freelancer_id": self.freelancer_id,
-            "date": self.date,
+            "day": self.day,
+            "time": self.time,
             "full_date": self.full_date
         }
 

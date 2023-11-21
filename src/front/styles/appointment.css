@@ -23,10 +23,18 @@ input#fecha {
     color: #102d7b;
     font-family: 'Poppins', sans-serif;
 }
-.col-4.sacar_cita {
+.col-sm-12.col-md-7.sacar_cita {
     background: #fffbf2;
     padding: 2rem;
     border-radius: 2rem;
+}
+.row.freelancer_citas {
+    padding: 2rem;
+    color: #102d7b;
+    font-family: 'Poppins', sans-serif;
+    border-width: 0px 0px 2px 0px;
+    border-style: solid;
+    border-color:  #102d7b;
 }
 .datos_freelancer {
     padding: 1rem;
@@ -34,4 +42,12 @@ input#fecha {
 p.nombre_freelancer {
     color: #397FDB;
     font-size: 24px;
+}
+.rdt {
+    position: relative;
+    margin-bottom: 1rem;
+}
+.fa-envelope:before {
+    padding: 0.5rem;
+    content: "\f0e0";
 }

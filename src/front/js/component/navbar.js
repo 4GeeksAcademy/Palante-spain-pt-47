@@ -92,7 +92,7 @@ export const Navbar = () => {
                   <>
                     <div className="dropdown">
                       <button
-                        className="btn_recursos dropdown-toggle"
+                        className="btn_perfiles dropdown-toggle"
                         type="button"
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
@@ -100,7 +100,7 @@ export const Navbar = () => {
                       >
                         Nombre
                       </button>
-                      <ul className="dropdown-menu">
+                      <ul className="dropdown-menu nav_perfil_user">
                         <Link to='/datos_personales'>
                           <li><a className="dropdown-item" href="#">Mis Datos</a></li>
                         </Link>
@@ -117,9 +117,9 @@ export const Navbar = () => {
                           <li><a className="dropdown-item" href="#">Mi Todo-List</a></li>
                         </Link>
                         <Link to="/">
-                      <button className="nav_btn" onClick={()=> actions.borrarToken()}>
+                          <li> <a className="dropdown-item" href="#" onClick={()=> actions.borrarToken()}>
                         Cerrar sesión
-                      </button>
+                        </a></li>
                     </Link>
                       </ul> 
                     </div>        

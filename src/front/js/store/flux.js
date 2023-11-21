@@ -267,10 +267,11 @@ const getState = ({ getStore, getActions, setStore }) => {
         },
         
       //agregar una cita
-      handler_appointments: async (freelancer_id, selectedDate, process_date) => {
+      handler_appointments: async (freelancer_id, selectedDay, selectedTime, process_date) => {
         const token = sessionStorage.getItem('token');
         console.log('freelancer_id', freelancer_id)
-        console.log('selectedDate', selectedDate)
+        console.log('selectedDay', selectedDay)
+        console.log('selectedTime', selectedTime)
         console.log('full_date', process_date)
         const resp = await fetch(process.env.BACKEND_URL + `/appointment/${freelancer_id}`, {
                 method: "POST",
@@ -278,10 +279,26 @@ const getState = ({ getStore, getActions, setStore }) => {
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer '+token // ⬅⬅⬅ authorization token
                 },
-                body: JSON.stringify({ "date":selectedDate, "full_date":process_date }), // Envía el ID del artículo que se agregará a favoritos
+                body: JSON.stringify({ "day":selectedDay, "time":selectedTime, "full_date":process_date }), // Envía el ID del artículo que se agregará a favoritos
             })
-                
-        },
+            if (resp.ok) {
+              getActions().send_mail()
+              alert('Tu cita ha sido reservada y se te ha enviado un correo')
+              
+          } else {
+              const data = await resp.json();
+              // Verifica si el freelancer está ocupado
+              if (resp.status === 400 && data.msg === 'El freelancer esta ocupado') {
+                  // Muestra un mensaje al usuario indicando que el freelancer está ocupado
+                  // Puedes mostrar este mensaje en tu interfaz de usuario
+                  alert('El freelancer está ocupado en este horario');
+              } else {
+                  // Maneja otros casos de error si es necesario
+                  console.error('Error:', data.msg);
+              }
+          }
+      },      
+       
       
       // ver todas las citas de un usuario
 			get_citas: async () => {
@@ -307,7 +324,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     },
 
     // modificar la cita de un usuario
-			update_citas: async (cita_id, date, full_date) => {
+			update_citas: async (cita_id, day, time, full_date) => {
         const token = sessionStorage.getItem('token');
       
         const resp = await fetch(process.env.BACKEND_URL + `/appointment/${cita_id}`, {
@@ -316,13 +333,51 @@ const getState = ({ getStore, getActions, setStore }) => {
                 "Content-Type": "application/json",
                 "Authorization": 'Bearer '+token
             },
-            body: JSON.stringify({ 'date': date, 'full_date':full_date })
+            body: JSON.stringify({ 'day': day, 'time':time, 'full_date':full_date })
         })
         
     },
 
 
+    send_mail: () => {
+      const token = sessionStorage.getItem('token');
+      fetch(process.env.BACKEND_URL + '/api/send_mail', {
+          method: 'GET', 
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + token
+          }
+      })
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Error al enviar el correo');
+          }
+          return response.json();
+      })
+      .then(data => {
+          console.log(data);
+          alert('Mensaje enviado exitosamente');
+      })
+      .catch(error => {
+          console.error('Error:', error);
+          alert('Hubo un error al enviar el mensaje');
+      });
+  },
 
+//Borrar un appointment
+del_appointment: async (appointment_id) => {
+  const token = sessionStorage.getItem('token');
+ 
+  const resp = await fetch(process.env.BACKEND_URL + `/appointments/${appointment_id}`, {
+          method: "DELETE",
+          headers: {
+              "Content-Type": "application/json",
+              "Authorization": 'Bearer '+token // ⬅⬅⬅ authorization token
+          },
+        })
+        await getActions().get_citas();
+                   
+  },
       
 
 			

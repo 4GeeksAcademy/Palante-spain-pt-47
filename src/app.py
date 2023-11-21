@@ -590,8 +590,10 @@ def create_appointments(freelancer_id):
     print(body)
     if body is None:
         return jsonify({'msg': 'Send information in the body'}), 400
-    if 'date' not in body:
-        return ({'msg':'Send date in body'})
+    if 'day' not in body:
+        return ({'msg':'Send day in body'})
+    if 'time' not in body:
+        return ({'msg':'Send time in body'})
     if 'full_date' not in body:
         return ({'msg':'Send full_date in body'})
     
@@ -602,28 +604,20 @@ def create_appointments(freelancer_id):
     print(user)
     user_id = user.id
     
-    # full_date = body['full_date'].split('(')[0].strip()
-    # fecha_objeto = datetime.strptime(full_date, "%a %b %d %Y %H:%M:%S")
-    # full_date = fecha_objeto.strftime("%Y-%m-%d %H:%M:%S")
-   
-
-    #date = body['date'].split('(')[0].strip()
-    # fecha_objeto = datetime.strptime(date, "%a %b %d %Y %H:%M:%S GMT%z")
-    # date = fecha_objeto.strftime("%Y-%m-%d %H:%M:%S")
-
+    full_date = body['full_date'].split('(')[0].strip().split('.')[0]
+    day = body['day'].split('T')[0].strip()
     
-    # try:
+    time = body['time'].split('T')[1][0:5].strip()
+    try:
        
-    #     existing_appointments = Appointment.query.filter_by(freelancer_id=freelancer_id, date=body['date']).first()
-    #     if existing_appointments:
-    #         return jsonify({'msg': 'El freelancer esta ocupado'}), 400
-    # except Exception as e:
-    #     return jsonify({'msg': str(e)}), 500
-    existing_appointments = Appointment.query.filter_by(freelancer_id=freelancer_id, date=body['date']).first()
-    if existing_appointments:
-        return jsonify({'msg': 'El freelancer esta ocupado'}), 400
+        existing_appointments = Appointment.query.filter_by(freelancer_id=freelancer_id, day=day, time=time).first()
+        if existing_appointments:
+            return jsonify({'msg': 'El freelancer esta ocupado'}), 400
+    except Exception as e:
+        return jsonify({'msg': str(e)}), 500
+   
         
-    new_appointments = Appointment(user_id=user_id, freelancer_id=freelancer_id, date=body['date'], full_date=body['full_date'])
+    new_appointments = Appointment(user_id=user_id, freelancer_id=freelancer_id, day=day, time=time, full_date=full_date)
     db.session.add(new_appointments)
     db.session.commit()
     return jsonify({'msg': 'ok'}),200
@@ -651,18 +645,36 @@ def update_appointment(appointment_id):
     body = request.get_json(silent=True)
     if body is None:
         return jsonify({'msg': 'Send information in the body'}), 400
-    if 'date' in body:
-        appointment.date = body['date']
+    if 'day' in body:
+        day = body['day'].split('T')[0].strip()
+        appointment.day = day
     if 'full_date' in body:
-        appointment.full_date= body['full_date']
-    
+        full_date = body['full_date'].split('(')[0].strip().split('.')[0]
+        appointment.full_date= full_date
+    if 'time' in body:
+        time = body['time'].split('T')[1][0:5].strip()
+        appointment.time= time
+
     db.session.commit()
     return jsonify({'msg':'ok'}), 200
 
-@app.route('/api/send_mail')
+##### endpoint para eliminar un appointment #####
+@app.route('/appointments/<int:appointment_id>', methods=['DELETE'])
+@jwt_required()
+def delete_appointment(appointment_id):
+    appointment = Appointment.query.get(appointment_id)
+    if appointment is None:
+        raise APIException({'The id of appointment:{} does not exist'.format(appointment_id)}, status_code=400)
+    db.session.delete(appointment)
+    db.session.commit()
+    return jsonify({'msg':'ok'}), 200
+
+@app.route('/api/send_mail', methods=['GET'])
+@jwt_required()
 def send_mail():
-    msg = Message(subject='Confirmacion de cita', sender = 'palante4geeksAcademic@gmail.com', recipients=['nelys.martin1988@gmail.com'])
-    msg.html = "<h1> Confirmamos que tiene una cita agendada para...</h1>"
+    user_email = get_jwt_identity()
+    msg = Message(subject='Confirmacion de cita', sender = 'palante4geeksAcademic@gmail.com', recipients=[user_email])
+    msg.html = "<h1> Confirmamos que tiene una cita reservada con nuestros freelancers de PA'LANTE</h1>"
     mail.send(msg)
     return jsonify({'msg':'mensaje enviado'}), 200
 
