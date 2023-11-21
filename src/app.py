@@ -161,41 +161,6 @@ def update_user():
     user_serialized = user.serialize()
     return jsonify(user_serialized)
 
-##### ruta modificacion de foto #####
-"""
-@app.route("/uploadphoto", methods=['POST'])
-@jwt_required()
-def upload_photo():
-    current_email = get_jwt_identity()
-    if current_email is None:
-        return jsonify('Invalid credentials'), 401
-
-    user = User.query.filter_by(email=current_email).first()
-    if not user:
-        return jsonify('User not found'), 404
-    if 'file' not in request.files:
-        return jsonify('No file part'), 400
-    
-    body = request.files['file']
-
-    if body.filename == "":
-        return jsonify('No selected file'), 400
-
-    try:
-        upload_result = cloudinary.uploader.upload(body)
-    
-        # Actualizar la URL de la foto del usuario en la base de datos
-        user.URLphoto = upload_result['secure_url']
-        db.session.commit()
-
-        # Devolver la URL de la foto actualizada
-        return jsonify({'photo_url': user.URLphoto}), 200
-    except cloudinary.api.Error as e:
-        return jsonify({'error': str(e)}), 500
-    except Exception as e:
-        return jsonify({'error': 'An unexpected error occurred'}), 500
-"""
-
 ##### ruta modificacion de contraseña #####
 @app.route("/updatepassword", methods=['POST'])
 @jwt_required()

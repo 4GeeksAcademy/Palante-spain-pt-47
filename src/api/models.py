@@ -10,7 +10,7 @@ class User(db.Model):
     full_name = db.Column(db.String(60), unique=False, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    URLphoto = db.Column(db.String(200), unique=False, nullable=True, default=False)
+    URLphoto = db.Column(db.String(200), unique=False, nullable=True)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def __repr__(self):
@@ -30,7 +30,7 @@ class Freelancer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     full_name = db.Column(db.String(80), unique=True, nullable=False)
     age = db.Column(db.Integer, unique=False, nullable=False)
-    URLphoto = db.Column(db.String(200), unique=False, nullable=True, default='https://www.eloccidental.com.mx/incoming/gvhext-richard-burlton-htpmedsyzag-unsplash.jpg/ALTERNATES/LANDSCAPE_768/richard-burlton-HTpmedSyZag-unsplash.jpg')
+    URLphoto = db.Column(db.String(200), unique=False, nullable=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
