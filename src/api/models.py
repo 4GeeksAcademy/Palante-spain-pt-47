@@ -99,7 +99,8 @@ class Appointment(db.Model):
             "freelancer_id": self.freelancer_id,
             "day": self.day,
             "time": self.time,
-            "full_date": self.full_date
+            "full_date": self.full_date,
+            "status":self.status
         }
 
 class Meditations(db.Model):
