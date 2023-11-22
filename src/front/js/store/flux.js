@@ -387,7 +387,7 @@ del_appointment: async (appointment_id) => {
 
         fetch(process.env.BACKEND_URL + "/userregister", {
           method: "POST",
-          body: JSON.stringify(user),
+          body: JSON.stringify(body),
           headers: {
             "Content-Type": "application/json",
           },
@@ -403,8 +403,8 @@ del_appointment: async (appointment_id) => {
           .catch(error => console.log('error', error));
 
       },
-     
 
+      //Inicio de sesion del usuario
       loginUser: async (body) => {
         try {
           const resp = await fetch(process.env.BACKEND_URL + "/userlogin", {
@@ -447,33 +447,31 @@ del_appointment: async (appointment_id) => {
 
      
 
-      //Ejecuta para redirigir a una pagina privada (solo se accede si estas logeado)
-
-      loginPrivate: async () => {
+      //Modificacion de datos
+      updateData: (body) => {
         const token = sessionStorage.getItem('token');
 
-        const resp = await fetch(process.env.BACKEND_URL + "/private", {
-          method: 'GET',
+        fetch(process.env.BACKEND_URL + "/userupdate", {
+          method: "POST",
+          body: JSON.stringify(body),
           headers: {
             "Content-Type": "application/json",
-            "Authorization": 'Bearer ' + token // ⬅⬅⬅ authorization token
-          }
+            "Authorization": 'Bearer ' + token
+          },
         })
-        if (resp.status === 403) {
-          throw Error("Missing or invalid token");
-        } else if (resp.status !== 200) {
-          throw Error("Unknown error");
-        }
-
-
-        const data = await resp.json();
-        console.log("This is the data you requested", data);
-        return data
+          .then(response => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error('Se produjo un error en la red');
+            }
+          })
+          .then(data => console.log(data))
+          .catch(error => console.log('error', error));
 
       },
 
       //Envio freelancer a la base de datos
-
       signupFreelancer: (user) => {
 
         fetch(process.env.BACKEND_URL + "/freelancerregister", {
@@ -496,7 +494,6 @@ del_appointment: async (appointment_id) => {
       },
 
       //Inicio de sesion del freelance
-
       loginFreelance: async (body) => {
         try {
           const resp = await fetch(process.env.BACKEND_URL + "/freelancerlogin", {
@@ -524,7 +521,6 @@ del_appointment: async (appointment_id) => {
       },
 
       //Cierre de sesion
-
       borrarToken: () => {
         sessionStorage.removeItem('token');
         setStore({user_login:null})

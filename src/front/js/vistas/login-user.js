@@ -28,7 +28,7 @@ export const Login_user = () => {
     setSubmit(true);
     setTimeout(() => {
       setSubmit(false);
-      navigate("/");
+      navigate("/user-information");
     }, 1500);
 
     setUser('')

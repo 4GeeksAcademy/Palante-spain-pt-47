@@ -37,7 +37,7 @@ export const Navbar = () => {
           onClick={toggleMenu}
           aria-expanded={menuOpen ? "true" : "false"}
         >
-          <i class="fa-solid fa-bars"></i>
+          <i className="fa-thin fa-bars"></i>
         </button>
 
         <div className={`collapse navbar-collapse ${menuOpen ? "show" : ""}`}>

@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 import os
-from flask import Flask, request, jsonify, url_for, send_from_directory
+from flask import Flask, request, jsonify, url_for, send_from_directory, abort
 from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
@@ -11,7 +11,9 @@ from api.models import db, User, Freelancer, Readings, Meditations, Podcast, Fav
 from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
+
 import random
+
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
@@ -21,6 +23,9 @@ from flask_mail import Mail, Message
 from flask_bcrypt import Bcrypt
 from datetime import datetime
 #from models import Person
+
+import cloudinary
+import cloudinary.uploader
 
 ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../public/')
@@ -32,6 +37,12 @@ app.config["JWT_SECRET_KEY"] = os.environ.get("SUPER_SECRET")  # Change this!
 jwt = JWTManager(app)
 
 bcrypt = Bcrypt(app)
+
+cloudinary.config(
+    cloud_name="dyiaf9ubw",  # Reemplaza con tu CLOUD_NAME
+    api_key="929269828548575",     # Reemplaza con tu API_KEY
+    api_secret="API_SECRET" # Reemplaza con tu API_SECRET
+)
 
 # database condiguration
 db_url = os.getenv("DATABASE_URL")
@@ -115,27 +126,81 @@ def user_register():
 @app.route("/userlogin", methods=["POST"])
 def user_login():
     body = request.get_json(silent=True)
-    if body is None:
-        return jsonify('body must be sent'), 400
-    if 'email' not in body:
-        return jsonify('email is required'), 400
-    if 'password' not in body:
-        return jsonify('password is required'), 400
+
+    if not body or 'email' not in body or 'password' not in body:
+        return jsonify('Email and password are required'), 400
 
     user = User.query.filter_by(email=body['email']).first()
-    if user is None or user.email != body['email'] or not bcrypt.check_password_hash(user.password, body['password']):#user.password != body['password']: 
+    if user is None or user.email != body['email'] or not bcrypt.check_password_hash(user.password, body['password']): #user.password != body['password']: 
         return jsonify('incorrect email or password'),400
 
     access_token = create_access_token(identity=body['email'])
-    return jsonify(access_token=access_token)
+    return jsonify(access_token=access_token), 200
 
-
-##### ruta privada de usuario #####
-@app.route("/userprivate", methods=['GET'])
+##### ruta acceso a datos de usuario #####
+@app.route("/userdata", methods=['GET'])
 @jwt_required()
-def user_private():
-    email = get_jwt_identity()
-    return jsonify(email = email)
+def userdata():
+    current_email = get_jwt_identity()
+    if current_email is None:
+        return jsonify('invalid credentials'), 401
+    
+    user = User.query.filter_by(email=current_email).first()
+    if user is None:
+        abort(404, description='User not found')
+    
+    return(user.serialize()), 200
+
+##### ruta de modificacion de datos #####
+@app.route("/userupdate", methods=['POST'])
+@jwt_required()
+def update_user():
+    current_email = get_jwt_identity()
+    if current_email is None:
+        return jsonify('invalid credentials'), 401
+    
+    user = User.query.filter_by(email=current_email).first()
+    body = request.get_json(silent=True)
+    
+    if body is None:
+        return jsonify('body must be sent'), 400
+    if 'full_name' in body:
+        user.full_name = body['full_name']
+    if 'email' in body:
+        user.email = body['email']
+    if 'URLphoto' in body:
+        user.URLphoto = body['URLphoto']
+    
+    db.session.commit()
+    user_serialized = user.serialize()
+    return jsonify(user_serialized)
+
+##### ruta modificacion de contraseña #####
+@app.route("/updatepassword", methods=['POST'])
+@jwt_required()
+def update_password():
+    current_email = get_jwt_identity()
+    if current_email is None:
+        return jsonify('invalid credentials'), 401
+    
+    user = User.query.filter_by(email=current_email).first()
+    body = request.get_json(silent=True)
+
+    if body is None:
+        return jsonify('body must be sent'), 400
+    
+    # Cambiar contraseña
+    if 'password' in body and 'current_password' in body:
+        if bcrypt.check_password_hash(user.password, body['current_password']):
+            # Hash de la nueva contraseña y asignación al usuario   
+            pw_hash = bcrypt.generate_password_hash(body['password']).decode('utf-8')
+            user.password = pw_hash    
+        else:
+            return jsonify('Incorrect current password'), 400
+        
+    db.session.commit()
+    user_serialized = user.serialize()
+    return jsonify(user_serialized)
 
                 #########FREELANCERS#########
 

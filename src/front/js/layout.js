@@ -10,6 +10,8 @@ import { Signup_freelancer } from "./vistas/signup-freelance";
 import { Login_freelance } from "./vistas/login-freelance";
 import injectContext from "./store/appContext";
 
+import { User_information } from "./vistas/user-information";
+
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 
@@ -40,6 +42,7 @@ const Layout = () => {
             <Route element={<Home />} path="/" />
             <Route element={<Login_user />} path="/login-user" />
             <Route element={<Login_freelance />} path="/login-freelance" />
+            <Route element={<User_information />} path="/user-information" />
             <Route element={<Readings />} path="/readings" />
             <Route element={<Podcast />} path="/podcast" />
             <Route element={<Meditations />} path="/meditations" />

@@ -170,3 +170,56 @@ color: #3E63BA;
 }
 
 
+
+.boton-actualizar{
+    background-color: #21BA45;
+    padding: 0.4em;
+    box-shadow: inset 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    color: white;
+    border: none;
+    border-radius: 7px;
+    display: inline-grid;
+    justify-content: center;
+    width: 23%;
+    margin: auto;
+    font-weight: 500;
+    font-size: 18px;
+}
+.form-data{
+    border: 2px solid red;
+    margin-bottom: 2rem;
+}
+.portada{
+    background-image: url('../img/logo_Perfil.jpg');
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 45px;
+    font-weight: 500;
+}
+.row{
+    border: 1px solid #e9ecef;
+    width: 80%;
+    margin: 10rem;
+}
+#informacion-personal{
+    text-transform: capitalize;
+    margin-bottom: 1.5em;
+    background-color: #e9ecef;
+    padding: 1.5em 0 1.5em 2em;
+}
+.texo-informacion{
+    margin: 0;
+}
+.fa{
+    margin-right: 0.3rem;
+}
+.img-profile{
+    width: 200px;
+    height: 200px;
+    border: 2px solid red;
+    border-radius: 50%;
+}
+.form-image{
+    display: flex;
+    justify-content: center;
+}
