@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Photo } from "../component/photoProfile";
-import fondo from "/workspaces/spain_part_time47/src/front/img/logo_Perfil.jpg";
+import fondo from "../../img/logo_Perfil.jpg";
 
 export const User_information = () => {
 
