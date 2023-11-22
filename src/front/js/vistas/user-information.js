@@ -30,9 +30,11 @@ export const User_information = () => {
   };
   return (
     <div className="container-fluid">
-      <div className="jumbotron" style={{ backgroundImage: `url(${fondo})` }}>
-        <h1 className="portada">datos personales</h1>
+      <div className="jumbotron" >
+        <img className="perfil_informacion" src={fondo}/>
+        <div className="perfil-saludo"><strong>Datos Personales</strong></div>
       </div>
+
       <div className="row linea-datos">
         <nav className="navbar expand-lg" id="informacion-personal">
           <h3 className="texo-informacion"><i className="fa fa-circle-info"></i>información básica</h3>
