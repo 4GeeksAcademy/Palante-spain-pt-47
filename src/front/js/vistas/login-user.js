@@ -28,133 +28,59 @@ export const Login_user = () => {
     setSubmit(true);
     setTimeout(() => {
       setSubmit(false);
-      navigate("/user-information");
+      navigate("/perfil_user");
     }, 1500);
 
     setUser('')
   }
-  
-  // Si submit es true, muestra un mensaje de confirmación y redirige a home
-  /*if (submitted) {
-    actions.loginPrivate(user)
-    setTimeout(() => {
-      navigate("/");
-    }, 800);
-
-    return (
-      <div className="container">
-        <p className="alert alert-warning">Haz iniciado sesion</p>
-      </div>
-    );
-  };*/
 
   return (
-
     <>
+      <div className="contenedor">
+        <div className="imagen user-login" style={{ backgroundImage: `url(${home})` }}>
 
-<div className="contenedor">
-<div className="imagen user-login" style={{ backgroundImage: `url(${home})` }}>
-
-<div className="row principal-formulario">
-    <div className="col-sm-12 col-md-4 formulario-user">
-    <h1 className="titulo-user"><strong>Pa'lante</strong></h1>
-    <form className="form-inputs" onSubmit={handleSubmit}>
-          <div className="container-inputs">
-            <div className="detalle-input">
-              <input type="email" 
-                className="form-control" 
-                name="email" 
-                id="exampleInputEmail1" 
-                placeholder="Correo Electrónico" 
-                aria-describedby="emailHelp" 
-                value={user.email} 
-                onChange={(e) => setUser({ ...user, email: e.target.value })} 
-            />
+          <div className="row principal-formulario">
+            <div className="col-sm-12 col-md-4 formulario-user">
+              <h1 className="titulo-user"><strong>Pa'lante</strong></h1>
+              <form className="form-inputs" onSubmit={handleSubmit}>
+                <div className="container-inputs">
+                  <div className="detalle-input">
+                    <input type="email"
+                      className="form-control"
+                      name="email"
+                      id="exampleInputEmail1"
+                      placeholder="Correo Electrónico"
+                      aria-describedby="emailHelp"
+                      value={user.email}
+                      onChange={(e) => setUser({ ...user, email: e.target.value })}
+                    />
+                  </div>
+                  <div className="detalle-input">
+                    <input type="Password"
+                      className="form-control"
+                      name="Password"
+                      id="exampleInputPassword1"
+                      placeholder="Contraseña"
+                      aria-describedby="emailHelp"
+                      value={user.password}
+                      onChange={(e) => setUser({ ...user, password: e.target.value })}
+                    />
+                  </div>
+                </div>
+                <button className="boton-login">Inicia sesión</button>
+                {submit && <p className="alert alert-success p-1 text-center mt-1" role="alert">Sesión Iniciada</p>}
+                <Link to="">
+                  <p className="opcion-contraseña">¿Has olvidado tu contraseña?</p>
+                </Link>
+              </form>
+              <p className="ruta-register">¿Aún no tienes cuenta? <Link to="/signup-user" className="ruta-registers">Registrate</Link></p>
             </div>
-            <div className="detalle-input">
-              <input type="Password" 
-                className="form-control" 
-                name="Password" 
-                id="exampleInputPassword1" 
-                placeholder="Contraseña" 
-                aria-describedby="emailHelp" 
-                value={user.password} 
-                onChange={(e) => setUser({ ...user, password: e.target.value })} 
-              />
+            <div class="col-sm-12 col-md-8">
+
             </div>
           </div>
-          <button className="boton-login">Inicia sesión</button>
-          {submit && <p className="alert alert-success p-1 text-center mt-1" role="alert">Sesión Iniciada</p>}
-          <Link to=""> 
-            <p className="opcion-contraseña">¿Has olvidado tu contraseña?</p>
-          </Link>
-        </form>
-        <p className="ruta-register">¿Aún no tienes cuenta? <Link to="/signup-user" className="ruta-registers">Registrate</Link></p>
-    </div>
-    <div class="col-sm-12 col-md-8">
-      
-    </div>
-    </div>
-
-
-  </div>
-</div>
-
-
-
-
-    
+        </div>
+      </div>
     </>
   )
 }
-
-
-
-
-
-
-
-// <div className="contenedor">
-//       	<div className="imagen user-login" style={{ backgroundImage: `url(${home})` }}>
-
-
-
-//       <div className="container-form">
-//         <div className="container-logo">
-//           <h1 className="logo"><strong>Pa'lante</strong></h1>
-//         </div>
-//         <form className="form-inputs" onSubmit={handleSubmit}>
-//           <div className="container-inputs">
-//             <div className="detalle-input">
-//               <input type="email" 
-//                 className="form-control" 
-//                 name="email" 
-//                 id="exampleInputEmail1" 
-//                 placeholder="Correo Electrónico" 
-//                 aria-describedby="emailHelp" 
-//                 value={user.email} 
-//                 onChange={(e) => setUser({ ...user, email: e.target.value })} 
-//             />
-//             </div>
-//             <div className="detalle-input">
-//               <input type="Password" 
-//                 className="form-control" 
-//                 name="Password" 
-//                 id="exampleInputPassword1" 
-//                 placeholder="Contraseña" 
-//                 aria-describedby="emailHelp" 
-//                 value={user.password} 
-//                 onChange={(e) => setUser({ ...user, password: e.target.value })} 
-//               />
-//             </div>
-//           </div>
-//           <button className="boton-login">Inicia sesion</button>
-//           {submit && <p className="alert alert-success p-1 text-center mt-1" role="alert">Sesión Iniciada</p>}
-//           <Link to=""> 
-//             <p className="opcion-contraseña">¿Has olvidado tu contraseña?</p>
-//           </Link>
-//         </form>
-//         <p className="ruta-register">¿Aún no tienes cuenta? <Link to="/signup-user" className="ruta-registers">Registrate</Link></p>
-//       </div>
-//     </div>
-//     </div>
