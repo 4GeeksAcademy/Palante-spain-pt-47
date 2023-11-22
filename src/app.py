@@ -7,7 +7,7 @@ from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
 from api.utils import APIException, generate_sitemap
-from api.models import db, User, Freelancer, Readings, Meditations, Podcast, Favorite_Meditations, Favorite_Podcast, Favorite_Readings,Appointment
+from api.models import db, User, Freelancer, Readings, Meditations, Podcast, Favorite_Meditations, Favorite_Podcast, Favorite_Readings,Appointment, Events
 from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
@@ -677,6 +677,112 @@ def send_mail():
     msg.html = "<h1> Confirmamos que tiene una cita reservada con nuestros freelancers de PA'LANTE</h1>"
     mail.send(msg)
     return jsonify({'msg':'mensaje enviado'}), 200
+
+
+
+#### EVENTOS ####
+
+#### endpoint para ver todos los eventos ####
+
+@app.route('/event', methods=['GET'])
+def get_event():
+    events_all=Events.query.all()
+    events_list=list(map(lambda events:events.serialize(), events_all))
+    return jsonify(events_list), 200
+
+#### endpoint para ver cada evento ####
+
+@app.route('/event/<int:events_id>', methods=['GET'])
+def get_events_id(events_id):
+    events= Events.query.get(events_id)
+    if events is None:
+        return jsonify({"message": "Event not found"}), 400
+    else:
+        return jsonify({"message": "ok", "inf":events.serialize()})
+
+#### endpoint para modificar evento ####
+
+@app.route('/event/<int:events_id>', methods=['PUT'])
+def update_event(events_id):
+    event = Events.query.get(events_id)
+    if event is None:
+        return jsonify({"message":"The id of event:{} does not exist".format(events_id)})
+    body = request.get_json(silent=True)
+    if body is None:
+        return jsonify({"message":"Send information in the body"}), 400
+    if 'title' in body:
+        event.tittle = body['title']
+    if 'date' in body:
+        event.date = datetime.stptime(body['date'],'%Y-%m-%d %H:%M:%S')   
+    if 'address' in body:
+        event.address = body['address']
+    if 'user_id' in body:
+        event.user_id = body['user_id']
+    db.session.commit()
+    return jsonify({"message": "ok"}), 200
+
+#### endpoint para crear evento ####
+@app.route('/event', methods=['POST'])
+def create_event():
+    data = request.get_json(silent=True)
+
+    if not data or not all(key in data for key in('title', 'date', 'address', 'user_id',)):
+        return jsonify({"message": "Missing data to create the event"}), 400
+    
+    try:
+        date = datetime.strptime(data['date'], '%Y-%m-%d %H:%M:%S')
+
+        new_event = Events(title=data['title'], date=date, address=data['address'], user_id=data['user_id'])
+        db.session.add(new_event)
+        db.session.commit()
+
+        return jsonify({"message":"Event created successfully"}), 201
+    
+    except ValueError:
+        return jsonify({"message": "Invalid date format"}), 400
+    
+### endpoint para unirse al evento ###
+
+@app.route('/join_event/<int:event_id>', methods=['POST'])
+def join_event(event_id):
+    body = request.get_json(silent=True)
+    
+    if body is None:
+        return jsonify({"message": "A user_id is required to join the event"}), 400
+
+    try: 
+        event_to_join = Events.query.get(event_id)
+        print(event_to_join)
+        if event_to_join is None:
+            return jsonify({"message": "The event you're trying to join doesn't exist"}), 404
+        
+        new_attendee = Attendees_event(user_id=body["user_id"], events_id=event_id)
+        db.session.add(new_attendee)
+        db.session.commit()
+
+        return jsonify({"message": f"You have successfully joined event {event_id}"}), 201
+    
+    except Exception as e: 
+        return jsonify({"message": "Error joining the event", "error": str(e)}), 500
+
+#### endpoint para cancelar evento ####
+
+@app.route('/delete_event/<int:event_id>', methods=['DELETE'])
+def delete_event(event_id):
+    try:
+        event_to_delete = Events.query.get(event_id)
+
+        if event_to_delete is None:
+            return jsonify({"message": "The event you're trying to delete does not exist"}), 404
+        
+        db.session.delete(event_to_delete)
+        db.session.commit()
+
+        return jsonify({"message": f"Event {event_id} deleted successfully"}), 200
+    
+    except Exception as e:
+        return jsonify({"message": "Error deleting the event", "error": str(e)}), 500
+
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
