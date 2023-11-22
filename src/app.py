@@ -214,14 +214,23 @@ def gettasks():
     return jsonify([task.serialize() for task in tasks])
 
 ##### ruta crear tareas #####
-@app.route('/create-task', methods=['POST'])
+@app.route('/createtask', methods=['POST'])
+@jwt_required()
 def createtask():
+
+    current_email = get_jwt_identity()
+    if current_email is None:
+        return jsonify('invalid credentials'), 401
     body = request.get_json(silent=True)
-    if body is None:
+    if body is None or 'tasks' not in body:
         return jsonify('body must be sent'), 400
-    if 'tasks' not in body:
-        return jsonify('task required'), 400
-    new_task = Tasks(tasks=body['tasks'], user_id=body['user_id'])
+    
+    user = User.query.filter_by(email=current_email).first()
+    # Verifica si se encontró el usuario
+    if not user:
+        return jsonify('user not found'), 404
+
+    new_task = Tasks(tasks=body['tasks'], user_id=user.id)
 
     db.session.add(new_task)
     db.session.commit()
@@ -229,29 +238,59 @@ def createtask():
     return jsonify('task created successfully'), 201
 
 ##### ruta modificar tareas #####
-@app.route('/tasks/<int:task_id>', methods=['PUT'])
+@app.route('/updatetask/<int:task_id>', methods=['PUT'])
+@jwt_required()
 def update_task(task_id):
-    body = Tasks.query.get(task_id)
+    current_email = get_jwt_identity()
+    if current_email is None:
+        return jsonify('invalid credentials'), 401
 
-    if body:
-        body = request.get_json()
-        body.tasks = body['tasks']
-
-        db.session.commit()
-        return jsonify(body.serialize())
-    else:
-        return jsonify('Not found'), 404
+    user = User.query.filter_by(email=current_email).first()
+    if not user:
+        return jsonify('user not found'), 404
+    
+    body = request.get_json(silent=True)
+    if body is None or 'tasks' not in body:
+        return jsonify('body must be sent with "tasks"'), 400
+    
+    task = Tasks.query.get(task_id)
+    if not task:
+        return jsonify('task not found'), 404
+    
+    # Verifica si el usuario que intenta modificar la tarea es el propietario de la tarea
+    if task.user_id != user.id:
+        return jsonify('unauthorized'), 403
+    
+    task.tasks = body['tasks']
+    
+    db.session.commit()
+    task_serialized = task.serialize()
+    return jsonify(task_serialized)
 
 ##### ruta eliminar tareas #####    
-@app.route('/tasks/<int:task_id>', methods=['DELETE'])
+@app.route('/deletetask/<int:task_id>', methods=['DELETE'])
+@jwt_required()
 def delete_task(task_id):
-    body = Tasks.query.get(task_id)
-    if body:
-        db.session.delete(body)
-        db.session.commit()
-        return jsonify('task deleted successfully')
-    else:
-        return jsonify('not found'), 404
+    current_email = get_jwt_identity()
+    if current_email is None:
+        return jsonify('invalid credentials'), 401
+
+    user = User.query.filter_by(email=current_email).first()
+    if not user:
+        return jsonify('user not found'), 404
+    
+    task = Tasks.query.get(task_id)
+    if not task:
+        return jsonify('task not found'), 404
+    
+    # Verifica si el usuario que intenta eliminar la tarea es el propietario de la tarea
+    if task.user_id != user.id:
+        return jsonify('unauthorized'), 403
+    
+    db.session.delete(task)
+    db.session.commit()
+    
+    return jsonify('task deleted successfully')
     
                 #########FREELANCERS#########
 
