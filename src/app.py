@@ -7,7 +7,7 @@ from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
 from api.utils import APIException, generate_sitemap
-from api.models import db, User, Freelancer, Readings, Meditations, Podcast, Favorite_Meditations, Favorite_Podcast, Favorite_Readings,Appointment, Events
+from api.models import db, User, Tasks, Freelancer, Readings, Meditations, Podcast, Favorite_Meditations, Favorite_Podcast, Favorite_Readings,Appointment, Events
 from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
@@ -202,6 +202,57 @@ def update_password():
     user_serialized = user.serialize()
     return jsonify(user_serialized)
 
+                #########TODOLIST#########
+
+##### ruta de tareas #####                
+@app.route('/tasks', methods=['GET'])
+def gettasks():
+    tasks = Tasks.query.all()
+    if tasks is None:
+        return jsonify('there are no tasks')
+    
+    return jsonify([task.serialize() for task in tasks])
+
+##### ruta crear tareas #####
+@app.route('/create-task', methods=['POST'])
+def createtask():
+    body = request.get_json(silent=True)
+    if body is None:
+        return jsonify('body must be sent'), 400
+    if 'tasks' not in body:
+        return jsonify('task required'), 400
+    new_task = Tasks(tasks=body['tasks'], user_id=body['user_id'])
+
+    db.session.add(new_task)
+    db.session.commit()
+
+    return jsonify('task created successfully'), 201
+
+##### ruta modificar tareas #####
+@app.route('/tasks/<int:task_id>', methods=['PUT'])
+def update_task(task_id):
+    body = Tasks.query.get(task_id)
+
+    if body:
+        body = request.get_json()
+        body.tasks = body['tasks']
+
+        db.session.commit()
+        return jsonify(body.serialize())
+    else:
+        return jsonify('Not found'), 404
+
+##### ruta eliminar tareas #####    
+@app.route('/tasks/<int:task_id>', methods=['DELETE'])
+def delete_task(task_id):
+    body = Tasks.query.get(task_id)
+    if body:
+        db.session.delete(body)
+        db.session.commit()
+        return jsonify('task deleted successfully')
+    else:
+        return jsonify('not found'), 404
+    
                 #########FREELANCERS#########
 
 ##### ruta de registro de freelancer #####
