@@ -6,6 +6,12 @@
     height: 350px;
     background-image: url(https://images.pexels.com/photos/10545733/pexels-photo-10545733.jpeg?auto=compress&cs=tinysrgb&w=600);
 }
+.evento_somos {
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    color: #102d7b;
+    font-size: 16px;
+}
 .eventos-dos {
     border: 8px solid #fff;
     border-radius: 30px;

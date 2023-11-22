@@ -7,7 +7,7 @@ from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
 from api.utils import APIException, generate_sitemap
-from api.models import db, User, Freelancer, Readings, Meditations, Podcast, Favorite_Meditations, Favorite_Podcast, Favorite_Readings,Appointment, Events
+from api.models import db, User, Freelancer, Readings, Meditations, Podcast, Attendees_event, Favorite_Meditations, Favorite_Podcast, Favorite_Readings,Appointment, Events
 from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
@@ -745,8 +745,42 @@ def send_mail():
 
 
 
-#### EVENTOS ####
+#### EVENTOS MODIFICADOS NELYS####
+### endpoint para unirse al evento ###
 
+@app.route('/event_join/<int:event_id>', methods=['POST'])
+@jwt_required()
+def join_event(event_id):
+    user_email = get_jwt_identity()
+    print(user_email)
+    user = User.query.filter_by(email=user_email).first()
+    print(user)
+    user_id = user.id
+
+    try:
+        existing_event = Attendees_event.query.filter_by(user_id=user_id, events_id=event_id).first()
+        if existing_event:
+            return jsonify({'msg': 'Ya estás unido a este evento'}), 400
+        
+        new_attendee = Attendees_event(user_id=user_id, events_id=event_id)
+        db.session.add(new_attendee)
+        db.session.commit()
+
+        return jsonify({"message": f"You have successfully joined event {event_id}"}), 201
+
+    except Exception as e:
+        return jsonify({"message": "Error joining the event", "error": str(e)}), 500
+
+@app.route('/event_join/<int:event_id>', methods=['GET'])
+@jwt_required()
+def get_event_join(event_id):
+    unidos = Attendees_event.query.filter_by(events_id=event_id).all()
+    unidos_list = list(map(lambda unidos: unidos.serialize(), unidos))
+    return jsonify({'msg': 'ok', 'inf':unidos_list}),200
+
+
+    ### OLIVER ####
+    
 #### endpoint para ver todos los eventos ####
 
 @app.route('/event', methods=['GET'])
@@ -806,29 +840,7 @@ def create_event():
     except ValueError:
         return jsonify({"message": "Invalid date format"}), 400
     
-### endpoint para unirse al evento ###
 
-@app.route('/join_event/<int:event_id>', methods=['POST'])
-def join_event(event_id):
-    body = request.get_json(silent=True)
-    
-    if body is None:
-        return jsonify({"message": "A user_id is required to join the event"}), 400
-
-    try: 
-        event_to_join = Events.query.get(event_id)
-        print(event_to_join)
-        if event_to_join is None:
-            return jsonify({"message": "The event you're trying to join doesn't exist"}), 404
-        
-        new_attendee = Attendees_event(user_id=body["user_id"], events_id=event_id)
-        db.session.add(new_attendee)
-        db.session.commit()
-
-        return jsonify({"message": f"You have successfully joined event {event_id}"}), 201
-    
-    except Exception as e: 
-        return jsonify({"message": "Error joining the event", "error": str(e)}), 500
 
 #### endpoint para cancelar evento ####
 

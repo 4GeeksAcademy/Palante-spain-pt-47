@@ -29,37 +29,7 @@ export const Appointment = () => {
         setSelectedTime(newSelectedTime);
     };
     
-	// const enviarCita = async () => {
-    //     try {
-    //         await actions.handler_appointments(freelancer_id, selectedDay, selectedTime, process_date);
-    //         setSubmitted(true);
-    //         await actions.send_mail(selectedDay, selectedTime)
 
-    //     } catch (error) {
-    //         // Manejar el error obtenido desde el backend
-    //         if (error.response && error.response.status === 400 && error.response.data.msg === 'El freelancer esta ocupado') {
-    //             // Muestra una alerta indicando que el freelancer está ocupado
-    //             setSubmitted(false);
-    //             alert('El freelancer está ocupado en este horario. Por favor, elige otro horario.');
-    //         } else {
-    //             // Maneja otros errores si es necesario
-    //             console.error('Error:', error);
-    //         }
-    //     }
-    // };
-	// // Si submitted es true, muestra un mensaje de confirmación y redirige después de un breve retraso
-	// if (submitted) {
-	// 	setTimeout(() => {
-    //        window.location.href = "/";
-	// 	}, 2000);
-	// 	return (
-	// 		<div className="container">
-	// 		  <div className="alert alert-warning">
-	// 		  Tu cita ha sido creada.
-	// 		  </div>
-	// 		</div>
-	// 	  );
-	// 	}
 
     return (
         <div className="container-fluid">

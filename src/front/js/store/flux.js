@@ -11,6 +11,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       favorites_meditations: [],
       user_login: sessionStorage.getItem('token'),
       citas: [],
+      evento_1:[],
+      evento_2:[],
+      evento_3:[],
 
       demo: [
         {
@@ -267,10 +270,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       //agregar una cita
       handler_appointments: async (freelancer_id, selectedDay, selectedTime, process_date) => {
         const token = sessionStorage.getItem('token');
-        console.log('freelancer_id', freelancer_id)
-        console.log('selectedDay', selectedDay)
-        console.log('selectedTime', selectedTime)
-        console.log('full_date', process_date)
+        
         const resp = await fetch(process.env.BACKEND_URL + `/appointment/${freelancer_id}`, {
           method: "POST",
           headers: {
@@ -371,9 +371,84 @@ const getState = ({ getStore, getActions, setStore }) => {
             "Authorization": 'Bearer ' + token // ⬅⬅⬅ authorization token
           },
         })
-        await getActions().get_citas();
+        getActions().get_citas();
 
       },
+//unirse a un evento
+event_join: async (event_id) => {
+  const token = sessionStorage.getItem('token');
+  
+  if (!token) {
+    // Manejo si el token no está presente
+    console.error('Token not found');
+    return;
+  }
+
+  try {
+    const resp = await fetch(process.env.BACKEND_URL + `/event_join/${event_id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": 'Bearer ' + token
+      },
+    });
+
+    if (resp.ok) {
+      
+      alert('Te has unido a este evento. Contamos con tu presencia y se te ha enviado un correo');
+    } else {
+      const data = await resp.json();
+      if (resp.status === 400 && data.msg === 'Ya estas unido a este evento') {
+      
+        
+        alert('Ya estás unido a este evento');
+      } else {
+        console.error('Error:', data.msg || 'Ha ocurrido un error al unirte al evento');
+      }
+    }
+  } catch (error) {
+    console.error('Fetch error:', error);
+    // Puedes mostrar un mensaje de error al usuario si lo deseas
+  }
+},
+
+//para ver todos los usuarios unidos al evento
+get_event: async (event_id) => {
+  const token = sessionStorage.getItem('token');
+  try {
+    const resp = await fetch(process.env.BACKEND_URL + `/event_join/${event_id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": 'Bearer ' + token
+      },
+    });
+  
+
+    if (resp.ok) {
+      const response = await resp.json();
+      const users = response.inf; // Obtener los IDs de usuario de la lista
+      console.log('users', users)
+      if (event_id==1){
+        setStore({ evento_1: users });
+      }
+      else if (event_id==2){
+        setStore({ evento_2: users });
+      }
+      else if (event_id==3){
+        setStore({ evento_3: users });
+      }
+      
+    } else {
+      console.error('Error getting events:', resp.status);
+    }
+  } catch (error) {
+    console.error('Error getting events:', error);
+  }
+},
+
+
+
 
       //Envio usuario a la base de datos
 
