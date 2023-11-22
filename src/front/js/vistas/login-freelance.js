@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
-import fondo from "/workspaces/spain_part_time47/src/front/img/imghomeazul__1_.png"
+import fondo from "../../img/imghomeazul__1_.png"
 
 export const Login_freelance = () => {
 
