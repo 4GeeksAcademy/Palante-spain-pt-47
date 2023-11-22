@@ -3,7 +3,7 @@ import { Context } from "../store/appContext";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import "../../styles/appointment.css";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import readingsinicio from "../../img/readingsinicio.jpg";
 
 
