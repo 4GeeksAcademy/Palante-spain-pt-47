@@ -15,6 +15,7 @@ import { User_information } from "./vistas/user-information";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 
+import { TodoList } from "./vistas/todo-list";
 import { Readings } from "./vistas/readings";
 import { Podcast } from "./vistas/podcast";
 import { Meditations } from "./vistas/meditations";
@@ -43,6 +44,7 @@ const Layout = () => {
             <Route element={<Login_user />} path="/login-user" />
             <Route element={<Login_freelance />} path="/login-freelance" />
             <Route element={<User_information />} path="/user-information" />
+            <Route element={<TodoList />} path="/todo-list" />
             <Route element={<Readings />} path="/readings" />
             <Route element={<Podcast />} path="/podcast" />
             <Route element={<Meditations />} path="/meditations" />
