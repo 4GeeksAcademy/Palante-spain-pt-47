@@ -1,0 +1,46 @@
+
+input#fecha {
+    width: 100%;
+}
+.fot-freelancer {
+    border-radius: 5rem;
+    width: 100px;
+    height: 100px;
+}
+.btn_cita {
+    background-color:  #102d7b;
+   color: white;
+    padding: 1rem;
+    border-radius: 19px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .row.freelancer_citas {
+    padding: 2rem;
+    color: #102d7b;
+    font-family: 'Poppins', sans-serif;
+}
+.col-sm-12.col-md-7.sacar_cita {
+    background: #fffbf2;
+    padding: 2rem;
+    border-radius: 2rem;
+}
+
+.datos_freelancer {
+    padding: 1rem;
+}
+p.nombre_freelancer {
+    color: #397FDB;
+    font-size: 24px;
+}
+.rdt {
+    position: relative;
+    margin-bottom: 1rem;
+}
+.fa-envelope:before {
+    padding: 0.5rem;
+    content: "\f0e0";
+}

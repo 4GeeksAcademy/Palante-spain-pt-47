@@ -1,0 +1,63 @@
+.container-fluid.favorites_readings {
+    background: #FFEBB9;
+    padding: 2rem;
+}
+.container-fluid.favorites_podcast {
+    background: white;
+    padding: 2rem;
+}
+.container-fluid.favorites_meditations {
+    background:#f9a49f75;
+    padding: 2rem;
+}
+.img_favorites_readings {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 2rem;
+    padding: 0.5rem;
+}
+.favorites_readings_title {
+   
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
+    color: #102d7b;
+    padding: 1rem;
+    margin: 1rem 0rem 1rem 0rem;
+    background: #ffffff78;
+    border-radius: 1rem;
+}
+
+.row.favorites_readings {
+    display: inline-block;
+}
+h5.title_favorites_readings {
+    color: #102d7b;
+    font-family: popins sans-serif;
+    font-size: 12px;
+    margin-top: 10px;
+    padding: 0;
+}
+i.fa-solid.fa-trash {
+    color: #102d7b;
+}
+.descargar_favorites_readings {
+    color: white;
+    text-decoration: none;
+    background: #102D7B;
+    font-size: 15px;
+    font-family: popins sans-serif;
+    padding: 9px;
+    border-radius: 10px;
+    text-align: center;
+   
+}
+.card-body.favorites_reading.d-flex {
+    padding: 0;
+    justify-content: space-evenly;
+}
+.card_favorites_readings {
+    padding: 0;
+    margin: 0rem 1rem 1rem 1rem;
+    display: grid;
+}

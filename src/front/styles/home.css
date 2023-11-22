@@ -1,7 +1,358 @@
-/*
-    home.css: This website contains selectors only used in home.css
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+.contenedor {
+    width: 100%;
+}
+  
+.imagen.principal {
+    padding: 185px 46px;
+    background-size: auto;
+    background-position: top;
+    background-repeat: no-repeat;
+
+}
+
+
+
+
+
+.titulo {
+    padding: 20px;
+    font-size: 62px;
+    font-family: 'Poppins', sans-serif;
+    color: #102d7b;
+    background: #ffffff2b;
+    font-weight: 700;
+}
+
+.subtituloblanco {
+        padding: 20px;
+        color:white;
+        font-family: 'Poppins', sans-serif;
+}
+
+.subtitulo{
+    font-weight: 300;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    color: #102d7b;
+}
+
+
+.p_contenido_conocenos {
+    font-size: 16px;
+    color: #3c3c3c;
+    margin-top: 2rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.p_contenido_lista {
+    font-size: 16px;
+    color: #3c3c3c;
+    font-family: 'Poppins', sans-serif;
+}
+
+.h1_contenido_conocenos_title {
+    margin-bottom: 2rem;
+    color: #102d7b;
+    margin-top: 2rem;
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.separador {
+    margin: 1.5rem 0;
+    width: 10%;
+    height: 5px !important;
+}
+
+
+.quehacemos {
+    background: #fcedc6;
+    padding: 100px 0px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    color: #102d7b;
+}
+
+.textoquehacemos {
+    padding: 0px 0px 0px 40px;
+}
+
+.todolist-uno {
+    border: 8px solid #fff;
+    border-radius: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 350px;
+    background-image: url(https://st3.depositphotos.com/9795234/15176/i/450/depositphotos_151764934-stock-photo-young-woman-showing-her-heartfelt.jpg);
+}
+
+.todolist-dos {
+    border: 8px solid #fff;
+    border-radius: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 350px;
+    background-image: url(https://img.freepik.com/fotos-premium/grupo-clase-aptitud-que-ejercita-parque_13339-10766.jpg?size=626&ext=jpg&ga=GA1.1.1016474677.1696809600&semt=ais);
+}
+.todolist-tres {
+    border: 8px solid #fff;
+    border-radius: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 350px;
+    background-image: url(https://img.freepik.com/foto-gratis/nina-hermosa-sonriente-su-novio-guapo-ropa-casual-verano-familia-feliz-tomando-selfie-autorretrato-si-mismos-camara-telefono-inteligente-divirtiendose-calle-muestra-lengua_158538-5464.jpg?size=626&ext=jpg&ga=GA1.1.1826414947.1699833600&semt=ais);
+}
+
+.subtitulofoto {
+    text-align: center;
+    padding: 142px 20px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+span {
+    padding: 20px 60px;
+    background: #00000047;
+}
+
+.h1_contenido_todolist {
+    margin-bottom: 4rem;
+    color: #102d7b;
+    margin-top: 2rem;
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn_colaborar {
+    float: left;
+    color: white;
+    padding: 1rem;
+    background: #e9959b;
+    border-radius: 7px;
+    border: 0;
+    font-size: 22px;
+    margin-top: 3rem;
+}
+
+.manos {
+    background-position: top;
+    border-radius: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.manosapoyo {
+    background-position: top;
+    border-radius: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.psicologos {
+    background-position: top;
+    border-radius: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.iniciativa {
+    padding-right: 40px;
+}
+
+.contenidohacemos, .contenidoconocenos {
+    margin: 0 auto;
+    max-width: 1140px;
+}
+
+.listado {
+    font-weight: 700;
+    color: #397fdb;
+    font-size: 24px;
+}
+.fa-li {
+    top: 3px;
+    color: #397fdb;
+}
+
+.h1_contenido_conocenos_equipo {
+    margin-top: 2rem;
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
+    color: #397FDB;
+}
+
+.equipo {
+    font-size: 16px;
+    color: #413f6a;
+    margin-top: 2rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.blanco {
+    background: #ffffff;
+    padding: 100px 0px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    color: #102d7b;
+}
+
+.textoequipo {
+    padding: 0px 40px 0px 0px;
+}
+
+
+.contenido_equipo {
+    font-size: 20px;
+    margin-top: 2rem;
+    margin-left: 5rem;
+    font-family: roboto;
+    color: #413F6A;
+    width: 70%;
+}
+
+.h1_eventos {
+    margin-bottom: 4rem;
+    color: #102d7b;
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.evento_1 {
+    background: #397fdb;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+.dia {
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px;
+    color: white;
+    margin: 1rem 1rem 0rem 1rem;
+}
+.mes {
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    margin: 0rem 1.5rem 0rem 1.5rem;
+}
+.prox_evento {
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    font-size: 16px;
+    margin-top: 2rem;
+}
+.linea_evento {
+    color: white;
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+}
+.title_prox_evento {
+    font-weight: 100;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    font-size: 24px;
+}
+.ir_evento {
+    font-family: 'Poppins', sans-serif;
+    font-size: 39px;
+    margin: 1rem 1rem;
+    color: white;
+}
+
+.fondo-eventos {
+    border: 10px solid #fff;
+    padding: 20px 10px;
+    border-radius: 30px;
+    background: #397fdb;
+}
+
+.guion {
+    background: #397fdb;
+    padding: 0px 24px;
+}
+
+.fa-circle-right {
+    font-size: 39px;
+    margin: 1rem 1rem;
+    color: white;
+}
+
+@media only screen and (max-width: 600px) {
+    
+    .container-fluid.blanco {
+        padding: 60px 30px;
+    }
+
+    .quehacemos {
+        padding: 60px 30px;
+    }
+
+    .imagen.principal {
+        padding: 20px;
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 230px;
+    }
+
+    .iniciativa {
+        padding-right: 0px;
+    }
+
+
+    .textoquehacemos {
+        padding: 0px;
+    }
+
+    .textoequipo {
+        padding: 0px;
+    }
+
+    .titulo {
+        padding: 18px;
+        font-size: 28px;
+        font-family: 'Poppins', sans-serif;
+        color: #102d7b;
+        background: #ffffff2b;
+        font-weight: 700;
+        margin-top: 2rem;
+    }
+
+    
+    .subtituloblanco {
+        padding: 20px;
+        color: white;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        margin-left: -1rem;
+        margin-top: -1rem;
+    }
+
+    .fondo-eventos {
+        padding: 20px 20px;
+    
+    }
+    
+    .subtitulofoto { 
+        padding: 142px 0px;
+       
+    }
+
+    .evento_1 {
+        background: #397fdb;
+        padding: 1rem;
+        border-radius: 1rem;
+        margin-left: 0rem;
+        margin-bottom: 1rem;
+    }
+    
+
+
+}

@@ -1,0 +1,121 @@
+.btn_comunidad, .btn_recursos {
+  background: none;
+  border: none;
+  color: #102D7B;
+  margin-right: 1rem;
+  padding: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+}
+/* .navbar-expand-lg .navbar-collapse {
+  display: flex!important;
+  flex-basis: auto;
+  justify-content: flex-end;
+}  */
+.nav_palante {
+    font-size: 28px;
+    color: #102d7b;
+    font-family: 'Poppins', sans-serif;
+}
+.navbar-expand-lg {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    background: #FFFFFF;
+    box-shadow: 10px 1px 5px #9e9e9e61;
+   
+}
+
+.appointment_btn {
+  background: none;
+  border: none;
+  color: #102D7B;
+  margin-right: 1rem;
+  padding: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+    
+}
+
+.nav_btn {
+  background-color:  #102d7b;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 19px;
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  border: none;
+}
+button.btn_perfiles.dropdown-toggle {
+  background-color: #102d7b;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 19px;
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  border: none;
+}
+.nav_btn:hover {
+  background: transparent;
+  border: none;
+  color: #413F6A;
+  
+}
+.nav_btn:hover .fa-user {
+    text-shadow: 0 0 5px #2C3D91;
+}
+ul.dropdown-menu.show {
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+}
+.nav_perfil_user a{
+  text-decoration: none;
+}
+ul.dropdown-menu.herramientas a {
+  text-decoration: none;
+}
+a.dropdown-item:hover {
+  background: #102d7b;
+  color:white
+}
+
+/* Estilos para pantallas grandes */
+@media (min-width: 600px) {
+    .navbar-toggler {
+      display: none; /* Oculta el botón de hamburguesa en pantallas grandes */
+    }
+  }
+  
+  /* Estilos para pantallas pequeñas (menos de 600px de ancho) */
+  @media (max-width: 600px) {
+    
+    .navbar>.container {
+          flex-direction:column}
+  
+    .container_navbar_right {
+      flex-direction: column; /* Coloca los elementos uno debajo del otro */
+    }
+  
+    .dropdown,
+    .login {
+      margin-top: 10px; /* Añade un poco de espacio entre los elementos en pantallas pequeñas */
+    }
+  
+    /* Estilos para ocultar la barra de navegación y mostrar el menú hamburguesa */
+    .navbar-collapse {
+      display: none;
+    }
+  
+    .navbar-collapse.show {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .navbar-nav {
+      margin-top: 10px;
+    }
+    i.fa-solid.fa-bars {
+      color: #102d7b;
+  }
+  }
+  

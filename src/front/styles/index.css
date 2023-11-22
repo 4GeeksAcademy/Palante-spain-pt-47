@@ -1,3 +1,231 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Roboto:ital@1&display=swap');
+/* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+/* .container-fluid{
+    height: 100vh;
+    position: relative;
+} */
+.imagen-fondo{
+    width: 100%;
+    /* height: 100vh; */
+    opacity: .8;
+}
+.container-form {
+    background-color: #ffffff80;
+    border-radius: 60px;
+    width: 30%;
+    display: grid;
+    justify-content: center;
+    position: absolute;
+    top: 9%;
+    /* height: auto; */
+    left: 12%;
+    margin-top: 3rem;
+}
+/* .container-logo{
+    background-color: white;
+    border-radius: 50%;
+    margin: 1.8em auto 2.5em;
+    width: 200px;
+    height: 180px;
+    display: grid;
+    align-items: center;
+} */
+.container-logo {
+    background-color: white;
+    border-radius: 50%;
+    margin: 1.8em auto 2.5em;
+    width: 144px;
+    height: 133px;
+    display: grid;
+    align-items: center;
+}
+.logo{
+    color: #3E63BA;
+    font-weight: 800;
+    font-family: 'Roboto', sans-serif;
+    display: grid;
+    justify-content: center;  
+}
+
+.form-control{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: .7em;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    width: 100%;
+} 
+
+.select{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: .7em;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    width: 40vh;
+}
+.detalle-input{
+    margin-bottom: 2em;
+}
+option{
+    color: #3E63BA;
+}
+.form-control::placeholder{
+color: #3E63BA;
+}
+.boton-login{
+    padding: .5em;
+    box-shadow: inset 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    background-color: #F4CB5F;
+    color: #3E63BA;
+    border: none;
+    border-radius: 15px;
+    display: grid;
+    justify-content: center;
+    width: 75%;
+    margin: auto;
+    font-weight: 700;
+    font-size: large;
+}
+.boton-registro{
+    padding: .5em;
+    box-shadow: inset 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    background-color: #F4CB5F;
+    color: #3E63BA;
+    border: none;
+    border-radius: 15px;
+    display: grid;
+    justify-content: center;
+    width: 75%;
+    margin: 0 auto 2rem;
+    font-weight: 700;
+    font-size: large;
+}
+.opcion-contraseña{
+    color: #3E63BA;
+    display: grid;
+    justify-content: center;
+    margin: 1em auto 0;
+}
+.error{
+    color: red;
+}
+.ruta-register{
+    color: #3E63BA;
+    margin-top: 2em;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+}
+.ruta-freelance{
+    color: #3E63BA;
+    margin-top: 2em;
+    text-decoration: none;
+    display: grid;
+    justify-content: flex-end;
+}
+.formulario-user {
+    border-radius: 19px;
+    padding: 50px 50px;
+    background: #ffffff66;
+}
+.titulo-user {
+    padding-bottom: 40px;
+    color: #3E63BA;
+    font-weight: 800;
+    font-family: 'Poppins', sans-serif;
+   text-align: center;
+}
+.imagen.user-login {
+    padding: 0px 80px;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+.row.principal-formulario {
+    padding: 100px 0px;
+}
+
+@media only screen and (max-width: 600px) {
+    
+    .imagen.user-login {
+        padding: 0px 20px;
+       
+    }
+}
+.boton-actualizar{
+    background-color: #21BA45;
+    padding: 0.4em;
+    box-shadow: inset 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    color: white;
+    border: none;
+    border-radius: 7px;
+    display: inline-grid;
+    justify-content: center;
+    width: 23%;
+    margin: auto;
+    font-weight: 500;
+    font-size: 18px;
+}
+.form-data{
+    margin-bottom: 2rem;
+}
+.portada{
+    background-image: url('../img/logo_Perfil.jpg');
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 45px;
+    font-weight: 500;
+}
+/* .row{
+    border: 1px solid #e9ecef;
+    width: 80%;
+    margin: 10rem;
+} */
+#informacion-personal{
+    text-transform: capitalize;
+    margin-bottom: 1.5em;
+    background-color: #e9ecef;
+    padding: 1.5em 0 1.5em 2em;
+}
+.texo-informacion{
+    margin: 0;
+}
+.fa{
+    margin-right: 0.3rem;
+}
+.img-profile{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.form-image{
+    display: flex;
+    justify-content: center;
+}
+.jumbotron{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.perfil_informacion{
+    width: 100%;
+    object-fit: contain;
+    height: 200px;
+    object-position: top;
+    margin-bottom: 2rem;
+}
+.perfil-saludo{
+    position: absolute;
+    margin-top: -7rem;
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
+    color: #102d7b;
+}

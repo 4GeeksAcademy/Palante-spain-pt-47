@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+.introduction_readings {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.descarga_tittle {
+    position: absolute;
+    margin-top: -7rem;
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
+    color: #102d7b;
+}
+p.card-text {
+    color: #413F6A;
+}
+.card-footer {
+    height: 4rem;
+    padding: 1.25rem;
+}
+.descargar {
+    color: white;
+    text-decoration:none;
+    background: #102D7B;
+    padding: 10px 40px 10px 40px;
+    
+    border-radius: 1rem;
+    margin-left: 4.3rem;
+    font-size: 18px;
+}
+
+.readings_inicio {
+    width: 100%;
+    object-fit: cover;
+    height: 200px;
+    object-position: left;
+    margin-bottom: 2rem;
+}
+
+.img_readings {
+    width: 90%;
+    height: 356px;
+    object-fit: cover;
+    border-radius: 2rem;
+    margin: 1rem;
+}
+footer.container_footer {
+    background: #102D7B;
+    color:white;
+}
+i.fa-solid.fa-heart.me-3 {
+    font-size: 24px;
+    color: #102D7B;
+}
+i.fa-solid.fa-heart.me-3:hover {
+    color: #f9a49f75;
+  }
+  i.fa-solid.fa-heart.me-3.favorito {
+    color: #f8a39e;
+}
+  .favorite{
+    color: #f9a49f75;
+  }
+h5.card-title {
+    color: #102d7b;
+}
+.explicacion_readings {
+    position: absolute;
+    width: 70%;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 2rem;
+    color: #413f6a;
+}
+@media only screen and (max-width: 600px) {
+    .explicacion_readings {
+        display: none;
+    }
+    
+    .descarga_tittle {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        font-size: 26px;
+        font-family: 'Poppins', sans-serif;
+        color: #102D7B;
+        width: 70%;
+        margin-top: 2rem;
+        margin-left: 22rem;
+    }
+}

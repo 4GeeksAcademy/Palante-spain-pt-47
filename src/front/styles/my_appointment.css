@@ -1,0 +1,44 @@
+.mis_citas {
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
+    color: #102d7b;
+    padding: 1rem;
+    margin: 1rem 0rem 1rem 0rem;
+    background: #ffffff78;
+    border-radius: 1rem;
+}
+.datos_citas.d-flex {
+    padding: 1rem;
+    font-size: 22px;
+    color: #102d7b;
+    background:  #f9f0de;
+    margin: 1rem 4rem 2rem 4rem;
+    border-radius: 1rem;
+    width: 70%;
+}
+.contenedor.citas {
+    width: 100%;
+   
+    padding: 2rem;
+}
+.citas_tittle {
+    position: absolute;
+    margin-top: -3rem;
+    font-size: 42px;
+    font-family: 'Poppins', sans-serif;
+    color: #102d7b;
+}
+i.fa-solid.fa-trash.citas, i.fa-solid.fa-pen-to-square.citas {
+
+    color: #102d7b;
+}
+.citas_inicio {
+    width: 100%;
+    object-fit: cover;
+    height: 116px;
+    object-position: left;
+    margin-bottom: 2rem;
+}
+@media only screen and (max-width: 600px) {
+    
+}
