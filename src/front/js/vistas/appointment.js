@@ -4,6 +4,7 @@ import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import "../../styles/appointment.css";
 import { Link} from "react-router-dom";
+import readingsinicio from "../../img/readingsinicio.jpg";
 
 
 export const Appointment = () => {
@@ -61,7 +62,11 @@ export const Appointment = () => {
 	// 	}
 
     return (
-        <div className="container">
+        <div className="container-fluid">
+            <div className="introduction_meditations">
+			    <img className="citas_inicio" src={readingsinicio} alt="Readings Inicio"></img>
+                <div className="citas_tittle"><strong>Nuestro equipo</strong></div>
+                </div>
             <div className="row freelancer_citas">
                 <div className="col-sm-12 col-md-5 ">
                     <div className="datos_freelancer_citas d-flex">

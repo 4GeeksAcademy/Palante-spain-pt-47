@@ -53,7 +53,10 @@ export const Navbar = () => {
               </button>
               <ul className="dropdown-menu">
                 <li><a className="dropdown-item" href="#">Chat</a></li>
+                <Link to='events'>
                 <li><a className="dropdown-item" href="#">Eventos</a></li>
+                </Link>
+                
               </ul>
             </div>
 
@@ -66,7 +69,7 @@ export const Navbar = () => {
               >
                 Herramientas
               </button>
-              <ul className="dropdown-menu">
+              <ul className="dropdown-menu herramientas">
                 <Link to='/readings'>
                   <li><a className="dropdown-item" href="#">Lecturas</a></li>
                 </Link>

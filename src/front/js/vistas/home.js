@@ -145,12 +145,12 @@ export const Home = () => {
 						<div class="col-sm-12 col-md-6 fondo-eventos">
 							<div class="row">
 								<div class="col-sm-12 col-md-2">
-								<p className="dia"><strong>15</strong></p>
+								<p className="dia"><strong>25</strong></p>
 										<p className="mes">Dic</p>
 								</div>
 								<div class="col-sm-12 col-md-8">
 								<p className="prox_evento">PRÓXIMO EVENTO  <span className="guion">----</span></p>
-											<p className="title_prox_evento">Conferencia con Dr.Manuel Maza</p>
+											<p className="title_prox_evento">Regalar, cuidar, festejar...</p>
 
 								</div>
 								<div class="col-sm-12 col-md-2">

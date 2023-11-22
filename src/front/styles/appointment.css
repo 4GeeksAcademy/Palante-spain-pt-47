@@ -19,7 +19,7 @@ input#fecha {
     margin-bottom: 1rem;
   }
   .row.freelancer_citas {
-    padding: 4rem;
+    padding: 2rem;
     color: #102d7b;
     font-family: 'Poppins', sans-serif;
 }
@@ -28,14 +28,7 @@ input#fecha {
     padding: 2rem;
     border-radius: 2rem;
 }
-.row.freelancer_citas {
-    padding: 2rem;
-    color: #102d7b;
-    font-family: 'Poppins', sans-serif;
-    border-width: 0px 0px 2px 0px;
-    border-style: solid;
-    border-color:  #102d7b;
-}
+
 .datos_freelancer {
     padding: 1rem;
 }

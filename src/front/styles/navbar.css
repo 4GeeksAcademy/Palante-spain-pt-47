@@ -71,7 +71,13 @@ ul.dropdown-menu.show {
 .nav_perfil_user a{
   text-decoration: none;
 }
-/* Asegúrate de que estos estilos estén en tu archivo navbar.css */
+ul.dropdown-menu.herramientas a {
+  text-decoration: none;
+}
+a.dropdown-item:hover {
+  background: #102d7b;
+  color:white
+}
 
 /* Estilos para pantallas grandes */
 @media (min-width: 600px) {
