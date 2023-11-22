@@ -28,7 +28,8 @@ const injectContext = PassedComponent => {
 			state.actions.get_favorites_readings();
 			state.actions.get_favorites_meditations();
 			state.actions.get_favorites_podcast();
-			state.actions.get_citas()
+			state.actions.get_citas();
+			state.actions.get_event();
 			
 			state.actions.dataUser();
 			/**

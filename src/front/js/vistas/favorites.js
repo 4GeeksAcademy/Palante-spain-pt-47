@@ -28,6 +28,7 @@ export const Favorites = () =>{
                                 <div>
 									<p><i className="fa-solid fa-trash"
 									onClick={() => actions.del_favorites_readings(favorites_readings.id)}></i></p>
+									
                                 </div>
 								
 							</div>

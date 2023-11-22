@@ -157,6 +157,7 @@ def setup_commands(app):
         print("Podcast inserted into the database.")
 
 
+# Para cargar base de datos pipenv run flask insert-tools
 
     @app.cli.command("insert-test-data")
     def insert_test_data():
