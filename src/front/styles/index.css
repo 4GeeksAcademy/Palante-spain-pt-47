@@ -168,9 +168,6 @@ color: #3E63BA;
        
     }
 }
-
-
-
 .boton-actualizar{
     background-color: #21BA45;
     padding: 0.4em;
@@ -186,7 +183,6 @@ color: #3E63BA;
     font-size: 18px;
 }
 .form-data{
-    border: 2px solid red;
     margin-bottom: 2rem;
 }
 .portada{
@@ -216,7 +212,6 @@ color: #3E63BA;
 .img-profile{
     width: 200px;
     height: 200px;
-    border: 2px solid red;
     border-radius: 50%;
 }
 .form-image{
