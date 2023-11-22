@@ -430,6 +430,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           await getActions().get_favorites_readings();
           await getActions().get_favorites_meditations();
           await getActions().get_favorites_podcast();
+          await getActions().get_citas();
+          await getActions().dataUser();
+          
           return data;
         } catch (error) {
           console.error("Error al iniciar sesión:");
