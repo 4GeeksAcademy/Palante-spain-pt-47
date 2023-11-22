@@ -31,7 +31,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         fetch(process.env.BACKEND_URL + "/readings", { method: "GET" })
           .then(response => response.json())
           .then(response => {
-            console.log("readings", response)
             setStore({ readings: response })
           })
       },
@@ -39,7 +38,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         fetch(process.env.BACKEND_URL + "/podcast", { method: "GET" })
           .then(response => response.json())
           .then(response => {
-            console.log("podcast", response)
             setStore({ podcast: response })
           })
       },
@@ -47,7 +45,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         fetch(process.env.BACKEND_URL + "/meditations", { method: "GET" })
           .then(response => response.json())
           .then(response => {
-            console.log("meditations", response)
             setStore({ meditations: response })
           })
       },
@@ -299,8 +296,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         }
       },
-
-
+      
       // ver todas las citas de un usuario
       get_citas: async () => {
         const token = sessionStorage.getItem('token');
@@ -314,7 +310,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         })
           .then(response => response.json())
           .then(async response => {
-            console.log('response de citas', response)
             const citas = response.inf
             setStore({ citas: citas });
 
@@ -483,7 +478,7 @@ const getState = ({ getStore, getActions, setStore }) => {
               throw new Error('Se produjo un error en la red');
             }
           })
-          .then(data => console.log(data))
+          .then(data => data)
           .catch(error => console.log('error', error));
 
       },

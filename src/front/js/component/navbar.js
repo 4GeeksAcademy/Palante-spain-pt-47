@@ -15,7 +15,6 @@ export const Navbar = () => {
   };
 
   useEffect(() => {
-    console.log(store.user_login)
 
   },[store.user_login])
 
