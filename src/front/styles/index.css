@@ -131,16 +131,11 @@ color: #3E63BA;
     display: grid;
     justify-content: flex-end;
 }
-
-
-
-
 .formulario-user {
     border-radius: 19px;
     padding: 50px 50px;
     background: #ffffff66;
 }
-
 .titulo-user {
     padding-bottom: 40px;
     color: #3E63BA;
@@ -148,18 +143,15 @@ color: #3E63BA;
     font-family: 'Poppins', sans-serif;
    text-align: center;
 }
-
 .imagen.user-login {
     padding: 0px 80px;
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
 }
-
 .row.principal-formulario {
     padding: 100px 0px;
 }
-
 
 @media only screen and (max-width: 600px) {
     
@@ -194,8 +186,8 @@ color: #3E63BA;
 }
 .row{
     border: 1px solid #e9ecef;
-    width: 80%;
-    margin: 10rem;
+    width: 75%;
+    margin: 8rem;
 }
 #informacion-personal{
     text-transform: capitalize;
@@ -217,4 +209,23 @@ color: #3E63BA;
 .form-image{
     display: flex;
     justify-content: center;
+}
+.jumbotron{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.perfil_informacion{
+    width: 100%;
+    object-fit: contain;
+    height: 200px;
+    object-position: top;
+    margin-bottom: 2rem;
+}
+.perfil-saludo{
+    position: absolute;
+    margin-top: -7rem;
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
+    color: #102d7b;
 }
