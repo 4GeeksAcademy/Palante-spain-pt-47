@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { Context } from "../store/appContext";
-import Avatar from "/workspaces/spain_part_time47/src/front/img/avatar-dafault.png"
+import Avatar from "../../img/avatar-dafault.png"
 
 export const Photo = () => {
   const { store, actions } = useContext(Context);
