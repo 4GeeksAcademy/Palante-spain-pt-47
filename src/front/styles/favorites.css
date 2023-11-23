@@ -53,11 +53,20 @@ i.fa-solid.fa-trash {
    
 }
 .card-body.favorites_reading.d-flex {
-    padding: 0;
+    padding: 0px 10px 0px 10px;
+    padding-top: 0px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+    padding-left: 10px;
     justify-content: space-evenly;
 }
 .card_favorites_readings {
     padding: 0;
     margin: 0rem 1rem 1rem 1rem;
     display: grid;
+}
+@media only screen and (max-width: 600px) {
+.col-sm-12.col-md-2.col_podcast {
+    margin-bottom: 1rem;
+}
 }

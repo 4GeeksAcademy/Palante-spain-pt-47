@@ -72,3 +72,32 @@ font-family: 'Poppins', sans-serif;
     margin-top: 4rem;
     margin-bottom: 4rem;
 }
+
+@media only screen and (max-width: 600px) {
+    .perfil_saludo {
+        position: absolute;
+        margin-top: -1rem;
+        font-size: 23px;
+        font-family: 'Poppins', sans-serif;
+        color: #102d7b;
+    }
+    .perfil_inicio {
+        width: 100%;
+        object-fit: contain;
+        height: 63px;
+        object-position: top;
+        margin-bottom: 2rem;
+        margin: 0;
+    }
+    .col-4.datos_personales_perfil {
+        flex: 0 0 auto;
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+    .row.tarjetas_abajo {
+        justify-content: center;
+        margin-top: 0;
+        margin-bottom: 4rem;
+    }
+}

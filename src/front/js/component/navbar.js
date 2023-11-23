@@ -30,7 +30,7 @@ export const Navbar = () => {
             onClick={toggleMenu}
             aria-expanded={menuOpen ? "true" : "false"}
           >
-            <i className="fa-thin fa-bars"></i>
+           <i class="fa-sharp fa-solid fa-bars"></i>
           </button>
 
           <div className={`collapse navbar-collapse ${menuOpen ? "show" : ""}`}>
@@ -92,7 +92,7 @@ export const Navbar = () => {
                         type="button"
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
-                      //{store.user_login.charAt(0).toUpperCase()} {/* Mostrar la primera letra del correo pero aqui lo q esta es el token encriptado*/}
+                      
                       >
                         {store.datauser.full_name}
                       </button>

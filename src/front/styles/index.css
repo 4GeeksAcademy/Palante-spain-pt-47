@@ -172,6 +172,7 @@ color: #3E63BA;
         padding: 0px 20px;
        
     }
+    
 }
 .boton-actualizar {
     background-color: #102d7b;
@@ -226,4 +227,34 @@ i.fa.fa-pencil {
     padding: 2rem;
     font-family: 'Poppins';
     color: #102d7b;
+}
+@media only screen and (max-width: 600px) {
+.img-profile {
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+}
+.boton-actualizar {
+    background-color: #102d7b;
+    padding: 0.4em;
+    box-shadow: inset 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    color: white;
+    border: none;
+    border-radius: 7px;
+    margin-left: 2rem;
+    /* display: inline-grid; */
+    /* justify-content: center; */
+    width: 100%;
+    /* margin: auto; */
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 1rem;
+}
+.form-control {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 0.7em;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    width: 122%;
+}
 }
