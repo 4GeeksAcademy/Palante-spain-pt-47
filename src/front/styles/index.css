@@ -71,8 +71,13 @@
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     width: 40vh;
 }
-.detalle-input{
-    margin-bottom: 2em;
+.detalle-input {
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+}
+.form-control:disabled, .form-control[readonly] {
+    background-color: white;
+    opacity: 1;
 }
 option{
     color: #3E63BA;
@@ -131,11 +136,16 @@ color: #3E63BA;
     display: grid;
     justify-content: flex-end;
 }
+
+
+
+
 .formulario-user {
     border-radius: 19px;
     padding: 50px 50px;
     background: #ffffff66;
 }
+
 .titulo-user {
     padding-bottom: 40px;
     color: #3E63BA;
@@ -143,15 +153,18 @@ color: #3E63BA;
     font-family: 'Poppins', sans-serif;
    text-align: center;
 }
+
 .imagen.user-login {
     padding: 0px 80px;
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
 }
+
 .row.principal-formulario {
     padding: 100px 0px;
 }
+
 
 @media only screen and (max-width: 600px) {
     
@@ -160,40 +173,35 @@ color: #3E63BA;
        
     }
 }
-.boton-actualizar{
-    background-color: #21BA45;
+.boton-actualizar {
+    background-color: #102d7b;
     padding: 0.4em;
     box-shadow: inset 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     color: white;
     border: none;
     border-radius: 7px;
-    display: inline-grid;
-    justify-content: center;
+    margin-left: 2rem;
+    /* display: inline-grid; */
+    /* justify-content: center; */
     width: 23%;
-    margin: auto;
+    /* margin: auto; */
     font-weight: 500;
     font-size: 18px;
+    margin-top: 1rem;
 }
 .form-data{
     margin-bottom: 2rem;
 }
-.portada{
-    background-image: url('../img/logo_Perfil.jpg');
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 45px;
-    font-weight: 500;
+i.fa.fa-pencil {
+    color: #102d7b;
 }
-/* .row{
-    border: 1px solid #e9ecef;
-    width: 80%;
-    margin: 10rem;
-} */
-#informacion-personal{
+
+#informacion-personal {
     text-transform: capitalize;
     margin-bottom: 1.5em;
-    background-color: #e9ecef;
+    background-color: #fbfcfd;
     padding: 1.5em 0 1.5em 2em;
+    color: #102d7b;
 }
 .texo-informacion{
     margin: 0;
@@ -210,22 +218,12 @@ color: #3E63BA;
     display: flex;
     justify-content: center;
 }
-.jumbotron{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.perfil_informacion{
-    width: 100%;
-    object-fit: contain;
-    height: 200px;
-    object-position: top;
-    margin-bottom: 2rem;
-}
-.perfil-saludo{
-    position: absolute;
-    margin-top: -7rem;
+
+/* //datos de usuario */
+.portada {
+    text-align: center;
     font-size: 32px;
-    font-family: 'Poppins', sans-serif;
+    padding: 2rem;
+    font-family: 'Poppins';
     color: #102d7b;
 }

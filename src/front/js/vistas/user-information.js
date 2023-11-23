@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Photo } from "../component/photoProfile";
-import fondo from "../../img/logo_Perfil.jpg";
+import readingsinicio from "../../img/readingsinicio.jpg";
 
 export const User_information = () => {
 
@@ -30,9 +30,8 @@ export const User_information = () => {
   };
   return (
     <div className="container-fluid">
-      <div className="jumbotron" >
-        <img className="perfil_informacion" src={fondo}/>
-        <div className="perfil-saludo"><strong>Datos Personales</strong></div>
+      <div className="jumbotron" style={{ backgroundImage: `url(${readingsinicio})` }}>
+        <h1 className="portada"><strong>Datos Personales</strong></h1>
       </div>
 
       <div className="row linea-datos">
