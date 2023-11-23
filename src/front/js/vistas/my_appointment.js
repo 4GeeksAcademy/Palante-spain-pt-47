@@ -6,6 +6,10 @@ import readingsinicio from "../../img/readingsinicio.jpg";
 
 export const My_appointment = () => {
     const { store, actions } = useContext(Context);
+
+    useEffect(()=>{
+        actions.get_citas();
+    },[])
     
     const getNameByFreelancerId = (freelancerId) => {
         if (freelancerId === 1) {

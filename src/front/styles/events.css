@@ -12,6 +12,25 @@
     color: #102d7b;
     font-size: 16px;
 }
+i.fa-solid.fa-question.unidos {
+    margin-left: 1rem;
+    font-size: 20px;
+    color: #102d7b;
+}
+i.fa-solid.fa-question.unidos:hover {
+    background: #102d7b;
+    color: white;
+    font-size: 26px;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+p.cantidad_somos {
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    color: #102d7b;
+    font-size: 16px;
+    margin-left: 2rem;
+}
 .eventos-dos {
     border: 8px solid #fff;
     border-radius: 30px;

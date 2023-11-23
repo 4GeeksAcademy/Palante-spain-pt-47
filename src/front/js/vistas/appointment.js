@@ -1,3 +1,4 @@
+
 import React, { useContext,useState } from "react";
 import { Context } from "../store/appContext";
 import Datetime from "react-datetime";
@@ -9,24 +10,51 @@ import readingsinicio from "../../img/readingsinicio.jpg";
 
 export const Appointment = () => {
     const { store, actions } = useContext(Context);
-    const [selectedDay, setSelectedDay] = useState("");
-    const [selectedTime, setSelectedTime] = useState("");
+    const [selectedDay1, setSelectedDay1] = useState("");
+    const [selectedDay2, setSelectedDay2] = useState("");
+    const [selectedDay3, setSelectedDay3] = useState("");
+    const [selectedTime1, setSelectedTime1] = useState("");
+    const [selectedTime2, setSelectedTime2] = useState("");
+    const [selectedTime3, setSelectedTime3] = useState("");
     const [submit, setSubmit] = useState(false);
    
     const process_date = new Date();
    
 
-    const handleDayChange = (date) => {
+    const handleDayChange1 = (date) => {
         const newSelectedDay = new Date(date);
         //console.log('date', date.format("ddd, hA"))
         console.log('newSelectedDay', newSelectedDay)
-        setSelectedDay(newSelectedDay);
+        setSelectedDay1(newSelectedDay);
     };
-    const handleTimeChange = (time) => {
-        const newSelectedTime = new Date(time);
+    const handleTimeChange1 = (time) => {
+        const newSelectedTime1 = new Date(time);
         
-        console.log('newSelectedTime', newSelectedTime)
-        setSelectedTime(newSelectedTime);
+        console.log('newSelectedTime', newSelectedTime1)
+        setSelectedTime1(newSelectedTime1);
+    };
+    const handleDayChange2 = (date) => {
+        const newSelectedDay2 = new Date(date);
+        //console.log('date', date.format("ddd, hA"))
+        console.log('newSelectedDay', newSelectedDay2)
+        setSelectedDay2(newSelectedDay2);
+    };
+    const handleTimeChange2 = (time) => {
+        const newSelectedTime2 = new Date(time);
+        
+        console.log('newSelectedTime', newSelectedTime2)
+        setSelectedTime2(newSelectedTime2);
+    };
+    const handleDayChange3 = (date) => {
+        const newSelectedDay3 = new Date(date);
+        //console.log('date', date.format("ddd, hA"))
+        console.log('newSelectedDay', newSelectedDay3)
+        setSelectedDay3(newSelectedDay3);
+    };
+    const handleTimeChange3 = (time) => {
+        const newSelectedTime3 = new Date(time);
+        
+        setSelectedTime3(newSelectedTime3);
     };
     
 
@@ -54,22 +82,22 @@ export const Appointment = () => {
                     <Datetime 
                     dateFormat="MM-D" 
                     timeFormat={false}
-                    value={selectedDay}
+                    value={selectedDay1}
                     inputProps={{ id: "fecha", placeholder: "Selecciona fecha" }}
-                    onChange={handleDayChange}
+                    onChange={handleDayChange1}
                     />
-                    <Datetime 
+                    <Datetime className=""
                     dateFormat={false} 
                     timeFormat={true}
                     inputProps={{ id: "hora", placeholder: "Selecciona solo por hora" }}
-                    value={selectedTime}
-                    onChange={handleTimeChange}/>
+                    value={selectedTime1}
+                    onChange={handleTimeChange1}/>
                     
                     
                 {/* Mostrar la fecha seleccionada debajo del selector */}
-            {selectedDay && selectedTime && (
+            {selectedDay1 && selectedTime1 && (
                 
-                <button className="btn_cita" onClick={()=>actions.handler_appointments(1,  selectedDay, selectedTime, process_date)}>Enviar cita</button>
+                <button className="btn_cita" onClick={()=>actions.handler_appointments(1,  selectedDay1, selectedTime1, process_date)}>Enviar cita</button>
             
         )}
                 </div>
@@ -93,22 +121,22 @@ export const Appointment = () => {
                     <Datetime 
                     dateFormat="MM-D" 
                     timeFormat={false}
-                    value={selectedDay}
+                    value={selectedDay2}
                     inputProps={{ id: "fecha", placeholder: "Selecciona fecha" }}
-                    onChange={handleDayChange}
+                    onChange={handleDayChange2}
                     />
                     <Datetime 
                     dateFormat={false} 
                     timeFormat={true}
                     inputProps={{ id: "hora", placeholder: "Selecciona solo por hora" }}
-                    value={selectedTime}
-                    onChange={handleTimeChange}/>
+                    value={selectedTime2}
+                    onChange={handleTimeChange2}/>
                     
                     
                 {/* Mostrar la fecha seleccionada debajo del selector */}
-            {selectedDay && selectedTime && (
+            {selectedDay2 && selectedTime2 && (
                 
-                <button className="btn_cita" onClick={()=>actions.handler_appointments(2,  selectedDay, selectedTime, process_date)}>Enviar cita</button>
+                <button className="btn_cita" onClick={()=>actions.handler_appointments(2,  selectedDay2, selectedTime2, process_date)}>Enviar cita</button>
                 
         )}
                 </div>
@@ -134,22 +162,22 @@ export const Appointment = () => {
                     <Datetime 
                     dateFormat="MM-D" 
                     timeFormat={false}
-                    value={selectedDay}
+                    value={selectedDay3}
                     inputProps={{ id: "fecha", placeholder: "Selecciona fecha" }}
-                    onChange={handleDayChange}
+                    onChange={handleDayChange3}
                     />
                     <Datetime 
                     dateFormat={false} 
                     timeFormat={true}
                     inputProps={{ id: "hora", placeholder: "Selecciona solo por hora" }}
-                    value={selectedTime}
-                    onChange={handleTimeChange}/>
+                    value={selectedTime3}
+                    onChange={handleTimeChange3}/>
                     
                     
                 {/* Mostrar la fecha seleccionada debajo del selector */}
-            {selectedDay && selectedTime && (
+            {selectedDay3 && selectedTime3 && (
                 
-                <button className="btn_cita" onClick={()=>actions.handler_appointments(3,  selectedDay, selectedTime, process_date)}>Enviar cita</button>
+                <button className="btn_cita" onClick={()=>actions.handler_appointments(3,  selectedDay3, selectedTime3, process_date)}>Enviar cita</button>
             
         )}
                 </div>

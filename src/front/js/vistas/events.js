@@ -46,8 +46,8 @@ export const Events = () => {
 								<p className="title_regalar">Comprar un regalo para compartir con los niños del hospital.</p>
                                 <div className="cantidad_unidos d-flex">
 									<p className="evento_somos">YA SOMOS </p>
-									<i class="fa-solid fa-question" onClick={()=>actions.get_event(1)}></i>
-									<p>{store.evento_1.length}</p>
+									<i class="fa-solid fa-question unidos" onClick={()=>actions.get_event(1)}></i>
+									<p className="cantidad_somos">{store.evento_1.length==0 ? '': store.evento_1.length}</p>
 								</div>
 								<button className="unirme" onClick={()=>actions.event_join(1)}>Unirme</button>
 								
@@ -67,8 +67,8 @@ export const Events = () => {
 								<p className="title_regalar">Una tarde de cuidados en la residencia Monte Paris.</p>
                                 <div className="cantidad_unidos d-flex">
 									<p className="evento_somos">YA SOMOS </p>
-									<i class="fa-solid fa-question" onClick={()=>actions.get_event(2)}></i>
-									<p>{store.evento_2.length}</p>
+									<i class="fa-solid fa-question unidos" onClick={()=>actions.get_event(2)}></i>
+									<p className="cantidad_somos">{store.evento_2.length==0 ? '': store.evento_2.length}</p>
 								</div>
 								
 								<button className="unirme" onClick={()=>actions.event_join(2)}>Unirme</button>
@@ -89,8 +89,8 @@ export const Events = () => {
 								<p className="title_regalar">Fiesta de cierre de año para todos en nuestra sede.</p>
 								<div className="cantidad_unidos d-flex">
 									<p className="evento_somos">YA SOMOS </p>
-									<i class="fa-solid fa-question" onClick={()=>actions.get_event(3)}></i>
-									<p>{store.evento_3.length}</p>
+									<p><i class="fa-solid fa-question unidos" onClick={()=>actions.get_event(3)}></i></p>
+									<p className="cantidad_somos">{store.evento_3.length==0 ? '': store.evento_3.length}</p>
 								</div>
 								<button className="unirme" onClick={()=>actions.event_join(3)}>Unirme  </button>
 								
