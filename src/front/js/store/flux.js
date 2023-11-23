@@ -64,6 +64,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           },
           body: JSON.stringify({ 'reading_id': reading_id }), // Envía el ID del artículo que se agregará a favoritos
         })
+        await getActions().get_favorites_readings();
 
       },
       //mostrar los favorites readings de un user
@@ -121,6 +122,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           },
           body: JSON.stringify({ 'meditations_id': meditations_id }), // Envía el ID del artículo que se agregará a favoritos
         })
+        await getActions().get_favorites_meditations();
 
       },
 
@@ -178,6 +180,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           },
           body: JSON.stringify({ 'podcast_id': podcast_id }), // Envía el ID del artículo que se agregará a favoritos
         })
+        await getActions().get_favorites_podcast();
 
       },
       //mostrar los favorites podcast de un user
