@@ -101,6 +101,25 @@ export const TodoList = () => {
       .catch(err => console.log("err", err));
   };
 
+  //Marcar tareas como hechas
+  const handleToggleDone = (taskId) => {
+    const token = sessionStorage.getItem('token');
+    fetch(process.env.BACKEND_URL + `/updatetask/${taskId}`, {
+      method: "PUT",
+      body: JSON.stringify({ done: true }), // Puedes ajustar según tu modelo de datos
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": 'Bearer ' + token
+      },
+    })
+      .then(resp => resp.json())
+      .then(data => {
+        console.log("TAREA MARCADA COMO HECHA", data);
+        setTasks(tasks.map(task => (task.id === taskId ? data : task)));
+      })
+      .catch(err => console.log("err", err));
+  };
+
   return (
     <>
       <form onSubmit={handleClick}>
@@ -110,10 +129,14 @@ export const TodoList = () => {
       <ul>
         {tasks.map((task) => (
           <li key={task.id}>
-            {task.tasks}
-            <button onClick={() => handleEdit(task)} ><i className="fas fa-pen-to-square"></i></button>
-            <button onClick={() => handleDelete(task.id)} ><i className="fas fa-trash"></i></button>
-            <button onClick={() => handleToggleDone(task.id)}>Marcar como hecha</button>
+            <span style={{ textDecoration: task.done ? 'line-through' : 'none' }}>{task.tasks}</span>
+            {!task.done && (
+              <>
+                <button onClick={() => handleEdit(task)}><i className="fas fa-pen-to-square"></i></button>
+                <button onClick={() => handleDelete(task.id)}><i className="fas fa-trash"></i></button>
+                <button onClick={() => handleToggleDone(task.id)}>Marcar como hecha</button>
+              </>
+            )}
           </li>
         ))}
       </ul>
