@@ -81,6 +81,25 @@ export const TodoList = () => {
     setSelectedTask(task);
   };
 
+  //Ejecuta la funcion para eliminar una tarea
+  const handleDelete = (taskId) => {
+    const token = sessionStorage.getItem('token');
+    fetch(process.env.BACKEND_URL + `/deletetask/${taskId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": 'Bearer ' + token
+      },
+    })
+      .then(resp => {
+        if (resp.ok) {
+          setTasks(tasks.filter(task => task.id !== taskId));
+        } else {
+          console.log("Error al eliminar la tarea");
+        }
+      })
+      .catch(err => console.log("err", err));
+  };
 
   return (
     <>
@@ -93,7 +112,7 @@ export const TodoList = () => {
           <li key={task.id}>
             {task.tasks}
             <button onClick={() => handleEdit(task)} ><i className="fas fa-pen-to-square"></i></button>
-            <button ><i className="fas fa-trash"></i></button>
+            <button onClick={() => handleDelete(task.id)} ><i className="fas fa-trash"></i></button>
           </li>
         ))}
       </ul>
