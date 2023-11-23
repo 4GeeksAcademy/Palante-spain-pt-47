@@ -113,6 +113,7 @@ export const TodoList = () => {
             {task.tasks}
             <button onClick={() => handleEdit(task)} ><i className="fas fa-pen-to-square"></i></button>
             <button onClick={() => handleDelete(task.id)} ><i className="fas fa-trash"></i></button>
+            <button onClick={() => handleToggleDone(task.id)}>Marcar como hecha</button>
           </li>
         ))}
       </ul>
