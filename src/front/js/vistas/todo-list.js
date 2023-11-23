@@ -74,7 +74,12 @@ export const TodoList = () => {
     }
   };
 
-
+  //Ejecuta la funcion para editar un tarea
+  const handleEdit = (task) => {
+    // Preparar la tarea seleccionada para la edición
+    setInput(task.tasks);
+    setSelectedTask(task);
+  };
 
 
   return (
@@ -87,11 +92,11 @@ export const TodoList = () => {
         {tasks.map((task) => (
           <li key={task.id}>
             {task.tasks}
-            <button ><i className="fas fa-pen-to-square"></i></button>
+            <button onClick={() => handleEdit(task)} ><i className="fas fa-pen-to-square"></i></button>
             <button ><i className="fas fa-trash"></i></button>
           </li>
         ))}
-      </ul>  
+      </ul>
     </>
   )
 }
