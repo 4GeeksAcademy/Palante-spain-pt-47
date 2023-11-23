@@ -1,6 +1,6 @@
 
 import click
-from api.models import db, User, Readings, Meditations, Podcast
+from api.models import db, User, Readings, Meditations, Podcast, Freelancer, Events
 
 """
 In this file, you can add as many commands as you want using the @app.cli.command decorator
@@ -37,6 +37,7 @@ def setup_commands(app):
         "download": "https://ia801004.us.archive.org/24/items/ArticulosMaxwell/John_C._Maxwell-Companeros_de_Oracion.pdf",
         "review": "Un libro para niños y adultos, que crecerán aprendiendo a identificar cualquier sentimiento y aprenderán a regularlos.",
         "title": "Emocionario."
+        
     },
     {
         "URLPhoto": "https://pictures.abebooks.com/isbn/9780881135886-es.jpg",
@@ -63,7 +64,7 @@ def setup_commands(app):
         "title": "Comunicación no violenta. "
     },
     {
-        "URLPhoto": "https://libreriaelim.co/wp-content/uploads/2020/08/9780881135145.png",
+        "URLPhoto": "https://0.academia-photos.com/attachment_thumbnails/54636634/mini_magick20190116-14863-ea6wv.png?1547659179",
         "download": "https://ia801004.us.archive.org/24/items/ArticulosMaxwell/John_C._Maxwell-Companeros_de_Oracion.pdf",
         "review": "Un libro que se centra en el poder de la oración y el benificio sobre las personas y las instituciones.",
         "title": "Compañeros de oración."
@@ -105,7 +106,7 @@ def setup_commands(app):
     {
         "URLListen":"https://www.listennotes.com/es/podcasts/mjpadillo/mis-herramientas-cuando-g4dvYjzBcwb/",
         "URLPhoto":"https://production.listennotes.com/podcasts/mjpadillo/mis-herramientas-cuando-eq39cT51f87-g4dvYjzBcwb.1400x1400.jpg",
-        "title": "Mis herramientas cuando siento ansiedad."
+        "title": "Ansiedad: mis herramientas."
     },
     {
         "URLListen":"https://open.spotify.com/episode/4lXfZa16adXinV0VqoBGY8",
@@ -128,6 +129,71 @@ def setup_commands(app):
         "title":"Resolución de conflictos."
     }
 ]
+        freelancer = [
+            { 
+                "full_name":"Sara",
+                "email":"sara@gmail.com",
+                "age": 32,
+                "URLphoto":"",
+                "password":"Sara123456",
+                "is_active":True,
+                "professional_registration_number":123,
+                "years_of_experience":12,
+                "education": "Doctor en Psicologia Clinica",
+                "expertise":"Duelo, educación, depresión.",
+                "aboutme": "",
+                "availability":""              
+            },
+            { 
+                "full_name":"Jose",
+                "email":"jose@gmail.com",
+                "age": 35,
+                "URLphoto":"",
+                "password":"Sara123456",
+                "is_active":True,
+                "professional_registration_number":124,
+                "years_of_experience":12,
+                "education": "Doctor en Psicologia Clinica",
+                "expertise":"Duelo, educación, depresión.",
+                "aboutme": "",
+                "availability":""              
+            },
+            {                 
+                "full_name":"Ana",
+                "email":"ana@gmail.com",
+                "age": 40,
+                "URLphoto":"",
+                "password":"Sara123456",
+                "is_active":True,
+                "professional_registration_number":128,
+                "years_of_experience":12,
+                "education": "Doctor en Psicologia Clinica",
+                "expertise":"Duelo, educación, depresión.",
+                "aboutme": "",
+                "availability":""              
+            }
+
+        ]
+        events = [
+            {
+                "title":"Regalar",
+                "date": "2023-12-25 17:00:00",
+                "address":"Sol 54",
+                "user_id":1
+            },
+             {
+                "title":"Cuidar",
+                "date": "2023-12-20, 12:00:00",
+                "address":"Sol 100",
+                "user_id":1
+            },
+            {
+                "title":"Festejar",
+                "date": "2023-12-30 21:00:00",
+                "address":"Sol 54",
+                "user_id":1
+            }
+        ]
         
         for datos in readings:
             reading = Readings()
@@ -155,7 +221,35 @@ def setup_commands(app):
             db.session.add(meditations)
             db.session.commit()
         print("Podcast inserted into the database.")
+        
+        for datos in freelancer:
+            freelancer = Freelancer()
+            freelancer.full_name = datos["full_name"]
+            freelancer.email = datos["email"]
+            freelancer.age = datos["age"]
+            freelancer.URLphoto = datos["URLphoto"]
+            freelancer.password = datos["password"]
+            freelancer.is_active = datos["is_active"]
+            freelancer.professional_registration_number = datos["professional_registration_number"]
+            freelancer.years_of_experience = datos["years_of_experience"]
+            freelancer.education = datos["education"]
+            freelancer.aboutme = datos["aboutme"]
+            freelancer.expertise = datos["expertise"]
+            freelancer.availability = datos["availability"]
+            db.session.add(freelancer)
+            db.session.commit()
+        print("Freelancer inserted into the database.")
 
+        for datos in events:
+            events = Events()
+            events.date = datos["date"]
+            events.title = datos["title"]
+            events.address = datos["address"]
+            events.user_id = datos["user_id"]
+            db.session.add(events)
+            db.session.commit()
+        print("Events inserted into the database.")
+        
 
 # Para cargar base de datos pipenv run flask insert-tools
 
