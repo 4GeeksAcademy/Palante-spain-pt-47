@@ -69,8 +69,10 @@ export const Perfil_user = () => {
           <div className="col-4 datos_personales_perfil">
             <div className="card h-60">
               <div className="card_dentro">
-                <i className="fa-solid fa-clipboard-list"></i>
-                <p className="todo_list_title_perfil"><strong>Mi Todo-List</strong></p>
+                <Link to='/todo-list'>
+                  <i className="fa-solid fa-clipboard-list"></i>
+                  <p className="todo_list_title_perfil"><strong>Mi Todo-List</strong></p>
+                </Link>
               </div>
             </div>
           </div>
