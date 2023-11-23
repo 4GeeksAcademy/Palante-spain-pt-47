@@ -27,7 +27,7 @@ from datetime import datetime
 import cloudinary
 import cloudinary.uploader
 
-from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+
 
 def generate_reset_token(user):
     s = Serializer(app.config['SECRET_KEY'], expires_in=3600)  # Caduca en 1 hora
