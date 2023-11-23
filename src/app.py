@@ -27,6 +27,15 @@ from datetime import datetime
 import cloudinary
 import cloudinary.uploader
 
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+
+def generate_reset_token(user):
+    s = Serializer(app.config['SECRET_KEY'], expires_in=3600)  # Caduca en 1 hora
+    token = s.dumps({'user_id': user.id}).decode('utf-8')
+    user.reset_token = token
+    db.session.commit()
+    return token
+
 ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../public/')
 app = Flask(__name__)
@@ -99,6 +108,7 @@ def serve_any_other_file(path):
     response = send_from_directory(static_file_dir, path)
     response.cache_control.max_age = 0 # avoid cache memory
     return response
+
 
                    ######### USUARIOS #########
 
@@ -175,6 +185,29 @@ def update_user():
     user_serialized = user.serialize()
     return jsonify(user_serialized)
 
+##### ruta para restablecer contraseña #####
+@app.route("/resetpassword/<token>", methods=['POST'])
+def reset_password(token):
+    s = Serializer(app.config['SECRET_KEY'])
+    try:
+        data = s.loads(token)
+        user = User.query.get(data['user_id'])
+        if user and user.reset_token == token:
+            body = request.get_json(silent=True)
+            if 'password' in body:
+                # Restablecer la contraseña y borrar el token
+                pw_hash = bcrypt.generate_password_hash(body['password']).decode('utf-8')
+                user.password = pw_hash
+                user.reset_token = None
+                db.session.commit()
+                return jsonify('Password reset successfully')
+            else:
+                return jsonify('New password is required'), 400
+        else:
+            return jsonify('Invalid or expired token'), 400
+    except:
+        return jsonify('Invalid token'), 400
+    
 ##### ruta modificacion de contraseña #####
 @app.route("/updatepassword", methods=['POST'])
 @jwt_required()
