@@ -97,7 +97,7 @@ export const Navbar = () => {
                         {store.datauser.full_name}
                       </button>
                       <ul className="dropdown-menu nav_perfil_user">
-                        <Link to='/datos_personales'>
+                        <Link to='/user-information'>
                           <li><a className="dropdown-item" href="#">Mis Datos</a></li>
                         </Link>
                         <Link to='/favorites'>
@@ -109,7 +109,7 @@ export const Navbar = () => {
                         <Link to='/my_event'>
                           <li><a className="dropdown-item" href="#">Mis eventos</a></li>
                         </Link>
-                        <Link to='/todo_list'>
+                        <Link to='/todo-list'>
                           <li><a className="dropdown-item" href="#">Mi Todo-List</a></li>
                         </Link>
                         <Link to="/">
