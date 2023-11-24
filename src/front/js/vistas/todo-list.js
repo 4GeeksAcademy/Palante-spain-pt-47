@@ -102,7 +102,7 @@ export const TodoList = () => {
   };
 
   //Marcar tareas como hechas
-  const handleToggleDone = (taskId) => {
+ /* const handleToggleDone = (taskId) => {
     const token = sessionStorage.getItem('token');
     fetch(process.env.BACKEND_URL + `/updatetask/${taskId}`, {
       method: "PUT",
@@ -119,27 +119,23 @@ export const TodoList = () => {
       })
       .catch(err => console.log("err", err));
   };
-
+*/
   return (
-    <>
-      <form onSubmit={handleClick}>
-        <input type="text" placeholder="Añade tus tareas" onChange={(e) => setInput(e.target.value)} value={input} />
-        <button type="submit"><i className="fas fa-plus"></i></button>
+    <div className="container-fluid todo-list">
+      <h1 className="titulo-tareas">Lista de Tareas</h1>
+      <form className="formulario-tarea" onSubmit={handleClick}>
+        <input className="intro-tarea" type="text" placeholder="Añade tus tareas" onChange={(e) => setInput(e.target.value)} value={input} />
+        <button className="boton-add" type="submit"><i className="fas fa-plus"></i></button>
       </form>
-      <ul>
+      <ul className="listado-tareas">
         {tasks.map((task) => (
-          <li key={task.id}>
-            <span style={{ textDecoration: task.done ? 'line-through' : 'none' }}>{task.tasks}</span>
-            {!task.done && (
-              <>
-                <button onClick={() => handleEdit(task)}><i className="fas fa-pen-to-square"></i></button>
-                <button onClick={() => handleDelete(task.id)}><i className="fas fa-trash"></i></button>
-                <button onClick={() => handleToggleDone(task.id)}>Marcar como hecha</button>
-              </>
-            )}
+          <li className="item-tarea" key={task.id}>{task.tasks}
+            <button className="boton-editar" onClick={() => handleEdit(task)}><i className="fas fa-pen-to-square"></i></button>
+            <button className="boton-eliminar" onClick={() => handleDelete(task.id)}><i className="fas fa-trash"></i></button>
+            {/*<button onClick={() => handleToggleDone(task.id)}>Marcar como hecha</button>*/} 
           </li>
         ))}
       </ul>
-    </>
+    </div>
   )
 }
