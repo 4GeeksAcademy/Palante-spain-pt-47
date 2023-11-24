@@ -13,10 +13,15 @@ export const Signup_user = () => {
   const [register, setRegister] = useState({ full_name: '', email: [''], password: '', confirm_password: '' })
   const [submit, setSubmit] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [isPasswordValid, setIsPasswordValid] = useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault() //Evitar el comportamiento predeterminado que normalmente ocurre cuando se produce un evento. 
 
+    if (!isPasswordValid) {
+      console.log("La contraseña no es válida. Por favor, corrige los errores.");
+      return;
+    }
 
     // Se ejecuta el fetch desde flux para almacenar los datos del usuario en la base de datos 
     actions.signupUser(register);
@@ -27,12 +32,11 @@ export const Signup_user = () => {
     }, 1000);
 
     setRegister('')
+
   }
 
 
   return (
-
-
 
     <div className="contenedor">
       <div className="imagen user-login" style={{ backgroundImage: `url(${home})` }}>
@@ -62,7 +66,10 @@ export const Signup_user = () => {
                 if (register.password == "") {
                   errores.password = "Por favor, ingresa una contraseña"
                 } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,15}$/.test(register.password)) {
-                  errores.password = "La contraseña acepta entre 8-15 caracteres, al menos una letra mayúscula y una minúscula, dígitos y caracteres especiales"
+                  errores.password = "La contraseña acepta entre 8-15 caracteres, al menos una letra mayúscula y una minúscula, dígitos y caracteres especiales";
+                  setIsPasswordValid(false);
+                }else {
+                  setIsPasswordValid(true);
                 }
 
                 //Confirmacion de Contraseña
