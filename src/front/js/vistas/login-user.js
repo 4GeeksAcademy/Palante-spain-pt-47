@@ -8,44 +8,50 @@ import home from "../../img/home.jpg";
 import Palante from "../../img/Palante.png"
 
 export const Login_user = () => {
-
   const { actions } = useContext(Context);
   const navigate = useNavigate();
-  const [user, setUser] = useState({ email: "", password: "", });
+  const [user, setUser] = useState({ email: "", password: "" });
   const [submit, setSubmit] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault() //Evitar el comportamiento predeterminado que normalmente ocurre cuando se produce un evento. 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
     // Condiciona al usuario para completar los campos
     if (user.email.trim() === "" || user.password.trim() === "") {
-      alert("Rellene los campos requeridos.");
+      setError("Rellene los campos requeridos.");
       return;
     }
 
-    // Se ejecuta el fetch desde flux para verifica al usuario e iniciar sesion
-    actions.loginUser(user);
-    setSubmit(true);
-    setTimeout(() => {
-      setSubmit(false);
-      navigate("/perfil_user");
-    }, 1500);
+    // Se ejecuta el fetch desde flux para verificar al usuario e iniciar sesión
+    const success = await actions.loginUser(user);
 
-    setUser('')
-  }
+    if (success) {
+      setSubmit(true);
+      setTimeout(() => {
+        setSubmit(false);
+        navigate("/perfil_user");
+      }, 500);
+    } else {
+      setError("Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.");
+      setSubmit(false); 
+    }
+
+    setUser('');
+  };
 
   return (
     <>
       <div className="contenedor">
         <div className="imagen user-login" style={{ backgroundImage: `url(${home})` }}>
-
           <div className="row principal-formulario">
             <div className="col-sm-12 col-md-4 formulario-user">
               <h1 className="titulo-user"><strong>Pa'lante</strong></h1>
               <form className="form-inputs" onSubmit={handleSubmit}>
                 <div className="container-inputs">
                   <div className="detalle-input">
-                    <input type="email"
+                    <input
+                      type="email"
                       className="form-control"
                       name="email"
                       id="exampleInputEmail1"
@@ -56,7 +62,8 @@ export const Login_user = () => {
                     />
                   </div>
                   <div className="detalle-input">
-                    <input type="Password"
+                    <input
+                      type="password"
                       className="form-control"
                       name="Password"
                       id="exampleInputPassword1"
@@ -68,19 +75,18 @@ export const Login_user = () => {
                   </div>
                 </div>
                 <button className="boton-login">Inicia sesión</button>
-                {submit && <p className="alert alert-success p-1 text-center mt-1" role="alert">Sesión Iniciada</p>}
+                {error && <p className="alert alert-danger p-1 text-center mt-1" role="alert">{error}</p>}
+                {submit && !error && <p className="alert alert-success p-1 text-center mt-1" role="alert">Sesión Iniciada</p>}
                 <Link to="/recover-password">
                   <p className="opcion-contraseña">¿Has olvidado tu contraseña?</p>
                 </Link>
               </form>
-              <p className="ruta-register">¿Aún no tienes cuenta? <Link to="/signup-user" className="ruta-registers">Registrate</Link></p>
+              <p className="ruta-register">¿Aún no tienes cuenta? <Link to="/signup-user" className="ruta-registers">Regístrate</Link></p>
             </div>
-            <div class="col-sm-12 col-md-8">
-
-            </div>
+            <div class="col-sm-12 col-md-8"></div>
           </div>
         </div>
       </div>
     </>
-  )
-}
+  );
+};

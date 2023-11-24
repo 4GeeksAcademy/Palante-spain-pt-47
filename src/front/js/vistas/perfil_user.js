@@ -10,6 +10,10 @@ export const Perfil_user = () => {
 
   const { store, actions } = useContext(Context);
 
+  useEffect(() => {
+    actions.dataUser();
+  }, []);
+  
   return (
     <div className="container-fluid">
       <div className="introduction_perfil_user">
