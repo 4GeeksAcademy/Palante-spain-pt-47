@@ -229,3 +229,90 @@ color: #3E63BA;
     font-family: 'Poppins', sans-serif;
     color: #102d7b;
 }
+.todo-list{
+    background: #5a87ff;
+    border-radius: 15px;
+	width: 80%; 
+  	margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.formulario-tarea{
+    font-size: 25px;
+	background: lightgray;
+	border: 2px solid gray;
+	width: 100%;
+	padding: 10px 10px 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.titulo-tareas{
+    text-align: center;
+}
+.intro-tarea{
+    border-radius: 30px 10px 10px 30px;
+    margin-right: 0.2rem;
+}
+.boton-add{
+    border-radius: 10px 30px 30px 10px;
+}
+.boton-editar{
+    border: 1px solid orange;
+    height: 35px;
+	width: 0;
+	margin-right: 10px;
+	margin-left: -10px;
+	text-align: center;
+	display: inline-block;
+	color: white;
+	opacity: 0;
+	transition: 0.2s ease-in;
+}
+.boton-eliminar{
+    height: 35px;
+	width: 0;
+	margin-right: 10px;
+	margin-left: -10px;
+	text-align: center;
+	display: inline-block;
+	color: white;
+	opacity: 0;
+	transition: 0.2s ease-in;
+}
+.listado-tareas{
+    cursor: pointer;
+    list-style: none;
+    margin: 20px;
+    padding: 0;
+}
+.item-tarea{
+    display: flex;
+    justify-content: space-between;
+    background: lightgray;
+	padding-left: 10px;
+	line-height: 2em;
+	margin: 0;
+	color: #313030;
+}
+.item-tarea:nth-child(2n) {
+	background: rgb(147, 147, 147);
+    color: whitesmoke;
+}
+.item-tarea:hover button {
+	opacity: 1;
+	width: 40px;
+	transition: 0.2s ease-in;
+}
+.fa-trash {
+	margin: 0px;
+	padding: 0px;
+	color: #bb2a2a;
+}
+.fa-pen-to-square{
+    margin: 0px;
+	padding: 0px;
+	color: #bb2a2a;
+}
