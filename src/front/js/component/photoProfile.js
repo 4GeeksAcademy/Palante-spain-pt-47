@@ -6,6 +6,8 @@ export const Photo = () => {
   const { store, actions } = useContext(Context);
   const inputRef = useRef(null)
 
+  console.log("store foto", store);
+
   const CLOUD_NAME = "dyiaf9ubw"
   const UPLOAD_PRESET = "dprcfccr"
   // Guardar en la base de datos la URL que manda Cloudinary
@@ -27,15 +29,12 @@ export const Photo = () => {
       const responseData = await response.json(); //Aca esta la URL que se va a guardar
       const newImage = { URLphoto: responseData.secure_url };
 
-      actions.updateData(newImage);  //Toma la URL traida de cloudinary la la almacena en la base de datos
+      actions.updateData(newImage); //Toma la URL traida de cloudinary la la almacena en la base de datos
+      actions.dataUser();  // Traer la imagen del usuario
     } catch (error) {
       console.error("Error al subir la imagen:", error);
     }
   };
-  // Traer los datos del usuario
-  useEffect(() => {
-    actions.dataUser();
-  }, [store.datauser]);
 
 //Cambia imagen al hacer click en ella
   const handleImage = () =>{
