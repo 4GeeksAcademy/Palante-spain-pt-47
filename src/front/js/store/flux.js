@@ -506,7 +506,6 @@ get_event: async (event_id) => {
           await getActions().get_favorites_meditations();
           await getActions().get_favorites_podcast();
           await getActions().get_citas();
-          await getActions().dataUser();
           
           return data;
         } catch (error) {
@@ -549,15 +548,16 @@ get_event: async (event_id) => {
             "Authorization": 'Bearer ' + token
           },
         })
-          .then(response => {
-            if (response.ok) {
-              return response.json();
-            } else {
-              throw new Error('Se produjo un error en la red');
-            }
-          })
-          .then(data => data)
-          .catch(error => console.log('error', error));
+        .then(response => {
+          if (response.ok) { 
+            alert('Tus datos fueron actualizados')
+            return response.json();
+          } else {
+            throw new Error('Se produjo un error en la red');
+          }
+        })
+        .then(data => data)
+        .catch(error => console.log('error', error));
 
       },
 
