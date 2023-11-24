@@ -32,16 +32,7 @@ def setup_commands(app):
     @app.cli.command("insert-tools")
     def insert_tools():
 
-        user = [
-            {
-        "full_name": "Nelys",
-        "email": "nelys.martin1988@gmail.com",
-        "password": "Nelys123456",
-        "URLphoto": "",
-        "is_active": True
-            
-    }
-    ]
+     
 
         readings = [
             {
@@ -208,16 +199,7 @@ def setup_commands(app):
         ]
 
         
-        for datos in user:
-            user = User()
-            user.full_name = datos["full_name"]
-            user.email = datos["email"]
-            user.password = datos["password"]
-            user.URLphoto = datos["URLphoto"]
-            db.session.add(user)
-            db.session.commit()
-        print("Users inserted into the database.")
-        
+             
         for datos in readings:
             reading = Readings()
             reading.URLPhoto = datos["URLPhoto"]
