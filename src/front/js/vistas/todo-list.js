@@ -130,12 +130,17 @@ export const TodoList = () => {
       <ul className="listado-tareas">
         {tasks.map((task) => (
           <li className="item-tarea" key={task.id}>{task.tasks}
-            <button className="boton-editar" onClick={() => handleEdit(task)}><i className="fas fa-pen-to-square"></i></button>
-            <button className="boton-eliminar" onClick={() => handleDelete(task.id)}><i className="fas fa-trash"></i></button>
+            <div className="botones-utiles">
+              <button className="boton-editar" onClick={() => handleEdit(task)}><i className="fas fa-pen-to-square"></i></button>
+              <button className="boton-eliminar" onClick={() => handleDelete(task.id)}><i className="fas fa-trash"></i></button>
+            </div>
             {/*<button onClick={() => handleToggleDone(task.id)}>Marcar como hecha</button>*/} 
           </li>
         ))}
       </ul>
+      <div className="numero-tareas">
+          <div>{tasks.length} tareas.</div>
+        </div>
     </div>
   )
 }
