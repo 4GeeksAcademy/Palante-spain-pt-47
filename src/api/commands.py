@@ -194,6 +194,16 @@ def setup_commands(app):
                 "user_id":1
             }
         ]
+
+        user = [
+            {
+        "full_name": "Nelys",
+        "email": "nelys.martin1988@gmail.com",
+        "password": "Nelys123456",
+        "URLphoto": ""
+        
+    }
+    ]
         
         for datos in readings:
             reading = Readings()
@@ -249,6 +259,16 @@ def setup_commands(app):
             db.session.add(events)
             db.session.commit()
         print("Events inserted into the database.")
+
+        for datos in user:
+            user = User()
+            user.full_name = datos["full_name"]
+            user.email = datos["email"]
+            user.password = datos["password"]
+            user.URLphoto = datos["URLphoto"]
+            db.session.add(user)
+            db.session.commit()
+        print("Readings inserted into the database.")
         
 
 # Para cargar base de datos pipenv run flask insert-tools
