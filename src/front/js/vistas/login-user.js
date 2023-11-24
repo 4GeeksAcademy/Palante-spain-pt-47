@@ -69,7 +69,7 @@ export const Login_user = () => {
                 </div>
                 <button className="boton-login">Inicia sesión</button>
                 {submit && <p className="alert alert-success p-1 text-center mt-1" role="alert">Sesión Iniciada</p>}
-                <Link to="">
+                <Link to="/recover-password">
                   <p className="opcion-contraseña">¿Has olvidado tu contraseña?</p>
                 </Link>
               </form>

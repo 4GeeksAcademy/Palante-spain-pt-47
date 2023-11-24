@@ -11,7 +11,8 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     URLphoto = db.Column(db.String(200), unique=False, nullable=True)
-    is_active = db.Column(db.Boolean(), unique=False, nullable=False, default=True)
+    reset_token = db.Column(db.String(100), unique=True, nullable=True)
+    is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def __repr__(self):
         return '<User %r>' % self.id

@@ -9,6 +9,9 @@ export const User_information = () => {
   const [info, setInfo] = useState({})
   const [isEditing, setIsEditing] = useState(false);
 
+  console.log("store", store);
+  console.log("info", info);
+
   useEffect(() => {
     actions.dataUser();
   }, []) // Ejecuta la accion para pintar los datos de usuario
@@ -22,16 +25,19 @@ export const User_information = () => {
     setInfo({
       full_name: store.datauser.full_name,
       email: store.datauser.email,
-    });
-  }, [store.datauser]) //Toma los datos nuevos que ingresa el usuario y se ejecuta cada vez que se modfica el store
+    }
+    );
+  }, [store.datauser]); //Toma los datos nuevos que ingresa el usuario y se ejecuta cada vez que se modfica el store
 
-  const handleEditClick = () => {
+  /*const handleEditClick = () => {
     setIsEditing(true);
-  };
+  };*/
+
   return (
     <div className="container-fluid">
-      <div className="jumbotron" style={{ backgroundImage: `url(${readingsinicio})` }}>
-        <h1 className="portada"><strong>Datos Personales</strong></h1>
+      <div className="jumbotron" >
+        <img className="perfil_informacion" src={fondo} />
+        <div className="perfil-saludo"><strong>Datos Personales</strong></div>
       </div>
 
       <div className="row linea-datos">
@@ -42,19 +48,19 @@ export const User_information = () => {
           <form className="form-data" onSubmit={handleSubmit} >
             <div className="detalle-input">
               <input
-                type="name"
+                type="text"
                 className="form-control"
                 name="full_name"
                 id="exampleInputName1"
                 placeholder="Nombre Completo"
                 aria-describedby="emailHelp"
-                value={info.full_name || ""}
+                value={info.full_name}
                 onChange={(e) => setInfo({ ...info, full_name: e.target.value })}
-                disabled={!isEditing} //Pinto el valor "full_name" del usuario logeado que tengo almacenado en el store 
+              //Pinto el valor "full_name" del usuario logeado que tengo almacenado en el store 
               />
-              <button className="modificar-datos" onClick={handleEditClick}>
+              {/*<button className="modificar-datos" onClick={handleEditClick}>
                 <i className="fa fa-pencil"></i>
-              </button>
+              </button>*/}
             </div>
             <div className="detalle-input">
               <input
@@ -64,9 +70,9 @@ export const User_information = () => {
                 id="exampleInputEmail1"
                 placeholder="Correo Electrónico"
                 aria-describedby="emailHelp"
-                value={info.email || ""}
+                value={info.email}
                 onChange={(e) => setInfo({ ...info, email: e.target.value })}
-                disabled={!isEditing} //Pinto el valor "email" del usuario logeado que tengo almacenado en el store
+              //Pinto el valor "email" del usuario logeado que tengo almacenado en el store
               />
             </div>
             <button className="boton-actualizar">Actualizar</button>
