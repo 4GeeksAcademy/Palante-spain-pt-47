@@ -36,7 +36,7 @@ export const User_information = () => {
   return (
     <div className="container-fluid">
       <div className="jumbotron" >
-        <img className="perfil_informacion" src={fondo} />
+        <img className="perfil_informacion" src={readingsinicio} /> 
         <div className="perfil-saludo"><strong>Datos Personales</strong></div>
       </div>
 

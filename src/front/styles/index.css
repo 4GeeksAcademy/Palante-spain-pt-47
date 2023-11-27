@@ -196,7 +196,21 @@ color: #3E63BA;
 i.fa.fa-pencil {
     color: #102d7b;
 }
-
+.perfil_informacion {
+    width: 100%;
+    object-fit: cover;
+    height: 116px;
+    object-position: left;
+    margin-bottom: 2rem;
+}
+.perfil-saludo {
+    position: absolute;
+    margin-top: -8rem;
+    font-size: 42px;
+    font-family: 'Poppins', sans-serif;
+    color: #102d7b;
+    margin-left: 29rem;
+}
 #informacion-personal {
     text-transform: capitalize;
     margin-bottom: 1.5em;
