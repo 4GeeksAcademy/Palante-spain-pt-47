@@ -1,0 +1,72 @@
+.list-uno {
+    border: 8px solid #fff;
+    border-radius: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 350px;
+    background-image: url(https://st3.depositphotos.com/9795234/15176/i/450/depositphotos_151764934-stock-photo-young-woman-showing-her-heartfelt.jpg);}
+
+.list-dos {
+    border: 8px solid #fff;
+    border-radius: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 350px;
+    
+}
+.list-tres {
+    border: 8px solid #fff;
+    border-radius: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 350px;
+    background-image: url(https://img.freepik.com/foto-gratis/nina-hermosa-sonriente-su-novio-guapo-ropa-casual-verano-familia-feliz-tomando-selfie-autorretrato-si-mismos-camara-telefono-inteligente-divirtiendose-calle-muestra-lengua_158538-5464.jpg?size=626&ext=jpg&ga=GA1.1.1826414947.1699833600&semt=ais);
+}
+.intro-tarea {
+    /* border-radius: 30px 10px 10px 30px; */
+    margin-right: 0.2rem;
+    padding: 10px;
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    margin-left: 2rem;
+}
+.formulario-tarea {
+    font-size: 25px;
+    background: #102d7b;
+    /* border: 2px solid gray; */
+    width: 100%;
+    padding: 20px 10px 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    border-radius: 1rem 1rem 0rem 0rem;
+}
+.intro-tarea {
+    font-family: 'Poppins';
+    margin: 0;
+    padding: 10px;
+    flex: 1;
+    border-radius: 1rem;
+    width: 100%;
+}
+.boton-add {
+    background-color: #fbf9f9;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 1rem;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+.listado-tareas {
+    cursor: pointer;
+    list-style: none;
+    margin: 0;
+    padding: 1.5rem;
+    background: #f9f0de;
+}
+i.fas.fa-plus {
+    color: #102d7b;
+}

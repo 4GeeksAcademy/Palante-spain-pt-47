@@ -281,31 +281,14 @@ i.fa.fa-pencil {
     max-width: 1200px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.formulario-tarea{
-    font-size: 25px;
-	background: lightgray;
-	border: 2px solid gray;
-	width: 100%;
-	padding: 10px 10px 10px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-}
+
 
 .titulo-tareas{
     text-align: center;
     color: white;
     font-family: 'Poppins', sans-serif;
 }
-.intro-tarea{
-    border-radius: 30px 10px 10px 30px;
-    margin-right: 0.2rem;
-    padding: 10px;
-    flex: 1;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
+
 .boton-add{
     background-color: #4caf50;
     color: #fff;
@@ -332,12 +315,7 @@ i.fa.fa-pencil {
     cursor: pointer;
     margin-left: 5px;
 }
-.listado-tareas{
-    cursor: pointer;
-    list-style: none;
-    margin: 20px;
-    padding: 0;
-}
+
 .item-tarea{
     display: flex;
     justify-content: space-between;
@@ -369,16 +347,7 @@ i.fa.fa-pencil {
 	color: black;
 }
 
-@media (max-width: 768px) {
-    .formulario-tarea {
-      flex-direction: column;
-      align-items: stretch;
-    }
-  
-    .intro-tarea {
-      margin-bottom: 10px;
-    }
-  }
+
 
   .numero-tareas{
     color: white;

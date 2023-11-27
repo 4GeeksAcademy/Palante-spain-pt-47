@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import readingsinicio from "../../img/readingsinicio.jpg";
+import "../../styles/todo_list.css";
 
 export const TodoList = () => {
   const [tasks, setTasks] = useState([]);
@@ -121,11 +123,27 @@ export const TodoList = () => {
   };
 */
   return (
-    <div className="container-fluid todo-list">
-      <h1 className="titulo-tareas">Lista de Tareas</h1>
-      <form className="formulario-tarea" onSubmit={handleClick}>
-        <input className="intro-tarea" type="text" placeholder="Añade tus tareas" onChange={(e) => setInput(e.target.value)} value={input} />
-        <button className="boton-add" type="submit"><i className="fas fa-plus"></i></button>
+        <div className="container-fluid">
+          <div className="introduction_meditations">
+          <img className="meditations_inicio" src={readingsinicio} alt="Readings Inicio"></img>
+                <div className="meditations_tittle"><strong>Mi Todo-List</strong></div>
+                <div className="explicacion_meditations">Tu lista de tareas para que no olvides tener un tiempo para ti.</div>
+          </div>
+      
+        <div class="row contenidohacemos">
+
+          <div class="col-sm-12 col-md-4 list-uno">
+            <h2 className="subtitulofoto"><span>Agradecer</span></h2>
+                        
+          </div>
+
+          <div class="col-sm-12 col-md-4 list-dos">
+          <form className="formulario-tarea" onSubmit={handleClick}>
+            <div className="form-dentro d-flex">
+              <input className="intro-tarea" type="text" placeholder="Añade tus tareas" onChange={(e) => setInput(e.target.value)} value={input} />
+              <button className="boton-add" type="submit"><i className="fas fa-plus"></i></button>
+            </div>
+        
       </form>
       <ul className="listado-tareas">
         {tasks.map((task) => (
@@ -141,6 +159,11 @@ export const TodoList = () => {
       <div className="numero-tareas">
           <div>{tasks.length} tareas.</div>
         </div>
+      </div>
+      <div class="col-sm-12 col-md-4 list-tres">
+            <h2 className="subtitulofoto"><span>Sonreir</span></h2>
+          </div>
+    </div>
     </div>
   )
 }
